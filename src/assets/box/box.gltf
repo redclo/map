@@ -1,0 +1,243 @@
+{
+	"accessors": [
+		{
+			"bufferView": 0,
+			"byteOffset": 0,
+			"componentType": 5126,
+			"count": 681,
+			"max": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"min": [
+				-1.0,
+				-1.0,
+				-1.0
+			],
+			"type": "VEC3"
+		},
+		{
+			"bufferView": 1,
+			"byteOffset": 0,
+			"componentType": 5126,
+			"count": 681,
+			"type": "VEC3"
+		},
+		{
+			"bufferView": 2,
+			"byteOffset": 0,
+			"componentType": 5126,
+			"count": 681,
+			"type": "VEC2"
+		},
+		{
+			"bufferView": 3,
+			"byteOffset": 0,
+			"componentType": 5123,
+			"count": 2916,
+			"type": "SCALAR"
+		}
+	],
+	"asset": {
+		"copyright": "2022 UX3D GmbH",
+		"extras": {
+			"created": "Sat Jul 16 12:22:43 2022"
+		},
+		"generator": "Gestaltor 2022.2.3 Tagliatelle Community",
+		"version": "2.0"
+	},
+	"bufferViews": [
+		{
+			"buffer": 0,
+			"byteLength": 8172,
+			"byteOffset": 0
+		},
+		{
+			"buffer": 0,
+			"byteLength": 8172,
+			"byteOffset": 8172
+		},
+		{
+			"buffer": 0,
+			"byteLength": 5448,
+			"byteOffset": 16344
+		},
+		{
+			"buffer": 0,
+			"byteLength": 5832,
+			"byteOffset": 21792
+		}
+	],
+	"buffers": [
+		{
+			"byteLength": 27624,
+			"uri": "box.bin"
+		}
+	],
+	"cameras": [
+		{
+			"name": "Camera",
+			"perspective": {
+				"yfov": 1.0,
+				"zfar": 688.0,
+				"znear": 0.07
+			},
+			"type": "perspective"
+		}
+	],
+	"extensions": {
+		"KHR_lights_punctual": {
+			"lights": [
+				{
+					"color": [
+						0.0,
+						0.43,
+						1.0
+					],
+					"intensity": 31.0,
+					"name": "Blue Light",
+					"spot": {
+						"innerConeAngle": 0.1,
+						"outerConeAngle": 0.47
+					},
+					"type": "spot"
+				},
+				{
+					"color": [
+						1.0,
+						0.0,
+						0.0
+					],
+					"name": "Red Light",
+					"type": "point"
+				}
+			]
+		}
+	},
+	"extensionsUsed": [
+		"KHR_lights_punctual"
+	],
+	"materials": [
+		{
+			"alphaMode": "OPAQUE",
+			"doubleSided": true,
+			"emissiveFactor": [
+				0.02199999988079071,
+				0.017999999225139618,
+				0.017999999225139618
+			],
+			"name": "Hello Cube Material",
+			"pbrMetallicRoughness": {
+				"baseColorFactor": [
+					0.8399999737739563,
+					0.8399999737739563,
+					0.8399999737739563,
+					1.0
+				],
+				"metallicFactor": 0.1,
+				"roughnessFactor": 0.2
+			}
+		}
+	],
+	"meshes": [
+		{
+			"name": "Hello Cube Mesh",
+			"primitives": [
+				{
+					"attributes": {
+						"NORMAL": 1,
+						"POSITION": 0,
+						"TEXCOORD_0": 2
+					},
+					"indices": 3,
+					"material": 0,
+					"mode": 4
+				}
+			]
+		}
+	],
+	"nodes": [
+		{
+			"children": [
+				1,
+				2
+			],
+			"mesh": 0,
+			"name": "Hello Cube",
+			"rotation": [
+				0.0,
+				0.9252519052083995,
+				0.0,
+				0.3793532811354438
+			],
+			"translation": [
+				0.0,
+				1.0,
+				0.0
+			]
+		},
+		{
+			"extensions": {
+				"KHR_lights_punctual": {
+					"light": 0
+				}
+			},
+			"name": "Blue Light Node",
+			"rotation": [
+				-0.711139382186912,
+				0.0,
+				-0.020088110465687,
+				0.702764005140229
+			],
+			"scale": [
+				1.0,
+				1.0,
+				1.0
+			],
+			"translation": [
+				0.0,
+				3.0,
+				0.0
+			]
+		},
+		{
+			"extensions": {
+				"KHR_lights_punctual": {
+					"light": 1
+				}
+			},
+			"name": "Red Light Node",
+			"translation": [
+				1.4918703669682145,
+				0.0,
+				-3.470529856160283
+			]
+		},
+		{
+			"camera": 0,
+			"name": "Camera Node",
+			"rotation": [
+				-0.09759000729485331,
+				0.19518001458970663,
+				0.0,
+				0.9759000729485331
+			],
+			"translation": [
+				1.4641408324241656,
+				1.5577886343002318,
+				3.181241512298584
+			]
+		}
+	],
+	"scene": 0,
+	"scenes": [
+		{
+			"name": "Scene",
+			"nodes": [
+				0,
+				3
+			]
+		}
+	]
+}

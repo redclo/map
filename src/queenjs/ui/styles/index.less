@@ -1,0 +1,30 @@
+html {
+  font-size: calc(1920px / 19.2);
+}
+
+@media screen and (max-width: 1680px) {
+  html {
+    font-size: calc(1680px / 19.2);
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  html {
+    font-size: calc(1366px / 19.2);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.2);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.3);
+}

@@ -1,0 +1,6 @@
+
+import { createIcon } from '../createIcon';
+export const IconClose = createIcon(<svg   viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path d="M18,6,6,18" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M6,6,18,18" stroke-linecap="round" stroke-linejoin="round" />
+</svg>)

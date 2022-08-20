@@ -1,0 +1,8 @@
+
+import { createIcon } from '../createIcon';
+export const IconSettings = createIcon(<svg   viewBox="0 0 18 18" stroke="currentColor">
+    <g fill="none" stroke-linejoin="round" stroke-width="1.2px">
+        <path d="M13.24,15.72l4-6.86L13.24,2H5.18l-4,6.86,4,6.86Z" />
+        <path d="M9.21,10.88a2,2,0,1,0-2-2,2,2,0,0,0,2,2Z" />
+    </g>
+</svg>)

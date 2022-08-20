@@ -1,0 +1,11 @@
+
+import { createIcon } from '../createIcon';
+export const IconScreenshot = createIcon(<svg   viewBox="0 0 18 18">
+  <g transform="translate(-4 -4)">
+    <path d="M10.1,6H6.82A.82.82,0,0,0,6,6.82V10.1" transform="translate(0 0)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    <path d="M10.1,36.1H6.82A.82.82,0,0,1,6,35.28V32" transform="translate(0 -15.338)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    <path d="M32,36.1h3.28a.82.82,0,0,0,.82-.82V32" transform="translate(-15.338 -15.338)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    <path d="M32,6h3.28a.82.82,0,0,1,.82.82V10.1" transform="translate(-15.338 0)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" />
+    <rect width="8.558" height="8.558" rx="2" transform="translate(9.209 9.209)" fill="none" stroke="currentColor" stroke-width="1" />
+  </g>
+</svg>)

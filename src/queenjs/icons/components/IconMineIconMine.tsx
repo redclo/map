@@ -1,0 +1,3 @@
+
+import { createIcon } from '../createIcon';
+export const IconMineIconMine = createIcon(<svg viewBox="0 0 40 40"><g transform="translate(-280 -781)"><rect fill="none" width="40" height="40" transform="translate(280 781)"/><path fill="#fff" d="M-1416.261,866.191l-18.25,17.944h18.25Z" transform="translate(1728 -69)"/><g transform="translate(14.281 307.872)"><path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2px" d="M288.255,479.89h-14.7v27.2h23.268V487.931" transform="translate(0.36)"/><line fill="none" stroke-miterlimit="10" stroke-width="2px" stroke="currentColor" x2="12.494" transform="translate(279.126 499.588)"/><path fill="currentColor" d="M283.6,492.185l-.727,2.37,2.628-.563,12.741-13.022-1.842-1.842Z"/></g></g></svg>)

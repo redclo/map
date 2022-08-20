@@ -1,0 +1,11 @@
+{
+    "name": "@queenjs/const",
+    "version": "0.0.4",
+    "description": "queenjs-const",
+    "main": "index.ts",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "lianghongjie",
+    "license": "ISC"
+  }

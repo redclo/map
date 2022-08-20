@@ -1,0 +1,55 @@
+.ant-tooltip {
+  max-width: 4rem;
+
+  .ant-tooltip-arrow-content {
+    background-color: #fff;
+  }
+
+  .ant-tooltip-inner {
+    background-color: #fff;
+    color: #000;
+  }
+}
+
+.ant-cate-tooltip {
+  max-width: 14rem;
+  &.light {
+    .ant-tooltip-arrow-content {
+      background-color: #fff;
+    }
+
+    .ant-tooltip-inner {
+      background-color: #fff;
+      color: #000;
+    }
+    .ant-radio-button-wrapper {
+      color: rgba(0, 0, 0, 0.85);
+      background: #fff;
+    }
+  }
+  .ant-tooltip-inner {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+  }
+  .ant-radio-button-wrapper {
+    border: none;
+    color: #fff;
+    background: transparent;
+    &.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+      color: #5a7bef;
+      background-color: transparent;
+    }
+    &:first-child {
+      border: none;
+    }
+    &:not(:first-child)::before {
+      display: none;
+    }
+    &:not(.ant-radio-button-wrapper-disabled):focus-within {
+      box-shadow: none;
+    }
+    &:focus-within {
+      box-shadow: none;
+    }
+  }
+}

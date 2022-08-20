@@ -1,0 +1,13 @@
+{
+  "name": "queenjs",
+  "version": "0.3.23",
+  "description": "queen.js",
+  "main": "index.js",
+  "files": [
+    "framework/**/*",
+    "ui/**/*",
+    "use/**/*"
+  ],
+  "author": "lianghongjie",
+  "license": "ISC"
+}

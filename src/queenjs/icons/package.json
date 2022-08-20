@@ -1,0 +1,11 @@
+{
+  "name": "@queenjs/icons",
+  "version": "0.0.13",
+  "description": "queenjs-icons",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lianghongjie",
+  "license": "ISC"
+}

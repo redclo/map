@@ -1,0 +1,5 @@
+
+import { createIcon } from '../createIcon';
+export const IconDown = createIcon(<svg   viewBox="0 0 16 16" stroke="currentColor">
+    <path d="M12.2,6.3,8,10.5,3.8,6.3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2px" fill="none" />
+</svg>)

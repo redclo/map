@@ -1,0 +1,15 @@
+
+import { createIcon } from '../createIcon';
+export const IconList = createIcon(<svg   viewBox="0 0 19.2 19.2">
+  <g transform="scale(0.84) translate(-0.2 0)">
+    <rect width="18" height="18" rx="2" transform="translate(2.308 2)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.2" />
+    <g>
+      <rect width="4" height="4" rx="2" transform="translate(5.308 13)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.2" />
+      <rect width="4" height="4" rx="2" transform="translate(5.308 5)" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.2" />
+      <path d="M28,28h3.7" transform="translate(-14.868 -14.868)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+      <path d="M28,36h3.7" transform="translate(-14.868 -20.121)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+      <path d="M28,12h3.7" transform="translate(-14.868 -6.275)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+      <path d="M28,20h3.7" transform="translate(-14.868 -11.571)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" />
+    </g>
+  </g>
+</svg>)

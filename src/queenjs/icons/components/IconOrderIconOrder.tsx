@@ -1,0 +1,3 @@
+
+import { createIcon } from '../createIcon';
+export const IconOrderIconOrder = createIcon(<svg viewBox="0 0 20 20"><g transform="translate(-158 -657)"><rect fill="none" width="20" height="20" transform="translate(158 657)"/><g transform="translate(84.914 252.185)"><path fill="none" stroke="currentColor" stroke-miterlimit="10" d="M85.02,412.063v9.245H74.086V408.215h6.992Z"/><path fill="none" stroke="currentColor" stroke-miterlimit="10" d="M81.078,408.215V411.9h3.86"/><line fill="none" stroke-miterlimit="10" stroke="currentColor" x2="3.977" transform="translate(75.998 415.031)"/><line fill="none" stroke-miterlimit="10" stroke="currentColor" stroke-width="1.1px" x2="7.074" transform="translate(75.998 417.706)"/></g></g></svg>)

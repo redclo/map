@@ -1,0 +1,9 @@
+<svg   viewBox="0 0 20 20">
+  <g transform="translate(2.94 2.94)">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M6,16a3.192,3.192,0,0,0,.823.978,7.121,7.121,0,0,0,4.426,1.354,7.12,7.12,0,0,0,4.426-1.354A3.192,3.192,0,0,0,16.5,16" transform="translate(-4.34 -11.167)" />
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M28.978,24l.6,2.253" transform="translate(-20.617 -16.834)" />
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M37.354,21.354,39,23" transform="translate(-26.551 -14.959)" />
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M5,23l1.65-1.649" transform="translate(-3.631 -14.959)" />
+    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M16.928,26.253l.6-2.253" transform="translate(-12.081 -16.834)" />
+  </g>
+</svg>

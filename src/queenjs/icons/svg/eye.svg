@@ -1,0 +1,7 @@
+<svg   viewBox="0 0 20 20">
+  <g transform="translate(0 0.174)">
+    <rect fill="none" width="20" height="20" transform="translate(0 -0.174)" />
+    <path fill="none" stroke="currentColor" stroke-linejoin="round" d="M10.528,19.833c3.605,0,6.528-3.917,6.528-3.917S14.133,12,10.528,12,4,15.917,4,15.917,6.922,19.833,10.528,19.833Z" transform="translate(-0.603 -6.015)" />
+    <path fill="none" stroke="currentColor" stroke-linejoin="round" d="M20.632,22.264A1.632,1.632,0,1,0,19,20.632,1.632,1.632,0,0,0,20.632,22.264Z" transform="translate(-10.708 -10.73)" />
+  </g>
+</svg>
