@@ -12,7 +12,7 @@ export default function (webgl: WebglModule) {
         useWebglCanvas(canvas: HTMLCanvasElement, options: { bgAlpha?: boolean }) {
 
            
-            let gl = canvas.getContext("webgl", { alpha: false, antialias: true });
+            const gl = canvas.getContext("webgl", { alpha: false, antialias: true });
             if (gl) {
                 webgl._gl = gl;
             }

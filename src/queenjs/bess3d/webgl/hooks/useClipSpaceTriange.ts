@@ -15,7 +15,7 @@ export default function (webgl: WebglModule) {
             const demo = new AppClipSpaceDemo();
 
             onMounted(() => {
-                let wctx = webgl.actions.createWebglCtx(canvasRef.value);
+                const wctx = webgl.actions.createWebglCtx(canvasRef.value);
                 if (!wctx) return;
                 demo.setWebglCtx(wctx);
             });

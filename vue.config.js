@@ -37,6 +37,12 @@ module.exports = {
       filename: 'anim5.html',
       chunks: ['chunk-vendors', 'chunk-common', 'anim5']
     },
+    map: {
+      entry: 'src/pages/map/main.ts',
+      template: 'public/index.html',
+      filename: 'map.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'map']
+    },
   },
   css: {
     extract: {
