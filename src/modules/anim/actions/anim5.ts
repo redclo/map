@@ -52,7 +52,7 @@ export default (module: AnimModule) => {
                     im.x += 1;
                 })
                 draw();
-            }, 1000 / 10);
+            }, 1000 / 24);
 
 
             //@ts-ignore

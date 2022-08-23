@@ -12,6 +12,7 @@ export default defineComponent({
         const tikerRef = ref();
 
         onMounted(() => {
+            document.title = "动画5录制";
             const imgs = [{
                 image: img1Ref.value,
                 x: 100,
@@ -32,7 +33,7 @@ export default defineComponent({
                 </div>
                 <div class="hud">
                     {
-                        anim.state.recording ? <span class="timer">{tiker.value}</span> : null
+                        anim.state.recording ? <span class="timer">{tiker.value}s</span> : null
                     }
                     {
                         !anim.state.recording ?
@@ -50,7 +51,7 @@ export default defineComponent({
                                     clearInterval(tikerRef.value);
                                     tikerRef.value = null;
                                 }
-                            }}>点击暂停</Button>
+                            }}>点击完成录制</Button>
                     }
                 </div>
             </div>
@@ -63,6 +64,7 @@ const rootStyle = css`
   width: 100vw;
   height: 100vh;
   position: relative;
+  overflow: hidden;
 
   .res {
     visibility: hidden;
