@@ -8,4 +8,18 @@ export default class extends StateRoot {
 
     ContainerWidth = 0;
     ContainerHeight = 0;
+
+    RowGridCount = 40;
+    ColGridCount = 70;
+
+    itemSize = this.computed(state => {
+        return state.scale * state.IconSize;
+    });
+
+    TotalWidth = this.computed(state => {
+        return state.itemSize * state.ColGridCount;
+    })
+    TotalHeight = this.computed(state => {
+        return state.itemSize * state.RowGridCount;
+    })
 }

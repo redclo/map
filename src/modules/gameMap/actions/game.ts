@@ -7,8 +7,7 @@ export default (game: GameMap) => {
     let _canvas: HTMLCanvasElement;
     const _icons: IconItem[] = [];
     let _ctx2d: CanvasRenderingContext2D;
-    const RowGridCount = 40;
-    const ColGridCount = 70;
+
 
     return {
         initWidthCanvas(canvas: HTMLCanvasElement) {
@@ -19,8 +18,15 @@ export default (game: GameMap) => {
             canvas.width = game.state.ContainerWidth;
             canvas.height = game.state.ContainerHeight;
 
+            game.actions.initMouseEvent(canvas);
+            game.actions.initResizeEvents();
+
             game.actions.drawGrid();
         },
+        getCanvas() {
+            return _canvas;
+        },
+
         moveX(offsetX: number) {
             game.state.offsetX += offsetX;
             game.actions.redraw();
@@ -33,20 +39,24 @@ export default (game: GameMap) => {
         redraw() {
             _ctx2d.clearRect(0, 0, _canvas.width, _canvas.height);
             game.actions.drawGrid();
+            game.actions.drawSelectedGrid(_ctx2d);
         },
 
         drawGrid() {
             const offsetY = game.state.offsetY;
             const offsetX = game.state.offsetX;
 
-            const size = game.state.IconSize;
-            const scale = game.state.scale;
-            const itemSize = size * scale;
+            const itemSize = game.state.itemSize;
+
             const x = offsetX;
-            const TotalWidth = ColGridCount * itemSize;
-            const TotalHeight = RowGridCount * itemSize;
+
+            const TotalWidth = game.state.TotalWidth;
+            const TotalHeight = game.state.TotalHeight;
 
             _ctx2d.strokeStyle = "gray";
+
+            const RowGridCount = game.state.RowGridCount;
+            const ColGridCount = game.state.ColGridCount;
 
             for (let r = 0; r < RowGridCount; r++) {
                 const y = offsetY + r * itemSize;
