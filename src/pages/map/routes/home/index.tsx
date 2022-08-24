@@ -22,7 +22,7 @@ export default defineComponent({
         })
 
         const iconsRef = ref<{ index: number, imgRef: any }[]>([]);
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 26; i++) {
             iconsRef.value.push({ index: i, imgRef: ref() });
         }
 

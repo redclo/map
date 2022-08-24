@@ -24,7 +24,7 @@ export default (game: GameMap) => {
     return {
         async loadImages() {
             const loading: any = [];
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 26; i++) {
                 loading.push(loadImage(`./icons/${i + 1}.jpg`, i));
             }
             const rets = await Promise.all(loading);
@@ -38,6 +38,10 @@ export default (game: GameMap) => {
         },
         getImage(index: number) {
             _imgTemp.image = _Images[index];
+            //@ts-ignore
+            _imgTemp.width = _imgTemp.image.width;
+            //@ts-ignore
+            _imgTemp.height = _imgTemp.image.height;
             return _imgTemp;
         }
     }
