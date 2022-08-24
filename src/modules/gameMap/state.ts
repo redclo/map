@@ -12,6 +12,8 @@ export default class extends StateRoot {
     RowGridCount = 40;
     ColGridCount = 70;
 
+    showIcons = false;
+    
     itemSize = this.computed(state => {
         return state.scale * state.IconSize;
     });
@@ -21,5 +23,9 @@ export default class extends StateRoot {
     })
     TotalHeight = this.computed(state => {
         return state.itemSize * state.RowGridCount;
+    })
+
+    TotalCounts =  this.computed(state => {
+        return state.ColGridCount * state.RowGridCount;
     })
 }

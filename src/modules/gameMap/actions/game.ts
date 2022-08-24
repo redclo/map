@@ -40,6 +40,9 @@ export default (game: GameMap) => {
             _ctx2d.clearRect(0, 0, _canvas.width, _canvas.height);
             game.actions.drawGrid();
             game.actions.drawSelectedGrid(_ctx2d);
+
+            game.actions.drawRectSelecting(_ctx2d);
+
         },
 
         drawGrid() {
@@ -84,7 +87,7 @@ export default (game: GameMap) => {
                 const y = offsetY + r * itemSize;
                 for (let c = 0; c < ColGridCount; c++) {
                     const x = offsetX + c * itemSize;
-                    const index = r * RowGridCount + c + 1;
+                    const index = r * ColGridCount + c + 1;
                     const tx = _ctx2d.measureText(index + "");
                     _ctx2d.fillText(index + "",
                         x + (itemSize - tx.width) / 2.0,

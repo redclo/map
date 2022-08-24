@@ -1,5 +1,5 @@
 import { css } from "@linaria/core";
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted , reactive} from "vue";
 import { useCtx } from "../../context";
 import { Button } from "ant-design-vue";
 export default defineComponent({
@@ -7,16 +7,35 @@ export default defineComponent({
         const { gameMap } = useCtx();
         const canvasRef = ref();
 
+        const init : number[] = [];
+        const state = reactive({selected: init})
+
+        document.oncontextmenu = function(){
+            return false;
+        }
+
         onMounted(() => {
             document.title = "地图演示";
             gameMap.actions.initWidthCanvas(canvasRef.value);
         })
 
+        const icons :number[] = [];
+        for(let i=0; i<25; i++) {
+            icons.push(i);
+        }
+
         return () => (
             <div class={rootStyle}>
                 <canvas ref={canvasRef} />
                 <div class="hud">
+                    <Button onClick={()=>gameMap.actions.cleanSelect()}>清除选择</Button>
                     <Button>保存</Button>
+                    <Button onClick={()=>{
+                        gameMap.state.showIcons = !gameMap.state.showIcons
+                    }}>图标</Button>
+                </div>
+
+                <div class="hud-move">
                     <Button onClick={() => {
                         gameMap.actions.moveX(-gameMap.state.IconSize * 0.5);
                     }}>左移</Button>
@@ -29,7 +48,32 @@ export default defineComponent({
                     <Button onClick={() => {
                         gameMap.actions.moveY(gameMap.state.IconSize * 0.5);
                     }}>下移</Button>
+                    <Button onClick={() => {
+                        gameMap.actions.moveX(-gameMap.state.offsetX);
+                        gameMap.actions.moveY(-gameMap.state.offsetY);
+                    }}>归零</Button>
                 </div>
+                {
+                    gameMap.state.showIcons && <div class="icons">
+                        <div class="items">
+                        {
+                            icons.map(item=><img onClick={()=>{
+                                const i = state.selected.indexOf(item);
+                                if (i== -1) {
+                                    state.selected.push(item);
+                                    return;
+                                }
+                                
+                                state.selected.splice(i, 1);
+                            }} src={`./icons/${item+1}.jpg`} alt={item+""} key={item} class={state.selected.indexOf(item) > -1 ? "selected":""} />)
+                        }
+                        </div>
+
+                        <Button onClick={() => {
+                        }}>放置</Button>
+                    </div>
+                }
+              
             </div>
         );
     },
@@ -39,6 +83,8 @@ const rootStyle = css`
   background-color: black;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+
   canvas {
     width: 100%;
     height: 100%;
@@ -52,6 +98,27 @@ const rootStyle = css`
         font-size: 24px;
         color: white;
         margin-right: 10px;
+    }
+  }
+  .hud-move {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+  }
+
+  .icons {
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    width: 200px;
+
+    .items {
+        img{
+            width: 40px;
+        }
+        .selected{
+            border: 2px solid orange;
+        }
     }
   }
 `;

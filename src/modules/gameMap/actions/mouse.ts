@@ -43,7 +43,7 @@ export default (game: GameMap) => {
 
         onMouseMove(e: MouseEvent) {
             if (!_isDown) return;
-            game.actions.moveEvent(e.clientX, e.clientY);
+            game.actions.moveEvent(e.clientX, e.clientY, e.buttons);
         }
     }
 }
