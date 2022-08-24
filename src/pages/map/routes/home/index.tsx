@@ -15,7 +15,7 @@ export default defineComponent({
         }
 
         onMounted(() => {
-            document.title = "地图演示";
+            document.title = "地图";
             gameMap.actions.loadImages().then(() => {
                 gameMap.actions.initWidthCanvas(canvasRef.value);
             })

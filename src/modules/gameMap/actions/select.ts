@@ -112,6 +112,8 @@ export default (game: GameMap) => {
                         const num = _selected[n];
                         if (_tempSelected.indexOf(num) > -1) _selected.splice(n, 1);
                     }
+
+                    _tempSelected = [];
                     game.actions.redraw();
                     return;
                 }
@@ -121,6 +123,7 @@ export default (game: GameMap) => {
                         _selected.push(num);
                     }
                 })
+                _tempSelected = [];
                 game.actions.redraw();
             }
         },
