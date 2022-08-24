@@ -5,14 +5,14 @@ export default (game: GameMap) => {
     let _selected: number[] = [];//选中的序号
     let _rectSelecting = false;
     let _rectStartX = 0, _rectStartY = 0;
-    let _rectCurrX = 0,  _rectCurrY = 0;
-    let _initMoveX=0, _initMoveY = 0;
+    let _rectCurrX = 0, _rectCurrY = 0;
+    let _initMoveX = 0, _initMoveY = 0;
 
     return {
         downEvent(x: number, y: number) {
             console.log("down Event", x, y);
-            _rectStartX = x ;
-            _rectStartY = y ;
+            _rectStartX = x;
+            _rectStartY = y;
 
             _initMoveX = game.state.offsetX;
             _initMoveY = game.state.offsetY;
@@ -21,6 +21,10 @@ export default (game: GameMap) => {
         cleanSelect() {
             _selected = [];
             game.actions.redraw();
+        },
+
+        getSelected() {
+            return _selected;
         },
 
         clickEvent(x: number, y: number) {
@@ -48,12 +52,12 @@ export default (game: GameMap) => {
             game.actions.redraw();
         },
 
-        moveEvent(x: number, y: number, buttons:number) {
+        moveEvent(x: number, y: number, buttons: number) {
             console.log("move Event", x, y, buttons);
-            const isMoving = buttons==4;
+            const isMoving = buttons == 4;
             if (isMoving) {
-                game.state.offsetX = _initMoveX + ( x -_rectStartX);
-                game.state.offsetY = _initMoveY + ( y -_rectStartY);
+                game.state.offsetX = _initMoveX + (x - _rectStartX);
+                game.state.offsetY = _initMoveY + (y - _rectStartY);
 
                 game.actions.redraw();
                 return;
@@ -76,30 +80,30 @@ export default (game: GameMap) => {
 
             const rc = game.state.RowGridCount;
             const cc = game.state.ColGridCount;
-            let changed= false;
-            for (let r=0; r<rc; r++) {
+            let changed = false;
+            for (let r = 0; r < rc; r++) {
                 const y = (r + 0.5) * state.itemSize;
                 if (y < y1 || y > y2) continue;
 
                 console.log("y==>", y, y1, y2, r);
 
-                for(let c=0; c<cc; c++) {
+                for (let c = 0; c < cc; c++) {
                     const x = (c + 0.5) * state.itemSize;
                     if (x < x1 || x > x2) continue;
 
                     const index = r * cc + c;
 
-                    if ( idUnselect ) {
+                    if (idUnselect) {
                         const i = _selected.indexOf(index);
-                        if ( i > -1)  _selected.splice(i, 1);
+                        if (i > -1) _selected.splice(i, 1);
                     } else {
                         if (_selected.indexOf(index) == -1) _selected.push(index);
                     }
-                
+
                     changed = true;
                 }
             }
-            
+
             game.actions.redraw();
         },
 
@@ -119,7 +123,7 @@ export default (game: GameMap) => {
 
             const state = game.state;
 
-            ctx.strokeStyle ='orange' //'#ED81B7';
+            ctx.strokeStyle = 'orange' //'#ED81B7';
             ctx.lineWidth = 2;
 
             while (n--) {

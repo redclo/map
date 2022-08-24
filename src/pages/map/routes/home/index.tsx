@@ -1,36 +1,44 @@
 import { css } from "@linaria/core";
-import { defineComponent, ref, onMounted , reactive} from "vue";
+import { defineComponent, ref, onMounted, reactive, nextTick } from "vue";
 import { useCtx } from "../../context";
 import { Button } from "ant-design-vue";
+
 export default defineComponent({
     setup() {
         const { gameMap } = useCtx();
         const canvasRef = ref();
+        const init: number[] = [];
+        const state = reactive({ selected: init })
 
-        const init : number[] = [];
-        const state = reactive({selected: init})
-
-        document.oncontextmenu = function(){
+        document.oncontextmenu = function () {
             return false;
         }
 
         onMounted(() => {
             document.title = "地图演示";
-            gameMap.actions.initWidthCanvas(canvasRef.value);
+            gameMap.actions.loadImages().then(() => {
+                gameMap.actions.initWidthCanvas(canvasRef.value);
+            })
         })
 
-        const icons :number[] = [];
-        for(let i=0; i<25; i++) {
-            icons.push(i);
+        const iconsRef = ref<{ index: number, imgRef: any }[]>([]);
+        for (let i = 0; i < 25; i++) {
+            iconsRef.value.push({ index: i, imgRef: ref() });
         }
 
         return () => (
             <div class={rootStyle}>
                 <canvas ref={canvasRef} />
                 <div class="hud">
-                    <Button onClick={()=>gameMap.actions.cleanSelect()}>清除选择</Button>
-                    <Button>保存</Button>
-                    <Button onClick={()=>{
+                    <Button onClick={() => gameMap.actions.cleanSelect()}>清除选择</Button>
+                    <Button onClick={() => {
+                        gameMap.actions.saveTiles();
+                    }}>保存</Button>
+                    <Button onClick={() => {
+                        gameMap.actions.loadLocalConfig();
+                    }}>导入</Button>
+
+                    <Button onClick={() => {
                         gameMap.state.showIcons = !gameMap.state.showIcons
                     }}>图标</Button>
                 </div>
@@ -53,27 +61,29 @@ export default defineComponent({
                         gameMap.actions.moveY(-gameMap.state.offsetY);
                     }}>归零</Button>
                 </div>
-                {
-                    gameMap.state.showIcons && <div class="icons">
-                        <div class="items">
+
+                <div class={"icons " + (!gameMap.state.showIcons ? "hide" : "")}>
+                    <div class={"items"}>
                         {
-                            icons.map(item=><img onClick={()=>{
-                                const i = state.selected.indexOf(item);
-                                if (i== -1) {
-                                    state.selected.push(item);
+                            iconsRef.value.map(item => <img onClick={() => {
+                                const i = state.selected.indexOf(item.index);
+                                if (i == -1) {
+                                    state.selected.push(item.index);
                                     return;
                                 }
-                                
                                 state.selected.splice(i, 1);
-                            }} src={`./icons/${item+1}.jpg`} alt={item+""} key={item} class={state.selected.indexOf(item) > -1 ? "selected":""} />)
+                            }} src={`./icons/${item.index + 1}.jpg`} alt={item + ""} key={item.index} class={state.selected.indexOf(item.index) > -1 ? "selected" : ""} />)
                         }
-                        </div>
-
-                        <Button onClick={() => {
-                        }}>放置</Button>
                     </div>
-                }
-              
+
+                    <Button onClick={() => {
+                        gameMap.actions.insertIcons(state.selected);
+                    }}>放置</Button>
+
+                    <Button onClick={() => {
+                        gameMap.actions.cleanIcons();
+                    }}>清除</Button>
+                </div>
             </div>
         );
     },
@@ -119,6 +129,9 @@ const rootStyle = css`
         .selected{
             border: 2px solid orange;
         }
+    }
+    &.hide{
+        visibility: hidden;
     }
   }
 `;

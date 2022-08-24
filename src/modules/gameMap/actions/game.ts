@@ -21,7 +21,7 @@ export default (game: GameMap) => {
             game.actions.initMouseEvent(canvas);
             game.actions.initResizeEvents();
 
-            game.actions.drawGrid();
+            game.actions.redraw();
         },
         getCanvas() {
             return _canvas;
@@ -39,10 +39,9 @@ export default (game: GameMap) => {
         redraw() {
             _ctx2d.clearRect(0, 0, _canvas.width, _canvas.height);
             game.actions.drawGrid();
+            game.actions.drawTiles(_ctx2d);
             game.actions.drawSelectedGrid(_ctx2d);
-
             game.actions.drawRectSelecting(_ctx2d);
-
         },
 
         drawGrid() {
