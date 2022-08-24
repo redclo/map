@@ -1,3 +1,4 @@
+import { isUndefined } from "lodash";
 import GameMap from "..";
 
 export default (game: GameMap) => {
@@ -7,6 +8,8 @@ export default (game: GameMap) => {
     let _rectStartX = 0, _rectStartY = 0;
     let _rectCurrX = 0, _rectCurrY = 0;
     let _initMoveX = 0, _initMoveY = 0;
+    let _tempSelected: number[] = [];
+    let idUnselect = false;
 
     return {
         downEvent(x: number, y: number) {
@@ -63,8 +66,7 @@ export default (game: GameMap) => {
                 return;
             }
 
-            const idUnselect = buttons == 2;
-
+            idUnselect = buttons == 2;
 
             _rectSelecting = true;
             _rectCurrX = x;
@@ -80,7 +82,8 @@ export default (game: GameMap) => {
 
             const rc = game.state.RowGridCount;
             const cc = game.state.ColGridCount;
-            let changed = false;
+
+            _tempSelected = [];
             for (let r = 0; r < rc; r++) {
                 const y = (r + 0.5) * state.itemSize;
                 if (y < y1 || y > y2) continue;
@@ -92,30 +95,38 @@ export default (game: GameMap) => {
                     if (x < x1 || x > x2) continue;
 
                     const index = r * cc + c;
-
-                    if (idUnselect) {
-                        const i = _selected.indexOf(index);
-                        if (i > -1) _selected.splice(i, 1);
-                    } else {
-                        if (_selected.indexOf(index) == -1) _selected.push(index);
-                    }
-
-                    changed = true;
+                    if (_tempSelected.indexOf(index) == -1) _tempSelected.push(index);
                 }
             }
-
             game.actions.redraw();
         },
 
         upEvent(x: number, y: number) {
             console.log("up Event", x, y);
             _rectSelecting = false;
-
             game.actions.redraw();
+            if (_tempSelected.length > 0) {
+                if (idUnselect) { //反选
+                    let n = _selected.length;
+                    while (n--) {
+                        const num = _selected[n];
+                        if (_tempSelected.indexOf(num) > -1) _selected.splice(n, 1);
+                    }
+                    game.actions.redraw();
+                    return;
+                }
+                //正选
+                _tempSelected.forEach(num => {
+                    if (_selected.indexOf(num) == -1) {
+                        _selected.push(num);
+                    }
+                })
+                game.actions.redraw();
+            }
         },
 
+
         drawSelectedGrid(ctx: CanvasRenderingContext2D) {
-            let n = _selected.length;
             let index = -1;
             let r = -1;
             let c = -1;
@@ -126,8 +137,23 @@ export default (game: GameMap) => {
             ctx.strokeStyle = 'orange' //'#ED81B7';
             ctx.lineWidth = 2;
 
+            const selects = _selected.slice(0);
+            if (_tempSelected.length > 0) {
+                if (!idUnselect) { //正向选择
+                    _tempSelected.forEach(num => {
+                        if (selects.indexOf(num) == -1) selects.push(num);
+                    })
+                } else {//反向选择
+                    _tempSelected.forEach(num => {
+                        const i = selects.indexOf(num);
+                        if (i > -1) selects.splice(i, 1);
+                    })
+                }
+            }
+            let n = selects.length;
             while (n--) {
-                index = _selected[n];
+                index = selects[n];
+
                 r = Math.floor(index / state.ColGridCount);
                 c = index % state.ColGridCount;
 
