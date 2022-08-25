@@ -1,7 +1,12 @@
 import ChapterXModule from "..";
-import { Vector2, Vector3, WebGLRenderer, sRGBEncoding, Scene, PerspectiveCamera, Clock } from "three"
+import {
+    Vector2, DirectionalLight,
+    AmbientLight,
+    Vector3, WebGLRenderer, sRGBEncoding, Scene, PerspectiveCamera, Clock
+} from "three"
 
 import { KTX2Loader } from "three/examples/jsm/loaders/KTX2Loader";
+import { ShakeCamera } from "../objects/shakeCamera";
 
 export default (chapterX: ChapterXModule) => {
 
@@ -46,15 +51,19 @@ export default (chapterX: ChapterXModule) => {
 
             // let _maskPass = new vl(this._renderer,this._viewportSize.width / 4,this._viewportSize.height / 4),
             //     this._renderPass = new Sl(this._renderer,this._scene,this._camera),
-            //     this._directionalLight = new Oo(16578536,1),
-            //     this._directionalLight.position.set(0, 1, 1),
-            //     this._scene.add(this._directionalLight);
-            //     var o = new Oo(16578536,1);
-            //     o.position.set(-1, -1, -1),
-            //     this._scene.add(o),
-            //     this._ambientLight = new No(16777215,.1),
-            //     this._scene.add(this._ambientLight),
-            //     this._cameraShake = new dd(this._camera),
+            const _directionalLight = new DirectionalLight(16578536, 1);
+            _directionalLight.position.set(0, 1, 1);
+            _scene.add(_directionalLight);
+
+            let o = new DirectionalLight(16578536, 1);
+            o.position.set(-1, -1, -1);
+            _scene.add(o);
+
+            let _ambientLight = new AmbientLight(16777215, .1);
+            _scene.add(_ambientLight);
+
+            let _cameraShake = new ShakeCamera(_camera);
+
             //     this._background = new Ul,
             //     this._scene.add(this._background),
             //     this._background.renderOrder = -1,

@@ -31,7 +31,7 @@ export default defineComponent({
                 <canvas ref={canvasRef} />
                 <div class={"hud" + (gameMap.state.showHud ? "" : " hide")} >
 
-                    <Slider min={0.8} max={2} step={0.1} value={gameMap.state.scale} onChange={(s: any) => {
+                    <Slider min={0.8} max={12} step={0.1} value={gameMap.state.scale} onChange={(s: any) => {
 
                         console.log("=>s", s);
                         gameMap.actions.updateScale(s);

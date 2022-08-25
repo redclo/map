@@ -13,10 +13,11 @@ export default (game: GameMap) => {
         initWidthCanvas(canvas: HTMLCanvasElement) {
             _canvas = canvas;
             _ctx2d = canvas.getContext("2d") as CanvasRenderingContext2D;
-            game.state.ContainerHeight = window.innerHeight;
-            game.state.ContainerWidth = window.innerWidth;
+            game.state.ContainerHeight = window.innerHeight * game.state.pxScale;
+            game.state.ContainerWidth = window.innerWidth * game.state.pxScale;
             canvas.width = game.state.ContainerWidth;
             canvas.height = game.state.ContainerHeight;
+            // _ctx2d.scale(0, 2);
 
             game.actions.initMouseEvent(canvas);
             game.actions.initResizeEvents();
@@ -43,11 +44,11 @@ export default (game: GameMap) => {
             game.actions.drawSelectedGrid(_ctx2d);
             game.actions.drawRectSelecting(_ctx2d);
         },
-        shoeText(show:boolean) {
+        shoeText(show: boolean) {
             game.state.showText = show;
             game.actions.redraw();
         },
-        
+
         drawGrid() {
             const offsetY = game.state.offsetY;
             const offsetX = game.state.offsetX;

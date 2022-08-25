@@ -23,6 +23,9 @@ export default (game: GameMap) => {
                 const x1 = state.offsetX + c * state.itemSize;
                 const y1 = state.offsetY + r * state.itemSize;
                 const icon = actions.getImage(tile.index);
+
+                ctx.fillStyle = icon.bg;
+                ctx.fillRect(x1, y1, state.itemSize, state.itemSize);
                 ctx.drawImage(icon.image as any, icon.x, icon.y, icon.width, icon.height, x1, y1, state.itemSize, state.itemSize);
             }
         },

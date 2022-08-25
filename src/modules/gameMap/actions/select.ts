@@ -137,8 +137,9 @@ export default (game: GameMap) => {
 
             const state = game.state;
 
-            ctx.strokeStyle = 'orange' //'#ED81B7';
-            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#DC7BAB' //'#ED81B7';
+            ctx.lineWidth = 5 * game.state.pxScale;
+            const padding = 2.5 * game.state.pxScale;
 
             const selects = _selected.slice(0);
             if (_tempSelected.length > 0) {
@@ -153,6 +154,7 @@ export default (game: GameMap) => {
                     })
                 }
             }
+
             let n = selects.length;
             while (n--) {
                 index = selects[n];
@@ -160,12 +162,20 @@ export default (game: GameMap) => {
                 r = Math.floor(index / state.ColGridCount);
                 c = index % state.ColGridCount;
 
-                y1 = state.offsetY + r * state.itemSize;
+                y1 = state.offsetY + r * state.itemSize
                 y2 = y1 + state.itemSize;
-                x1 = state.offsetX + c * state.itemSize;
+                x1 = state.offsetX + c * state.itemSize
                 x2 = x1 + state.itemSize;
 
+                ctx.fillStyle = "rgba(220,123,171,0.2)"
+                ctx.fillRect(x1, y1, state.itemSize, state.itemSize);
+                x1 += padding;
+                y1 += padding;
+                x2 -= padding;
+                y2 -= padding;
+
                 ctx.beginPath();
+
                 ctx.moveTo(x1, y1);
                 ctx.lineTo(x2, y1);
                 ctx.lineTo(x2, y2);
