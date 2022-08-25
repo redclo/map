@@ -43,7 +43,11 @@ export default (game: GameMap) => {
             game.actions.drawSelectedGrid(_ctx2d);
             game.actions.drawRectSelecting(_ctx2d);
         },
-
+        shoeText(show:boolean) {
+            game.state.showText = show;
+            game.actions.redraw();
+        },
+        
         drawGrid() {
             const offsetY = game.state.offsetY;
             const offsetX = game.state.offsetX;
@@ -77,6 +81,8 @@ export default (game: GameMap) => {
                 _ctx2d.closePath();
                 _ctx2d.stroke();
             }
+
+            if (!game.state.showText) return;
 
             //绘制序号
             _ctx2d.font = "12px sans-serif";

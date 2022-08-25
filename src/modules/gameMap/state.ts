@@ -13,7 +13,7 @@ export default class extends StateRoot {
     ColGridCount = 70;
 
     showIcons = false;
-    
+    showText = true;
     itemSize = this.computed(state => {
         return state.scale * state.IconSize;
     });

@@ -52,7 +52,7 @@ module.exports = {
     chapterx: {
       entry: 'src/pages/chapterX/main.ts',
       template: 'public/index.html',
-      filename: 'map.html',
+      filename: 'chapterx.html',
       chunks: ['chunk-vendors', 'chunk-common', 'chapterxs']
     },
   },
