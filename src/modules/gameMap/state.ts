@@ -14,6 +14,8 @@ export default class extends StateRoot {
 
     showIcons = false;
     showText = true;
+    showHud = true;
+
     itemSize = this.computed(state => {
         return state.scale * state.IconSize;
     });
@@ -25,7 +27,7 @@ export default class extends StateRoot {
         return state.itemSize * state.RowGridCount;
     })
 
-    TotalCounts =  this.computed(state => {
+    TotalCounts = this.computed(state => {
         return state.ColGridCount * state.RowGridCount;
     })
 }

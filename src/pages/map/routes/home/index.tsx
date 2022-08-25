@@ -29,11 +29,11 @@ export default defineComponent({
         return () => (
             <div class={rootStyle}>
                 <canvas ref={canvasRef} />
-                <div class="hud">
+                <div class={"hud" + (gameMap.state.showHud ? "" : " hide")} >
 
-                    <Slider  min={0.8} max={2} step={0.1} value={gameMap.state.scale} onChange={(s:any)=>{
+                    <Slider min={0.8} max={2} step={0.1} value={gameMap.state.scale} onChange={(s: any) => {
 
-                        console.log("=>s",s);
+                        console.log("=>s", s);
                         gameMap.actions.updateScale(s);
 
                     }} />
@@ -56,7 +56,7 @@ export default defineComponent({
 
                 </div>
 
-                <div class="hud-move">
+                <div class={"hud-move" + (gameMap.state.showHud ? "" : " hide")}>
                     <Button onClick={() => {
                         gameMap.actions.moveX(-gameMap.state.IconSize * 0.5);
                     }}>左移</Button>
@@ -96,7 +96,7 @@ export default defineComponent({
                     <Button onClick={() => {
                         gameMap.actions.cleanIcons();
                     }}>清除</Button>
-                    
+
                 </div>
             </div>
         );
@@ -118,6 +118,9 @@ const rootStyle = css`
     position: absolute;
     right: 10px;
     top: 10px;
+    &.hide {
+        visibility: hidden;
+    }
     .timer{
         font-size: 24px;
         color: white;
@@ -128,6 +131,9 @@ const rootStyle = css`
     position: absolute;
     bottom: 10px;
     left: 50%;
+     &.hide {
+        visibility: hidden;
+    }
   }
 
   .icons {

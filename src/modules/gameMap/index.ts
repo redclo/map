@@ -14,5 +14,10 @@ export default class GameMapModule extends ModuleRoot {
 
     onInit() {
         super.onInit();
+        document.onkeydown = (e: any) => {
+            if (e.keyCode == 32) {
+                this.state.showHud = !this.state.showHud;
+            }
+        }
     }
 }
