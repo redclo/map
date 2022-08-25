@@ -49,6 +49,12 @@ module.exports = {
       filename: 'map.html',
       chunks: ['chunk-vendors', 'chunk-common', 'map']
     },
+    chapterx: {
+      entry: 'src/pages/chapterX/main.ts',
+      template: 'public/index.html',
+      filename: 'map.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'chapterxs']
+    },
   },
   css: {
     extract: {

@@ -11,6 +11,7 @@
     "dependencies": {
         "@types/file-saver": "^2.0.5",
         "@types/lodash": "^4.14.182",
+        "@types/three": "^0.143.1",
         "@types/webpack-env": "^1.17.0",
         "ant-design-vue": "^3.2.5",
         "axios": "^0.27.2",
@@ -20,6 +21,7 @@
         "file-loader": "^6.2.0",
         "file-saver": "^2.0.5",
         "gl-matrix": "^3.4.3",
+        "gsap": "3.10.4",
         "jpeg-js": "^0.4.4",
         "lodash": "^4.17.21",
         "mini-css-extract-plugin": "^2.6.1",
@@ -28,7 +30,7 @@
         "raw-loader": "^4.0.2",
         "rxjs": "^7.5.6",
         "swiper": "^8.1.6",
-        "three": "^0.142.0",
+        "three": "^0.143.0",
         "vue": "^3.2.36",
         "vue-router": "^4.0.15",
         "vue-types": "^4.1.1"

@@ -1,7 +1,7 @@
 import { css } from "@linaria/core";
 import { defineComponent, ref, onMounted, reactive, nextTick } from "vue";
 import { useCtx } from "../../context";
-import { Button } from "ant-design-vue";
+import { Button, Slider } from "ant-design-vue";
 
 export default defineComponent({
     setup() {
@@ -30,6 +30,14 @@ export default defineComponent({
             <div class={rootStyle}>
                 <canvas ref={canvasRef} />
                 <div class="hud">
+
+                    <Slider  min={0.2} max={3} step={0.1} value={gameMap.state.scale} onChange={(s)=>{
+
+                        console.log("=>s");
+                        
+                        // gameMap.actions.updateScale(s);
+                    }} />
+
                     <Button onClick={() => gameMap.actions.cleanSelect()}>清除选择</Button>
                     <Button onClick={() => {
                         gameMap.actions.saveTiles();

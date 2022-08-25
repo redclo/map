@@ -18,6 +18,10 @@ export default (game: GameMap) => {
             canvas.height = game.state.ContainerHeight;
 
             game.actions.redraw();
+        },
+        updateScale(s:number) {
+            game.state.scale = s;
+            game.actions.redraw();
         }
     }
 }
