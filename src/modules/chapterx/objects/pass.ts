@@ -1,12 +1,12 @@
-import { WebGLRenderer , ShaderMaterial, Vector2, } from "three";
+import { WebGLRenderer, ShaderMaterial, Vector2, } from "three";
 
-import { FullScreenQuad, } from "three/examples/jsm/postprocessing/Pass";
+import { FullScreenQuad } from "three/examples/jsm/postprocessing/Pass";
 
 class Pass {
     _renderer: WebGLRenderer
     _fullScreenQuad: FullScreenQuad;
 
-    constructor(render:WebGLRenderer) {
+    constructor(render: WebGLRenderer) {
         this._renderer = render;
         this._fullScreenQuad = new FullScreenQuad();
     }
@@ -82,13 +82,13 @@ float E(vec3 F){
         gl_FragColor=vec4(u,0.,0.,1.);
     }
 `
-    
+
 
 class MaskPass extends Pass {
     _toggle = false;
     _material: ShaderMaterial;
-    
-    constructor(render:WebGLRenderer, width:number, height:number) {
+
+    constructor(render: WebGLRenderer, width: number, height: number) {
         super(render);
 
         this._material = new ShaderMaterial({
@@ -109,7 +109,7 @@ class MaskPass extends Pass {
                 }
             }
         });
-        
+
         // const a = {
         //     minFilter: k,
         //     magFilter: k,

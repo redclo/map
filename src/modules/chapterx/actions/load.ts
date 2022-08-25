@@ -1,5 +1,5 @@
 import ChapterXModule from "..";
-import {Vector2, Vector3, WebGLRenderer, sRGBEncoding, Scene, PerspectiveCamera, Clock} from "three"
+import { Vector2, Vector3, WebGLRenderer, sRGBEncoding, Scene, PerspectiveCamera, Clock } from "three"
 
 import { KTX2Loader } from "three/examples/jsm/loaders/KTX2Loader";
 
@@ -9,7 +9,7 @@ export default (chapterX: ChapterXModule) => {
     let _viewportSize = new Vector2();
     let _canvasSize = new Vector2();
 
-    let _previousPointerPosition = new Vector2(-1,-1);
+    let _previousPointerPosition = new Vector2(-1, -1);
     let _pointerPosition = (new Vector2).copy(_previousPointerPosition);
     let _isPointerDown = false;
 
@@ -21,17 +21,17 @@ export default (chapterX: ChapterXModule) => {
     _renderer.autoClear = false;
     _renderer.setClearColor(16777215, 0);
     _renderer.domElement.style.opacity = "0",
-    _renderer.outputEncoding = sRGBEncoding
+        _renderer.outputEncoding = sRGBEncoding
 
     const _loader = new KTX2Loader()
-    .setTranscoderPath( '/libs/basis/' )
+        .setTranscoderPath('/libs/basis/')
 
     const _scene = new Scene();
-    let _camera :PerspectiveCamera;
+    let _camera: PerspectiveCamera;
     const _clock = new Clock();
 
     return {
-        initViewport( vp : HTMLElement) {
+        initViewport(vp: HTMLElement) {
             _viewport = vp;
             _viewportSize = new Vector2(vp.offsetWidth, vp.offsetHeight);
 
@@ -39,8 +39,8 @@ export default (chapterX: ChapterXModule) => {
             _viewport.appendChild(_renderer.domElement);
             _renderer.getDrawingBufferSize(_canvasSize);
 
-            _loader.detectSupport( _renderer );
-            _camera = new PerspectiveCamera(45,  _viewportSize.width / _viewportSize.height, 0.1, 100);
+            _loader.detectSupport(_renderer);
+            _camera = new PerspectiveCamera(45, _viewportSize.width / _viewportSize.height, 0.1, 100);
             _camera.position.z = 3;
 
 
