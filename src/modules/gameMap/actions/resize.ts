@@ -10,8 +10,8 @@ export default (game: GameMap) => {
             })
         },
         resizeGame() {
-            game.state.ContainerHeight = window.innerHeight;
-            game.state.ContainerWidth = window.innerWidth;
+            game.state.ContainerHeight = window.innerHeight * game.state.pxScale;
+            game.state.ContainerWidth = window.innerWidth * game.state.pxScale;
 
             const canvas = game.actions.getCanvas();
             canvas.width = game.state.ContainerWidth;
@@ -19,7 +19,7 @@ export default (game: GameMap) => {
 
             game.actions.redraw();
         },
-        updateScale(s:number) {
+        updateScale(s: number) {
             game.state.scale = s;
             game.actions.redraw();
         }

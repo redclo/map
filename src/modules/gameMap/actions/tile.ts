@@ -1,6 +1,7 @@
 import GameMap from "..";
 import FileSaver from 'file-saver';
 import { UploadFileController } from "@/queenjs/framework/utils";
+import { number } from "vue-types";
 
 
 export default (game: GameMap) => {
@@ -41,6 +42,10 @@ export default (game: GameMap) => {
             game.actions.save2Local();
             game.actions.redraw();
         },
+        getTile(num: number) {
+            return _titesMap[num];
+        },
+
         saveTiles() {
             const tiles = game.actions.save2Local();
             FileSaver.saveAs(new Blob([tiles], {

@@ -159,6 +159,8 @@ export default (game: GameMap) => {
             while (n--) {
                 index = selects[n];
 
+                const tile = game.actions.getTile(index);
+
                 r = Math.floor(index / state.ColGridCount);
                 c = index % state.ColGridCount;
 
@@ -167,7 +169,15 @@ export default (game: GameMap) => {
                 x1 = state.offsetX + c * state.itemSize
                 x2 = x1 + state.itemSize;
 
-                ctx.fillStyle = "rgba(220,123,171,0.2)"
+                ctx.fillStyle = "black";
+                ctx.fillRect(x1, y1, state.itemSize, state.itemSize);
+
+                if (tile) {
+                    const icon = game.actions.getImage(tile.index);
+                    ctx.drawImage(icon.image as any, icon.x, icon.y, icon.width, icon.height, x1, y1, state.itemSize, state.itemSize);
+                }
+
+                ctx.fillStyle = "rgba(220,123,171,0.2)";
                 ctx.fillRect(x1, y1, state.itemSize, state.itemSize);
                 x1 += padding;
                 y1 += padding;
