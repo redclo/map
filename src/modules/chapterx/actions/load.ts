@@ -34,10 +34,9 @@ export default (chapterX: ChapterXModule) => {
     const _clock = new Clock();
 
     const _mgr  = new LoadingManager();
-    const _Textureloader = new KTX2Loader(_mgr).setTranscoderPath('/libs/basis/');
+    const _Textureloader = new KTX2Loader(_mgr).setTranscoderPath('./libs/basis/');
 
     return {
-
         getLoadMgr() {
             return _mgr;
         },

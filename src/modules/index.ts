@@ -6,3 +6,5 @@ export { default as anim } from "./anim";
 export { default as gameMap } from "./gameMap";
 
 export { default as chapterx } from "./chapterx";
+
+export { default as threeM } from "./three";
