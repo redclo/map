@@ -1,7 +1,7 @@
 import GameMap from "..";
 import FileSaver from 'file-saver';
 import { UploadFileController } from "@/queenjs/framework/utils";
-import { number } from "vue-types";
+import configTitles from "./config";
 
 
 export default (game: GameMap) => {
@@ -10,6 +10,12 @@ export default (game: GameMap) => {
     const _titesMap: any = {};
 
     return {
+        loadMainConfig() {
+            _tiles = configTitles;
+            _tiles.forEach(item => {
+                _titesMap[item.num] = item;
+            })
+        },
 
         drawTiles(ctx: CanvasRenderingContext2D) {
             const state = game.state;

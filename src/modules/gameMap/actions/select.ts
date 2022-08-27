@@ -46,12 +46,18 @@ export default (game: GameMap) => {
             console.log(xindex + yindex * game.state.ColGridCount);
 
             const currIndex = xindex + yindex * game.state.ColGridCount;
-            const i = _selected.indexOf(currIndex)
-            if (i > -1) {
-                _selected.splice(i, 1);
+
+            if (game.state.isEditor) {
+                const i = _selected.indexOf(currIndex)
+                if (i > -1) {
+                    _selected.splice(i, 1);
+                } else {
+                    _selected.push(currIndex);
+                }
             } else {
-                _selected.push(currIndex);
+                _selected = [currIndex];
             }
+
             game.actions.redraw();
         },
 

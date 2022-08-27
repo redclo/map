@@ -17,6 +17,8 @@ export default class extends StateRoot {
     showText = true;
     showHud = true;
 
+    isEditor = true;
+
     itemSize = this.computed(state => {
         return state.scale * state.IconSize;
     });

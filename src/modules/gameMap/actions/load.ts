@@ -29,6 +29,22 @@ export default (game: GameMap) => {
     }
 
     return {
+        async editorLoad() {
+            game.state.isEditor = true;
+
+            await game.actions.loadImages();
+
+            game.actions.loadLocalTiles();
+        },
+
+        async MainLoad() {
+            game.state.isEditor = false;
+
+            await game.actions.loadImages();
+
+            game.actions.loadMainConfig();
+        },
+
         async loadImages() {
             const loading: any = [];
             for (let i = 0; i < 26; i++) {
@@ -40,9 +56,8 @@ export default (game: GameMap) => {
             rets.forEach((item: any) => {
                 _Images[item.index] = item.img;
             })
-
-            game.actions.loadLocalTiles();
         },
+
         getImage(index: number) {
             _imgTemp.image = _Images[index];
             //@ts-ignore

@@ -16,7 +16,9 @@ export default (game: GameMap) => {
 
         initMouseEvent(canvas: HTMLCanvasElement) {
             canvas.addEventListener("mousedown", game.actions.onMouseDown);
-            canvas.addEventListener("mousemove", game.actions.onMouseMove);
+            if (game.state.isEditor) {
+                canvas.addEventListener("mousemove", game.actions.onMouseMove);
+            }
             canvas.addEventListener("mouseup", game.actions.onMouseUp);
         },
 

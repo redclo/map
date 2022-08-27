@@ -25,11 +25,11 @@ module.exports = {
   //   : './',
 
   pages: {
-    index: {
+    three: {
       entry: 'src/pages/website/main.ts',
       template: 'public/index.html',
-      filename: 'index.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
+      filename: 'three.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'three']
     },
     anim5: {
       entry: 'src/pages/anim5/main.ts',
@@ -43,11 +43,11 @@ module.exports = {
       filename: 'anim2.html',
       chunks: ['chunk-vendors', 'chunk-common', 'anim2']
     },
-    map: {
+    index: {
       entry: 'src/pages/map/main.ts',
       template: 'public/index.html',
-      filename: 'map.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'map']
+      filename: 'index.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
     chapterx: {
       entry: 'src/pages/chapterX/main.ts',
