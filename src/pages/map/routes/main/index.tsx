@@ -1,11 +1,12 @@
 import { css } from "@linaria/core";
-import { defineComponent, ref, onMounted, reactive, nextTick } from "vue";
+import { defineComponent, ref, onMounted, reactive, nextTick, computed } from "vue";
 import { useCtx } from "../../context";
-import { Button, Slider } from "ant-design-vue";
 
 import ImgButton from "./components/imgButton";
-import { Modal } from "@/queenjs/ui";
+
 import Info from "./info";
+import Legend from "./legend";
+
 
 export default defineComponent({
     setup() {
@@ -29,6 +30,11 @@ export default defineComponent({
 
         const state = reactive({
             showInfo: false,
+            showLegend: false,
+        })
+
+        const showDialog = computed(() => {
+            return state.showInfo || state.showLegend;
         })
 
         return () => (
@@ -39,12 +45,20 @@ export default defineComponent({
                         <ImgButton onClick={() => {
                             showInfo();
                         }} src={require("@/assets/info.png")} width="10vw" />
+
+                        <ImgButton onClick={() => {
+                            state.showLegend = true;
+                        }} src={require("@/assets/guide.png")} width="10vw" />
                     </div>
                 </div>
 
-                <div class={"dialog" + (state.showInfo ? " active":"")}>
-                    <Info class={state.showInfo? "show":"hide"} onClose={()=>{
+                <div class={"dialog" + (showDialog.value ? " active" : "")}>
+                    <Info class={state.showInfo ? "show" : "hide"} onClose={() => {
                         state.showInfo = false;
+                    }} />
+
+                    <Legend class={state.showLegend ? "show" : "hide"} onClose={() => {
+                        state.showLegend = false;
                     }} />
                 </div>
 
