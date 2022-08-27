@@ -39,10 +39,14 @@ export default (game: GameMap) => {
         },
         redraw() {
             _ctx2d.clearRect(0, 0, _canvas.width, _canvas.height);
-            game.actions.drawGrid();
+            if (game.state.isEditor) {
+                game.actions.drawGrid();
+            }
             game.actions.drawTiles(_ctx2d);
             game.actions.drawSelectedGrid(_ctx2d);
-            game.actions.drawRectSelecting(_ctx2d);
+            if (game.state.isEditor) {
+                game.actions.drawRectSelecting(_ctx2d);
+            }
         },
         shoeText(show: boolean) {
             game.state.showText = show;

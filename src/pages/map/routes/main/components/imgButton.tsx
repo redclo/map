@@ -20,7 +20,9 @@ export default defineComponent({
 const rootStyle = css`
   pointer-events: auto;
   cursor: pointer;
-  min-width: 120px;
+  min-width: 80px;
+  max-width: 160px;
+  
   &:active{
     transform: scale(0.9);
   }

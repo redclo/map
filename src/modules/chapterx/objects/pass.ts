@@ -1,4 +1,4 @@
-import { WebGLRenderer, ShaderMaterial, Vector2, } from "three";
+import { WebGLRenderer, ShaderMaterial, Vector2, WebGLRenderTarget } from "three";
 
 import { FullScreenQuad } from "three/examples/jsm/postprocessing/Pass";
 
@@ -110,15 +110,15 @@ class MaskPass extends Pass {
             }
         });
 
-        // const a = {
-        //     minFilter: k,
-        //     magFilter: k,
-        //     generateMipmaps: false,
-        //     depthBuffer: false,
-        //     format: 1028
-        // };
-        // _renderTarget0 = new $t(i,r,a)
-        // _renderTarget1 = new $t(i,r,a)
+        const options = {
+            minFilter: k,
+            magFilter: k,
+            generateMipmaps: false,
+            depthBuffer: false,
+            format: 1028
+        };
+         _renderTarget0 = new WebGLRenderTarget(i,r,a)
+         _renderTarget1 = new $WebGLRenderTarget(i,r,a)
     }
 
 
