@@ -23,8 +23,13 @@ export default defineComponent({
         })
 
         function showInfo() {
-            Modal.show(<Info />)
+            //Modal.show(<Info />, {width: "100%"})
+            state.showInfo = true;
         }
+
+        const state = reactive({
+            showInfo: false,
+        })
 
         return () => (
             <div class={rootStyle}>
@@ -36,6 +41,14 @@ export default defineComponent({
                         }} src={require("@/assets/info.png")} width="10vw" />
                     </div>
                 </div>
+
+                <div class={"dialog" + (state.showInfo ? " active":"")}>
+                    <Info class={state.showInfo? "show":"hide"} onClose={()=>{
+                        state.showInfo = false;
+                    }} />
+                </div>
+
+                <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
             </div>
         );
     },
@@ -66,5 +79,35 @@ const rootStyle = css`
         top: 12px;
         left: 12px;
     }
+  }
+  .dialog {
+    position: fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    pointer-events: none;
+
+    &.active{
+        pointer-events: unset;
+    }
+    .show {
+        transform: scale(1);
+        opacity: 1;
+    }
+    .hide {
+        transform: scale(0);
+        opacity: 0;
+    }
+  }
+  .lover {
+    position: absolute;
+    right: 0px;
+    bottom: 27px;
+    width: 138px;
   }
 `;
