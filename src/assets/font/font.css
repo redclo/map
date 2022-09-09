@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'spectrum'; /* 重命名字体名 */
+    src: url('./zx_spectrum-7.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'spectrum'; /* 重命名字体名 */
+    src: url('./zx_spectrum-7_bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}

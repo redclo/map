@@ -18,17 +18,8 @@ export default defineComponent({
         `. 0\n& 2 1\n_ 2`})
 
         onMounted(() => {
-            document.title = "动画5录制";
-            const imgs = [{
-                image: img1Ref.value,
-                x: 100,
-                y: 200
-            }, {
-                image: img1Ref.value,
-                x: 500,
-                y: 100
-            }]
-            anim.actions.initAnim2(canvasRef.value);
+            document.title = "动画3录制";
+            anim.actions.initAnim3(canvasRef.value);
         })
 
         return () => (
@@ -44,7 +35,7 @@ export default defineComponent({
                     {
                         !anim.state.recording ?
                             <Button onClick={() => {
-                                anim.actions.startRecord5()
+                                anim.actions.startRecord3()
                                 tiker.value = 0;
                                 tikerRef.value = setInterval(() => {
                                     tiker.value += 1;
@@ -52,7 +43,7 @@ export default defineComponent({
 
                             }}>录制</Button> :
                             <Button onClick={() => {
-                                anim.actions.stopRecord5();
+                                anim.actions.stopRecord3();
                                 if (tikerRef.value) {
                                     clearInterval(tikerRef.value);
                                     tikerRef.value = null;

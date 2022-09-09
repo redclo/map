@@ -39,6 +39,13 @@ const rootStyle = css`
         margin-top: 2em;
     }
     
+    @media screen and (max-width: 756px) {
+        width: calc(100vw - 20px);
+        padding: 76px 10px;
+        position: relative;
+        font-size: 18px;
+    }
+
     .loverinfo {
         position: absolute;
         left: 50%;
