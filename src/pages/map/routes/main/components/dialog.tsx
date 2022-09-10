@@ -67,10 +67,10 @@ const dialogStyle = css`
         top: 24px;
         right: 24px;
         cursor: pointer;
-        width: 60px;
+        width: .6rem;
         z-index: 1;
         @media screen and (max-width: 756px) {
-            width: 40px;
+            width: .4rem;
         }
     }
 
@@ -87,8 +87,7 @@ const dialogStyle = css`
     }
 `
 const rootStyle = css`
-    max-width: 1000px;
-    width: 100%;
+    width: 10rem;
     pointer-events: visible;
     position relative;
     transition: all .2s;

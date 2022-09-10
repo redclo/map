@@ -34,6 +34,7 @@ export default defineComponent({
         })
 
         return () => (
+            <>
             <div class={rootStyle}>
                 <canvas ref={canvasRef} />
                 <div class="hud">
@@ -54,13 +55,15 @@ export default defineComponent({
                     }} />
                 }
         
-                {
-                    state.showLegend &&  <Legend onClose={() => {
-                        state.showLegend = false;
-                    }} />
-                }                
+                      
                 <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
             </div>
+            {
+                state.showLegend &&  <Legend onClose={() => {
+                    state.showLegend = false;
+                }} />
+            }        
+            </>
         );
     },
 });
@@ -69,7 +72,7 @@ const rootStyle = css`
   background-color: black;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
 
   canvas {
     width: 100%;

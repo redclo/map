@@ -1,3 +1,4 @@
+import "@/queenjs/ui/styles/index.less";
 import { createApp } from 'vue';
 import App from './App';
 import routes from './routes';

@@ -30,8 +30,11 @@ export default defineComponent({
 });
 
 const rootStyle = css`
-    padding: 11rem 3.2rem;
+    padding: 1.42rem .65rem;
     position: relative;
+    background: #ED81B7;
+    border-radius: 6px;
+    
     .row2 {
         margin-top: 2em;
     }
@@ -49,8 +52,8 @@ const rootStyle = css`
     .loverinfo {
         position: absolute;
         left: 50%;
-        bottom: 6rem;
-        width: 138px;
+        bottom: .6rem;
+        width: 1.38rem;
         transform: translate(-50%, 0px);
 
         @media screen and (max-width: 756px) {
