@@ -12,7 +12,7 @@ export default defineComponent({
 
     setup(props, { emit }) {
         return () => (
-            <img onClick={() => emit("click")} class={rootStyle} src={props.src} alt="button" style={{ width: props.width }} />
+            <img onClick={() => emit("click")} class={rootStyle} src={props.src} alt="button" />
         );
     },
 });
@@ -20,9 +20,9 @@ export default defineComponent({
 const rootStyle = css`
   pointer-events: auto;
   cursor: pointer;
-  min-width: 80px;
-  max-width: 160px;
-  
+  width: 1.8rem;
+  margin-right: .2rem;
+
   &:active{
     transform: scale(0.9);
   }
