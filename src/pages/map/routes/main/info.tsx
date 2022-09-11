@@ -30,7 +30,7 @@ export default defineComponent({
 });
 
 const rootStyle = css`
-    padding: 1.42rem .65rem;
+    padding: 1.18rem .65rem;
     position: relative;
     background: #ED81B7;
     border-radius: 6px;
@@ -43,16 +43,17 @@ const rootStyle = css`
     }
     
     @media screen and (max-width: 756px) {
-        width: calc(100vw - 20px);
-        padding: 76px 10px;
-        position: relative;
         font-size: 18px;
+    }
+    @media screen and (max-width: 360px) {
+        font-size: 12px;
+        
     }
 
     .loverinfo {
         position: absolute;
         left: 50%;
-        bottom: .6rem;
+        bottom: .4rem;
         width: 1.38rem;
         transform: translate(-50%, 0px);
 

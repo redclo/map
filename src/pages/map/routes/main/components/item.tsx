@@ -1,17 +1,14 @@
 import { css } from "@linaria/core";
 import { defineComponent, ref, onMounted, reactive, nextTick } from "vue";
-import { Button, Slider } from "ant-design-vue";
+
 
 export default defineComponent({
     emits:["close"],
-
     setup(props, { slots , emit}) {
 
         const state = reactive({
             showDialog: false,
         })
-
-        
         onMounted(()=>{
             setTimeout(()=>{
                 state.showDialog = true;
@@ -20,21 +17,10 @@ export default defineComponent({
 
         return () => (
             <div class={dialogStyle + (state.showDialog ? " active" : "")}>
-
                 <div class={rootStyle + (state.showDialog ? " show" : " hide")}>
-                    <div class={"stick-close"}>
-                        <img onClick={()=>{
-                           state.showDialog = false;
-                           setTimeout(() => {
-                               emit("close")
-                           }, 300);
-                        }} src={require("@/assets/close.png")} alt="close"  class={"close"}/>
-                    </div>
+                    <p class="title">Lost Souls Transport Station</p>
 
-                    {
-                        slots.default?.()
-                    }
-                  
+                    <img src={`svgscolor/1.svg`} class="item-image"/>
                 </div>
             </div>
         );
@@ -47,11 +33,10 @@ const dialogStyle = css`
     height: 100vh;
     top: 0;
     display:flex;
-    flex-direction: column;
     align-items: center;
     color: #FFFFFF;
-    overflow-x:hidden;
-    overflow-y: auto;
+    overflow:hidden;
+    justify-content: center;
 
     .stick-close {
         position: sticky;
@@ -76,8 +61,9 @@ const dialogStyle = css`
         opacity: 0;
     }
 `
+
 const rootStyle = css`
-    width: 10rem;
+    width: 388px;
     position relative;
     transition: all .2s;
     background: #ED81B7;
@@ -89,9 +75,18 @@ const rootStyle = css`
     font-size: 23px;
     line-height: 40px;
     color: #FFFFFF;
-    margin-top: 1.5rem;
+    padding-top: 39px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
-    @media screen and (max-width: 360px) {
-        width: 100%;
+    .item-image{
+        width: 100px;
+        height: 100px;
+    }
+
+    .title{
+        font-size: 25px;
+        margin: 0;
     }
 `;

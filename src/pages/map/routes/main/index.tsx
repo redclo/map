@@ -6,6 +6,7 @@ import ImgButton from "./components/imgButton";
 
 import Info from "./info";
 import Legend from "./legend";
+import Item from "./components/item";
 
 
 export default defineComponent({
@@ -63,6 +64,11 @@ export default defineComponent({
                     state.showLegend = false;
                 }} />
             }        
+            {
+                gameMap.state.showItem &&  <Item onClose={() => {
+                    gameMap.state.showItem = false;
+                }} />
+            }     
             </>
         );
     },
@@ -72,7 +78,7 @@ const rootStyle = css`
   background-color: black;
   width: 100vw;
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
 
   canvas {
     width: 100%;
