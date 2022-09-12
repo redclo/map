@@ -17,10 +17,20 @@ export default class extends StateRoot {
     showText = true;
     showHud = true;
 
-    isEditor = true;
-    showItem = true;
-    selItemX = -1;
-    selItemY = -1;
+    isEditor = false;
+    showItem = false;
+    curSelItemNum = -1;
+
+    owned: {num:number, time:number}[] = [];
+
+    selItemX = this.computed(state => {
+        if (state.curSelItemNum < 0 ) return -1;
+        return Math.floor(state.curSelItemNum / state.ColGridCount);
+    });
+
+    selItemY = this.computed(state => {
+        return state.curSelItemNum % state.ColGridCount;
+    });
 
     itemSize = this.computed(state => {
         return state.scale * state.IconSize;

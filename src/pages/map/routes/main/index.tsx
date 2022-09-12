@@ -3,10 +3,12 @@ import { defineComponent, ref, onMounted, reactive, nextTick, computed } from "v
 import { useCtx } from "../../context";
 
 import ImgButton from "./components/imgButton";
+import Button from "./components/btn";
 
 import Info from "./info";
 import Legend from "./legend";
 import Item from "./components/item";
+import Register from "./register";
 
 
 export default defineComponent({
@@ -32,6 +34,7 @@ export default defineComponent({
         const state = reactive({
             showInfo: false,
             showLegend: false,
+            showRegister: true,
         })
 
         return () => (
@@ -40,13 +43,17 @@ export default defineComponent({
                 <canvas ref={canvasRef} />
                 <div class="hud">
                     <div class="top-left">
-                        <ImgButton onClick={() => {
+                        <Button text="info" onClick={() => {
                             showInfo();
-                        }} src={require("@/assets/info.png")} width="10vw" />
+                        }} />
 
-                        <ImgButton onClick={() => {
+                        <Button text="guide" onClick={() => {
                             state.showLegend = !state.showLegend;
-                        }} src={require("@/assets/guide.png")} width="10vw" />
+                        }} />
+
+                        <Button text="register" onClick={() => {
+                            state.showRegister = !state.showRegister;
+                        }} />
                     </div>
                 </div>
 
@@ -55,7 +62,11 @@ export default defineComponent({
                         state.showInfo = false;
                     }} />
                 }
-        
+                {
+                    state.showRegister &&  <Register onClose={() => {
+                        state.showRegister = false;
+                    }} />
+                }
                       
                 <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
             </div>
@@ -79,7 +90,8 @@ const rootStyle = css`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-
+  user-select: none;
+  
   canvas {
     width: 100%;
     height: 100%;

@@ -42,7 +42,7 @@ export default (game: GameMap) => {
 
             await game.actions.loadImages();
 
-            // game.actions.loadMainConfig();
+            game.actions.loadMainConfig();
         },
 
         async loadImages() {
