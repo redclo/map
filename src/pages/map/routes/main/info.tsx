@@ -5,12 +5,12 @@ import Dialog from "./components/dialog";
 
 export default defineComponent({
 
-    emits:["close"],
+    emits: ["close"],
 
-    setup(props, {emit}) {
+    setup(props, { emit }) {
 
         return () => (
-            <Dialog onClose={()=>{emit("close")}}>
+            <Dialog onClose={() => { emit("close") }}>
                 <div class={rootStyle}>
                     <p class="row1">
                         The Emotional Autonomous Region is a community-generated mapping platform for digitally archiving private relationship experiences on the blockchain.
@@ -30,10 +30,13 @@ export default defineComponent({
 });
 
 const rootStyle = css`
-    padding: 1.18rem .65rem;
+    padding: 0.58rem .65rem;
     position: relative;
     background: #ED81B7;
     border-radius: 6px;
+    font-family:'Inter';
+    padding-bottom: 3.07rem;
+    font-size:23px;
     
     .row2 {
         margin-top: 2em;

@@ -34,13 +34,16 @@ export default defineComponent({
         const state = reactive({
             showInfo: false,
             showLegend: false,
-            showRegister: true,
+            showRegister: false,
         })
 
         return () => (
             <>
                 <div class={rootStyle}>
-                    <canvas ref={canvasRef} />
+                    <div class="canvasContainer">
+                        <canvas ref={canvasRef} />
+                    </div>
+
                     <div class="hud">
                         <div class="top-left">
                             <Button text="info" onClick={() => {
@@ -91,7 +94,16 @@ const rootStyle = css`
   height: 100vh;
   overflow: hidden;
   user-select: none;
-  
+  .canvasContainer{
+    width: 100%;
+    height: 100%;
+    padding: 1.18vw;
+    background: #ED81B7;
+    @media screen and (min-width: 1750px) {
+        padding: 20px;
+    }
+  }
+
   canvas {
     width: 100%;
     height: 100%;
@@ -103,13 +115,12 @@ const rootStyle = css`
     height: 100%;
     top: 0px;
     left: 0px;
-    border: 1.18vw solid #ED81B7;
     pointer-events: none;
 
     .top-left{
         position: absolute;
-        top: 12px;
-        left: 12px;
+        top: 24px;
+        left: 24px;
     }
     @media screen and (min-width: 1750px) {
         border: 20px solid #ED81B7;

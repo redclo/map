@@ -3,16 +3,16 @@ import { defineComponent } from "vue";
 import { string } from "vue-types";
 
 export default defineComponent({
-    props: {
-       text: string()
-    },
-    emits: ["click"],
+  props: {
+    text: string()
+  },
+  emits: ["click"],
 
-    setup(props, { emit }) {
-        return () => (
-            <span onClick={() => emit("click")} class={rootStyle}>{props.text}</span>
-        );
-    },
+  setup(props, { emit }) {
+    return () => (
+      <span onClick={() => emit("click")} class={rootStyle}>{props.text}</span>
+    );
+  },
 });
 
 const rootStyle = css`
@@ -23,13 +23,15 @@ const rootStyle = css`
 
   text-align: center;
   font-size: .32rem;
-  line-heigt: .6rem;
+  line-height: .6rem;
 
   color: white;
   margin-right: .2rem;
   background: #ED81B7;
   border-radius: 4px;
   display: inline-block;
+  font-family: 'Abel';
+  font-style: normal;
 
   &:active{
     transform: scale(0.9);

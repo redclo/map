@@ -3,10 +3,10 @@ import { defineComponent } from "vue";
 import Dialog from "./components/dialog";
 
 export default defineComponent({
-    emits:["close"],
-    setup(props, {emit}) {
+    emits: ["close"],
+    setup(props, { emit }) {
         return () => (
-            <Dialog onClose={()=>{emit("close")}}>
+            <Dialog onClose={() => { emit("close") }}>
                 <div class={rootStyle}>
                     <div class="title">
                         HOW TO ADD TO THE MAP
@@ -39,6 +39,9 @@ const rootStyle = css`
     padding-bottom: 1.14rem;
 
     .title {
+        font-family: 'Abel';
+        font-style: normal;
+        font-weight: 400;
         font-size:.48rem;
         border-bottom: .01rem solid #FFD4EB;
         padding-bottom: .26rem;
@@ -47,6 +50,9 @@ const rootStyle = css`
     }
 
     .texts{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
         p {
           margin-bottom: 0;
           line-height: 200%;
