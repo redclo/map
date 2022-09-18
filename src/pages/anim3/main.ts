@@ -1,8 +1,7 @@
-import "@/queenjs/ui/styles/index.less";
 import { createApp } from 'vue';
 import App from './App';
 import routes from './routes';
-import "./style.less";
+import "@/assets/font/font.css";
 
 const app = createApp(App);
 app.use(routes);

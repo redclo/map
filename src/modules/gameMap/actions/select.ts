@@ -23,6 +23,7 @@ export default (game: GameMap) => {
         },
         cleanSelect() {
             _selected = [];
+            game.state.curSelItemNum = -1;
             game.actions.redraw();
         },
 
@@ -56,8 +57,9 @@ export default (game: GameMap) => {
                 }
             } else {
                 _selected = [currIndex];
+                game.state.curSelItemNum = currIndex;
+                game.state.showItem = true;
             }
-
             game.actions.redraw();
         },
 

@@ -1,5 +1,5 @@
 import ChapterXModule from "..";
-import {} from "three"
+import {gsap} from "gsap"
 
 
 export default (chapterX: ChapterXModule) => {
@@ -10,13 +10,14 @@ export default (chapterX: ChapterXModule) => {
 
         const P = il.tQ.easeOut.config(1, .6);
         
-        s._timeline = new u.p8.core.Timeline({
+        const s = {_timeline: new gsap.core.Timeline({
             paused: !0,
             defaults: {
                 ease: P,
                 duration: 1
             }
-        }),
+        })}
+        
         s._timeline.addLabel("0", .01),
         s._timeline.set(s._leftPageTrees, {
             visible: !1

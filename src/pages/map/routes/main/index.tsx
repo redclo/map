@@ -3,9 +3,12 @@ import { defineComponent, ref, onMounted, reactive, nextTick, computed } from "v
 import { useCtx } from "../../context";
 
 import ImgButton from "./components/imgButton";
+import Button from "./components/btn";
 
 import Info from "./info";
 import Legend from "./legend";
+import Item from "./components/item";
+import Register from "./register";
 
 
 export default defineComponent({
@@ -25,45 +28,59 @@ export default defineComponent({
 
         function showInfo() {
             //Modal.show(<Info />, {width: "100%"})
-            state.showInfo = true;
+            state.showInfo = !state.showInfo;
         }
 
         const state = reactive({
             showInfo: false,
             showLegend: false,
-        })
-
-        const showDialog = computed(() => {
-            return state.showInfo || state.showLegend;
+            showRegister: true,
         })
 
         return () => (
-            <div class={rootStyle}>
-                <canvas ref={canvasRef} />
-                <div class="hud">
-                    <div class="top-left">
-                        <ImgButton onClick={() => {
-                            showInfo();
-                        }} src={require("@/assets/info.png")} width="10vw" />
+            <>
+                <div class={rootStyle}>
+                    <canvas ref={canvasRef} />
+                    <div class="hud">
+                        <div class="top-left">
+                            <Button text="info" onClick={() => {
+                                showInfo();
+                            }} />
 
-                        <ImgButton onClick={() => {
-                            state.showLegend = true;
-                        }} src={require("@/assets/guide.png")} width="10vw" />
+                            <Button text="guide" onClick={() => {
+                                state.showLegend = !state.showLegend;
+                            }} />
+
+                            <Button text="register" onClick={() => {
+                                state.showRegister = !state.showRegister;
+                            }} />
+                        </div>
                     </div>
+
+                    {
+                        state.showInfo && <Info onClose={() => {
+                            state.showInfo = false;
+                        }} />
+                    }
+                    {
+                        state.showRegister && <Register onClose={() => {
+                            state.showRegister = false;
+                        }} />
+                    }
+
+                    <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
                 </div>
-
-                <div class={"dialog" + (showDialog.value ? " active" : "")}>
-                    <Info class={state.showInfo ? "show" : "hide"} onClose={() => {
-                        state.showInfo = false;
-                    }} />
-
-                    <Legend class={state.showLegend ? "show" : "hide"} onClose={() => {
+                {
+                    state.showLegend && <Legend onClose={() => {
                         state.showLegend = false;
                     }} />
-                </div>
-
-                <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
-            </div>
+                }
+                {
+                    gameMap.state.showItem && <Item onClose={() => {
+                        gameMap.state.showItem = false;
+                    }} />
+                }
+            </>
         );
     },
 });
@@ -73,7 +90,8 @@ const rootStyle = css`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-
+  user-select: none;
+  
   canvas {
     width: 100%;
     height: 100%;
@@ -93,33 +111,11 @@ const rootStyle = css`
         top: 12px;
         left: 12px;
     }
+    @media screen and (min-width: 1750px) {
+        border: 20px solid #ED81B7;
+    }
   }
-  .dialog {
-    position: fixed;
-    left:0;
-    right:0;
-    bottom:0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
-    pointer-events: none;
 
-    &.active{
-        pointer-events: unset;
-    }
-    .show {
-        transform: scale(1);
-        opacity: 1;
-        display:block;
-    }
-    .hide {
-        transform: scale(0);
-        opacity: 0;
-        display:none;
-    }
-  }
   .lover {
     position: absolute;
     right: 0px;

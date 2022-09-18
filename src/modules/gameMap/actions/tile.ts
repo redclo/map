@@ -2,6 +2,7 @@ import GameMap from "..";
 import FileSaver from 'file-saver';
 import { UploadFileController } from "@/queenjs/framework/utils";
 import configTitles from "./config";
+import { number } from "vue-types";
 
 
 export default (game: GameMap) => {
@@ -51,7 +52,31 @@ export default (game: GameMap) => {
         getTile(num: number) {
             return _titesMap[num];
         },
+        getCurSelTileImageUrl() {
+            const num = game.actions.getSelected()[0]
+            const title = game.actions.getTile(num)
+            const img = game.actions.getImage(title?.index);
+            console.log("=====>");
 
+            //@ts-ignore
+            if (img) return img.image?.src;
+            
+            return ""
+        },
+
+        isCurSelOwned() {
+            const num = game.actions.getSelected()[0]
+
+            return game.state.owned.find(item=>item.num == num);
+        },
+
+        connWallet() {
+            const num = game.actions.getSelected()[0]
+            const find = game.state.owned.find(item=>item.num == num);
+            if (find) return;
+            
+            game.state.owned.push( {num , time: Date.now()});
+        },
         saveTiles() {
             const tiles = game.actions.save2Local();
             FileSaver.saveAs(new Blob([tiles], {

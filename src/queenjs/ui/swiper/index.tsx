@@ -14,6 +14,7 @@ const Slider = defineComponent({
   },
 });
 
+
 const mySwiper = defineComponent({
   Slider: Slider,
   props: {
