@@ -112,10 +112,12 @@ const rootStyle = css`
     .show {
         transform: scale(1);
         opacity: 1;
+        display:block;
     }
     .hide {
         transform: scale(0);
         opacity: 0;
+        display:none;
     }
   }
   .lover {

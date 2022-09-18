@@ -8,7 +8,7 @@ export default (chapterX: ChapterXModule) => {
     return {
        createTimeLine() {
 
-        var P = il.tQ.easeOut.config(1, .6);
+        const P = il.tQ.easeOut.config(1, .6);
         
         s._timeline = new u.p8.core.Timeline({
             paused: !0,
@@ -39,7 +39,7 @@ export default (chapterX: ChapterXModule) => {
         s._timeline.set(s._leftPageTrees, {
             visible: !0
         }, "0");
-        for (var R = 0; R < s._leftPageTrees.geometry.attributes.a_appear.array.length; ++R) {
+        for (let R = 0; R < s._leftPageTrees.geometry.attributes.a_appear.array.length; ++R) {
             var L;
             s._timeline.from(s._leftPageTrees.geometry.attributes.a_appear.array, (Fh(L = {}, R, 0),
             Fh(L, "onUpdate", (function() {
@@ -51,7 +51,7 @@ export default (chapterX: ChapterXModule) => {
         s._timeline.set(s._rightPageTrees, {
             visible: !0
         }, "0");
-        for (var D = 0; D < s._rightPageTrees.geometry.attributes.a_appear.array.length; ++D) {
+        for (let D = 0; D < s._rightPageTrees.geometry.attributes.a_appear.array.length; ++D) {
             var I;
             s._timeline.from(s._rightPageTrees.geometry.attributes.a_appear.array, (Fh(I = {}, D, 0),
             Fh(I, "onUpdate", (function() {
@@ -60,7 +60,7 @@ export default (chapterX: ChapterXModule) => {
             )),
             I), "<+=0.1")
         }
-        for (var O = 0; O < s._houses.length; ++O)
+        for (let O = 0; O < s._houses.length; ++O)
             s._timeline.from(s._houses[O].scale, {
                 y: 0
             }, "0+=".concat(.5 + .2 * O)),

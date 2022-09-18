@@ -35,5 +35,4 @@ export class ShakeCamera {
             (this.intensity -= this.decayRate * e, (this.intensity < 0 || this.intensity > 1) &&
                 (this.intensity = this.intensity < 0 ? 0 : 1))
     }
-
 }

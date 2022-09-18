@@ -1,5 +1,5 @@
 return e._getTimeline = function() {
-    var t = new u.p8.core.Timeline({
+    const t = new u.p8.core.Timeline({
         paused: true,
         defaults: {
             duration: 1,
@@ -12,9 +12,9 @@ return e._getTimeline = function() {
     )),
     t.set({}, {}, 13),
     (document.documentElement.scrollTop || document.body.scrollTop) / window.innerHeight <= .12) {
-        var e = this;
+        const e = this;
         this._isPlayingInTimeline = !0;
-        var n = new u.p8.core.Timeline({
+        const n = new u.p8.core.Timeline({
             defaults: {
                 duration: 2,
                 ease: il.Yv.easeOut
@@ -141,9 +141,9 @@ return e._getTimeline = function() {
     t.to(this._book.position, {
         z: .7
     }, "1");
-    var i = this
+    const i = this
       , r = function(e) {
-        var n = i
+        const n = i
           , r = {
             value: 0
         }
@@ -191,11 +191,11 @@ return e._getTimeline = function() {
         z: -.5,
         duration: 4
     }, "2");
-    for (var s = 0; s < this._curves.length; ++s)
+    for (let s = 0; s < this._curves.length; ++s)
         r(s);
-    var a = this
+    const a = this
       , o = function(e) {
-        var n = a
+        const n = a
           , i = {
             value: 0
         }
@@ -223,11 +223,11 @@ return e._getTimeline = function() {
         z: .6,
         duration: 2.5
     }, "6");
-    for (var l = 0; l < this._imageCurves.length; ++l)
+    for (let l = 0; l < this._imageCurves.length; ++l)
         o(l);
-    var c = this
+    const c = this
       , h = function(e) {
-        var n = c
+        const n = c
           , i = {
             value: 0
         }
@@ -300,7 +300,7 @@ return e._getTimeline = function() {
     t.to(this._finalRightPage.material.uniforms.u_opacity, {
         value: 1
     }, "11");
-    for (var d = Math.floor(this._curves.length / 2); d < this._curves.length; ++d)
+    for (let d = Math.floor(this._curves.length / 2); d < this._curves.length; ++d)
         h(d);
     return t
 }

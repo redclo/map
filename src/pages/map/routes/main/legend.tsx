@@ -13,12 +13,14 @@ export default defineComponent({
             "Dokidoki Lane ", "Museum of Jealousy", "‘We Will’ Sea", "‘Don’t text him’ Rehab", "Unrequited Love Intelligence Agency ",
             "Passing Fancy Square"
         ]
+        const items: number[] = [];
+        for (let i = 0; i < 26; i++) items.push(i);
 
         return () => (
             <Dialog onClose={() => { emit("close") }}>
                 <div class={rootStyle}>
                     {
-                        new Array(26).map(item => <div class="legend-row" key={item}>
+                        items.map(item => <div class="legend-row" key={item}>
                             <img src={`svgscolor/${item + 1}.svg`} />
                             <span >{names[item]}</span>
                         </div>)
@@ -37,7 +39,7 @@ const rootStyle = css`
             width: 100px;
         }
         span{
-            margin-right: 120px;
+            margin-left: 120px;
         }
     }
 `;
