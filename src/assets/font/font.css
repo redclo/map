@@ -1,13 +1,23 @@
 @font-face {
     font-family: 'spectrum'; /* 重命名字体名 */
-    src: url('./zx_spectrum-7.ttf');
+    src: url('./zx_spectrum-7.ttf') format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'spectrum'; /* 重命名字体名 */
-    src: url('./zx_spectrum-7_bold.ttf');
+    src: url('./zx_spectrum-7_bold.ttf') format("truetype");
     font-weight: bold;
     font-style: normal;
+}
+
+@font-face {
+    font-family: 'Abel'; 
+    src: url('./Abel/Abel-Regular.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter'; 
+    src: url('./Inter/Inter.ttf') format("truetype");
 }

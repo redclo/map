@@ -4,22 +4,22 @@ import { useCtx } from "../../../context";
 
 export default defineComponent({
 
-    emits:["close"],
-    setup(props, { slots , emit}) {
-        
+    emits: ["close"],
+    setup(props, { slots, emit }) {
+
         const { gameMap } = useCtx();
 
         const state = reactive({
             showDialog: false,
         })
-        onMounted(()=>{
-            setTimeout(()=>{
+        onMounted(() => {
+            setTimeout(() => {
                 state.showDialog = true;
             }, 0)
         })
 
         return () => (
-            <div class={dialogStyle + (state.showDialog ? " active" : "")} onClick={()=>{
+            <div class={dialogStyle + (state.showDialog ? " active" : "")} onClick={() => {
                 state.showDialog = false;
                 setTimeout(() => {
                     gameMap.state.showItem = false;
@@ -28,22 +28,22 @@ export default defineComponent({
                 <div class={rootStyle + (state.showDialog ? " show" : " hide")}>
                     <p class="title">{gameMap.actions.getCurSelTileName()}</p>
 
-                    <img src={gameMap.actions.getCurSelTileImageUrl()} class="item-image"/>
+                    <img src={gameMap.actions.getCurSelTileImageUrl()} class="item-image" />
 
                     <div class="location">
                         <img src="icons/svg/location.svg" class="loc-icon" />
-                        <span>({gameMap.state.selItemX+1}, {gameMap.state.selItemY+1})</span>
+                        <span>({gameMap.state.selItemX + 1}, {gameMap.state.selItemY + 1})</span>
                     </div>
 
-                    { !gameMap.actions.isCurSelOwned() ?  <div class="btn-conn" onClick={(e:MouseEvent)=>{
+                    {!gameMap.actions.isCurSelOwned() ? <div class="btn-conn" onClick={(e: MouseEvent) => {
                         e.stopPropagation && e.stopPropagation();
                         gameMap.actions.connWallet();
                     }}>
                         Connect Wallet
-                        </div> : 
+                    </div> :
 
                         <div class="registed">
-                            <span>Registered on 2022/09/12</span> 
+                            <span>Registered on 2022/09/12</span>
                             <span>23:15:20</span>
                         </div>
                     }
@@ -63,7 +63,7 @@ const dialogStyle = css`
     color: #FFFFFF;
     overflow:hidden;
     justify-content: center;
-
+   
     .stick-close {
         position: sticky;
         text-align: right;
@@ -95,7 +95,6 @@ const rootStyle = css`
     background: #ED81B7;
     border-radius: 6px;
     transition: all .2s;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 23px;
@@ -105,7 +104,8 @@ const rootStyle = css`
     display: flex;
     align-items: center;
     flex-direction: column;
-
+    font-family: 'Abel';
+    
     .item-image{
         width: 100px;
         height: 100px;

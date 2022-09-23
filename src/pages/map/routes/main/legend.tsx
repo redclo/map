@@ -11,9 +11,9 @@ export default defineComponent({
             <div class={legendStyle}>
                 <div class={rootStyle}>
                     <div class={"stick-close"}>
-                        <img onClick={()=>{
+                        <img onClick={() => {
                             emit("close")
-                        }} src={require("@/assets/close.png")} alt="close"  class={"close"}/>
+                        }} src={require("@/assets/close.png")} alt="close" class={"close"} />
                     </div>
 
                     <div class="legends">
@@ -44,6 +44,7 @@ const legendStyle = css`
     color: #FFFFFF;
     overflow-x:hidden;
     overflow-y: auto;
+    font-family:'Abel';
 `
 
 const rootStyle = css`

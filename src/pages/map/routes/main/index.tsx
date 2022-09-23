@@ -39,47 +39,50 @@ export default defineComponent({
 
         return () => (
             <>
-            <div class={rootStyle}>
-                <canvas ref={canvasRef} />
-                <div class="hud">
-                    <div class="top-left">
-                        <Button text="info" onClick={() => {
-                            showInfo();
-                        }} />
-
-                        <Button text="guide" onClick={() => {
-                            state.showLegend = !state.showLegend;
-                        }} />
-
-                        <Button text="register" onClick={() => {
-                            state.showRegister = !state.showRegister;
-                        }} />
+                <div class={rootStyle}>
+                    <div class="canvasContainer">
+                        <canvas ref={canvasRef} />
                     </div>
-                </div>
 
+                    <div class="hud">
+                        <div class="top-left">
+                            <Button text="info" onClick={() => {
+                                showInfo();
+                            }} />
+
+                            <Button text="guide" onClick={() => {
+                                state.showLegend = !state.showLegend;
+                            }} />
+
+                            <Button text="register" onClick={() => {
+                                state.showRegister = !state.showRegister;
+                            }} />
+                        </div>
+                    </div>
+
+                    {
+                        state.showInfo && <Info onClose={() => {
+                            state.showInfo = false;
+                        }} />
+                    }
+                    {
+                        state.showRegister && <Register onClose={() => {
+                            state.showRegister = false;
+                        }} />
+                    }
+
+                    <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
+                </div>
                 {
-                    state.showInfo &&  <Info onClose={() => {
-                        state.showInfo = false;
+                    state.showLegend && <Legend onClose={() => {
+                        state.showLegend = false;
                     }} />
                 }
                 {
-                    state.showRegister &&  <Register onClose={() => {
-                        state.showRegister = false;
+                    gameMap.state.showItem && <Item onClose={() => {
+                        gameMap.state.showItem = false;
                     }} />
                 }
-                      
-                <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
-            </div>
-            {
-                state.showLegend &&  <Legend onClose={() => {
-                    state.showLegend = false;
-                }} />
-            }        
-            {
-                gameMap.state.showItem &&  <Item onClose={() => {
-                    gameMap.state.showItem = false;
-                }} />
-            }     
             </>
         );
     },
@@ -91,6 +94,15 @@ const rootStyle = css`
   height: 100vh;
   overflow: hidden;
   user-select: none;
+  .canvasContainer{
+    width: 100%;
+    height: 100%;
+    padding: 1.18vw;
+    background: #ED81B7;
+    @media screen and (min-width: 1750px) {
+        padding: 20px;
+    }
+  }
 
   canvas {
     width: 100%;
@@ -103,13 +115,12 @@ const rootStyle = css`
     height: 100%;
     top: 0px;
     left: 0px;
-    border: 1.18vw solid #ED81B7;
     pointer-events: none;
 
     .top-left{
         position: absolute;
-        top: 12px;
-        left: 12px;
+        top: 24px;
+        left: 24px;
     }
     @media screen and (min-width: 1750px) {
         border: 20px solid #ED81B7;
