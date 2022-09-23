@@ -26,7 +26,7 @@ export default defineComponent({
                 }, 200);
             }}>
                 <div class={rootStyle + (state.showDialog ? " show" : " hide")}>
-                    <p class="title">Lost Souls Transport Station</p>
+                    <p class="title">{gameMap.actions.getCurSelTileName()}</p>
 
                     <img src={gameMap.actions.getCurSelTileImageUrl()} class="item-image"/>
 

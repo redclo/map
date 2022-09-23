@@ -32,9 +32,9 @@ export default defineComponent({
         }
 
         const state = reactive({
-            showInfo: false,
+            showInfo: true,
             showLegend: false,
-            showRegister: true,
+            showRegister: false,
         })
 
         return () => (
@@ -91,7 +91,7 @@ const rootStyle = css`
   height: 100vh;
   overflow: hidden;
   user-select: none;
-  
+
   canvas {
     width: 100%;
     height: 100%;
@@ -121,5 +121,6 @@ const rootStyle = css`
     right: 0px;
     bottom: 27px;
     width: 138px;
+    pointer-events:none;
   }
 `;

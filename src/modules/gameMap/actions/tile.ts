@@ -10,12 +10,25 @@ export default (game: GameMap) => {
     let _tiles: { index: number, num: number }[] = [];
     const _titesMap: any = {};
 
+    const names = [
+        "Promise Bank", "'He is the One' Casino", "Hospital of Insecurity", "Crush Highway ", "University of Radical Generosity"
+        , "Deep Feeling Test Center ", "Prison of Silence", "Confession Stage", "Uncertainty Playground ", "Pillow Talk Radio Station ",
+        "Eloping Canyon", "Marriage Monument", "Kissing Stage ", "'Loves Me Loves Me Not' Garden", "Untitled Relationship Hotel ",
+        "Reunion Notary Office", "First-Love Kindergarten", "Ex Cemetery", "Lost Souls Transport Station", "Academy of Loyal Relationships",
+        "Dokidoki Lane ", "Museum of Jealousy", "‘We Will’ Sea", "'Don\'t text him' Rehab", "Unrequited Love Intelligence Agency ",
+        "Passing Fancy Square"
+    ]
+
+
     return {
         loadMainConfig() {
             _tiles = configTitles;
             _tiles.forEach(item => {
                 _titesMap[item.num] = item;
             })
+        },
+        getItemNames() {
+            return names
         },
 
         drawTiles(ctx: CanvasRenderingContext2D) {
@@ -64,6 +77,12 @@ export default (game: GameMap) => {
             return ""
         },
 
+        getCurSelTileName() {
+            const num = game.actions.getSelected()[0]
+            const title = game.actions.getTile(num)
+            return names[title.index];
+        },
+
         isCurSelOwned() {
             const num = game.actions.getSelected()[0]
 
@@ -74,7 +93,7 @@ export default (game: GameMap) => {
             const num = game.actions.getSelected()[0]
             const find = game.state.owned.find(item=>item.num == num);
             if (find) return;
-            
+
             game.state.owned.push( {num , time: Date.now()});
         },
         saveTiles() {

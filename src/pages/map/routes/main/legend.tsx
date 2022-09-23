@@ -1,18 +1,11 @@
 import { css } from "@linaria/core";
 import { defineComponent } from "vue";
 import Dialog from "./components/dialog";
-
+import {useCtx} from "../../context"
 export default defineComponent({
     emits: ["close"],
     setup(props, { emit }) {
-        const names = [
-            "Promise Bank", "'He is the One' Casino", "Hospital of Insecurity", "Crush Highway ", "University of Radical Generosity"
-            , "Deep Feeling Test Center ", "Prison of Silence", "Confession Stage", "Uncertainty Playground ", "Pillow Talk Radio Station ",
-            "Eloping Canyon", "Marriage Monument", "Kissing Stage ", "'Loves Me Loves Me Not' Garden", "Untitled Relationship Hotel ",
-            "Reunion Notary Office", "First-Love Kindergarten", "Ex Cemetery", "Lost Souls Transport Station", "Academy of Loyal Relationships",
-            "Dokidoki Lane ", "Museum of Jealousy", "‘We Will’ Sea", "'Don\'t text him' Rehab", "Unrequited Love Intelligence Agency ",
-            "Passing Fancy Square"
-        ]
+        const {gameMap} = useCtx();
 
         return () => (
             <div class={legendStyle}>
@@ -28,7 +21,7 @@ export default defineComponent({
                             LEGEND
                         </div>
                         {
-                            names.map((name,index) => <div class="legend-row" key={name}>
+                            gameMap.actions.getItemNames().map((name,index) => <div class="legend-row" key={name}>
                                 <img src={`svgscolor/${index + 1}.svg`} />
                                 <span >{name}</span>
                             </div>)
