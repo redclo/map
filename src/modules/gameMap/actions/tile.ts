@@ -68,13 +68,13 @@ export default (game: GameMap) => {
         getCurSelTileImageUrl() {
             const num = game.actions.getSelected()[0]
             const title = game.actions.getTile(num)
-            const img = game.actions.getImage(title?.index);
-            console.log("=====>");
+            // const img = game.actions.getImage(title?.index);
+            // console.log("=====>");
 
-            //@ts-ignore
-            if (img) return img.image?.src;
+            // //@ts-ignore
+            // if (img) return img.image?.src;
             
-            return ""
+            return `svgscolor/${title?.index + 1}.svg`
         },
 
         getCurSelTileName() {

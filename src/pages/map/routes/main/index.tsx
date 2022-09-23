@@ -32,7 +32,7 @@ export default defineComponent({
         }
 
         const state = reactive({
-            showInfo: true,
+            showInfo: false,
             showLegend: false,
             showRegister: false,
         })
