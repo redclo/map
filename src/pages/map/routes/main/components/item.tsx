@@ -105,7 +105,7 @@ const rootStyle = css`
     align-items: center;
     flex-direction: column;
     font-family: 'Abel';
-    
+
     .item-image{
         width: 100px;
         height: 100px;
@@ -115,6 +115,7 @@ const rootStyle = css`
         font-size: 25px;
         margin: 0;
     }
+    
     .location{
         font-size: 16px;
         font-family: monospace;
@@ -158,5 +159,13 @@ const rootStyle = css`
         display:flex;
         flex-direction: column;
         margin-bottom: 46px;
+    }
+
+    @media screen and (max-width: 390px) {
+        width: 320px;
+        padding-top: 20px;
+        .title {
+            font-size: 18px;
+        }
     }
 `;

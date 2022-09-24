@@ -1,40 +1,53 @@
 import { css } from "@linaria/core";
 import { defineComponent, ref, onMounted, reactive, nextTick } from "vue";
 import { Button, Slider } from "ant-design-vue";
+import { bool } from "vue-types";
 
 export default defineComponent({
-    emits:["close"],
 
-    setup(props, { slots , emit}) {
+    props: {
+        centered: bool().def(false)
+    },
+    emits: ["close"],
+
+    setup(props, { slots, emit }) {
 
         const state = reactive({
             showDialog: false,
         })
 
-        
-        onMounted(()=>{
-            setTimeout(()=>{
+
+        onMounted(() => {
+            setTimeout(() => {
                 state.showDialog = true;
             }, 0)
         })
 
+        const dialogRootRef = ref();
+        function close() {
+            state.showDialog = false;
+            setTimeout(() => {
+                emit("close")
+            }, 300);
+        }
         return () => (
-            <div class={dialogStyle + (state.showDialog ? " active" : "")}>
+            <div ref={dialogRootRef} class={dialogStyle + (state.showDialog ? " active" : "") + (props.centered ? " center" : " ")} onClick={(e) => {
+                if (e.target == dialogRootRef.value) {
+                    close();
+                }
+            }}>
 
-                <div class={rootStyle + (state.showDialog ? " show" : " hide")}>
+                <div class={rootStyle + (state.showDialog ? " show" : " hide") + (props.centered ? " center" : " ")} >
                     <div class={"stick-close"}>
-                        <img onClick={()=>{
-                           state.showDialog = false;
-                           setTimeout(() => {
-                               emit("close")
-                           }, 300);
-                        }} src={require("@/assets/close.png")} alt="close"  class={"close"}/>
+                        <img onClick={() => {
+                            close();
+                        }} src={require("@/assets/close.png")} alt="close" class={"close"} />
                     </div>
 
                     {
                         slots.default?.()
                     }
-                  
+
                 </div>
             </div>
         );
@@ -52,6 +65,10 @@ const dialogStyle = css`
     color: #FFFFFF;
     overflow-x:hidden;
     overflow-y: auto;
+
+    &.center{
+        justify-content: center;
+    }
 
     .stick-close {
         position: sticky;
@@ -90,6 +107,9 @@ const rootStyle = css`
     line-height: 40px;
     color: #FFFFFF;
     margin-top: 1.5rem;
+    &.center{
+        margin-top: 0;
+    }
 
     @media screen and (max-width: 360px) {
         width: 100%;

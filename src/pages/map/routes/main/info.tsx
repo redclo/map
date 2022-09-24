@@ -36,7 +36,7 @@ const rootStyle = css`
     border-radius: 6px;
     font-family:'Inter';
     padding-bottom: 3.07rem;
-    font-size:23px;
+    font-size: .23rem;
     
     .row2 {
         margin-top: 2em;

@@ -1,14 +1,19 @@
 import { css } from "@linaria/core";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import Dialog from "./components/dialog";
-import {useCtx} from "../../context"
+import { useCtx } from "../../context"
 export default defineComponent({
     emits: ["close"],
     setup(props, { emit }) {
-        const {gameMap} = useCtx();
+        const { gameMap } = useCtx();
+        const rootRef = ref();
 
         return () => (
-            <div class={legendStyle}>
+            <div class={legendStyle} ref={rootRef} onClick={(e) => {
+                if (e.target == rootRef.value) {
+                    emit("close")
+                }
+            }}>
                 <div class={rootStyle}>
                     <div class={"stick-close"}>
                         <img onClick={() => {
@@ -21,7 +26,7 @@ export default defineComponent({
                             LEGEND
                         </div>
                         {
-                            gameMap.actions.getItemNames().map((name,index) => <div class="legend-row" key={name}>
+                            gameMap.actions.getItemNames().map((name, index) => <div class="legend-row" key={name}>
                                 <img src={`svgscolor/${index + 1}.svg`} />
                                 <span >{name}</span>
                             </div>)
@@ -49,9 +54,9 @@ const legendStyle = css`
 
 const rootStyle = css`
     background: #ED81B7;
-    width: 10rem;
+    width: 8rem;
     border-radius: 6px;
-    margin-top: 2rem;
+    margin-top: 1.6rem;
     padding-top: .27rem;
 
     .stick-close {
@@ -69,7 +74,7 @@ const rootStyle = css`
     }
 
     .legends {
-        padding: 0 2.15rem;
+        padding: 0 1.2rem;
         display:flex;
         flex-direction: column;
         position: relative;
@@ -92,11 +97,11 @@ const rootStyle = css`
         margin-bottom: .4rem;
 
         img {
-            width: 1rem;
+            width: 0.8rem;
         }
         span{
-            margin-left: 1.2rem;
-            font-size: .29rem;
+            margin-left: .82rem;
+            font-size: .24rem;
         }
     }
     

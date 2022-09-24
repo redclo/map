@@ -6,7 +6,7 @@ export default defineComponent({
     emits: ["close"],
     setup(props, { emit }) {
         return () => (
-            <Dialog onClose={() => { emit("close") }}>
+            <Dialog onClose={() => { emit("close") }} centered={true}>
                 <div class={rootStyle}>
                     <div class="title">
                         HOW TO ADD TO THE MAP
@@ -50,9 +50,10 @@ const rootStyle = css`
     }
 
     .texts{
-        font-family: 'Inter';
+        font-family: 'Abel';
         font-style: normal;
         font-weight: 400;
+        
         p {
           margin-bottom: 0;
           line-height: 200%;
