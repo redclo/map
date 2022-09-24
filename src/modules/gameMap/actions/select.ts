@@ -19,7 +19,6 @@ export default (game: GameMap) => {
 
             _initMoveX = game.state.offsetX;
             _initMoveY = game.state.offsetY;
-
         },
         cleanSelect() {
             _selected = [];
@@ -63,9 +62,19 @@ export default (game: GameMap) => {
             game.actions.redraw();
         },
 
+        moveDragEvent(x: number, y: number) {
+            game.state.offsetX = _initMoveX + (x - _rectStartX);
+            game.state.offsetY = _initMoveY + (y - _rectStartY);
+
+            if (game.state.offsetX > 0) game.state.offsetX = 0;
+            if (game.state.offsetY > 0) game.state.offsetY = 0;
+
+            game.actions.redraw();
+        },
+
         moveEvent(x: number, y: number, buttons: number) {
             console.log("move Event", x, y, buttons);
-            const isMoving = buttons == 4;
+            const isMoving = (buttons == 4);
             if (isMoving) {
                 game.state.offsetX = _initMoveX + (x - _rectStartX);
                 game.state.offsetY = _initMoveY + (y - _rectStartY);
@@ -112,6 +121,7 @@ export default (game: GameMap) => {
         upEvent(x: number, y: number) {
             console.log("up Event", x, y);
             _rectSelecting = false;
+
             game.actions.redraw();
             if (_tempSelected.length > 0) {
                 if (idUnselect) { //反选

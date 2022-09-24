@@ -18,6 +18,8 @@ export default (game: GameMap) => {
             canvas.addEventListener("mousedown", game.actions.onMouseDown);
             if (game.state.isEditor) {
                 canvas.addEventListener("mousemove", game.actions.onMouseMove);
+            } else {
+                canvas.addEventListener("mousemove", game.actions.onMouseMoveDrag);
             }
             canvas.addEventListener("mouseup", game.actions.onMouseUp);
         },
@@ -49,6 +51,12 @@ export default (game: GameMap) => {
         onMouseMove(e: MouseEvent) {
             if (!_isDown) return;
             game.actions.moveEvent(e.clientX * game.state.pxScale, e.clientY * game.state.pxScale, e.buttons);
+        },
+
+        onMouseMoveDrag(e: MouseEvent) {
+            if (!_isDown) return;
+
+            game.actions.moveDragEvent(e.clientX * game.state.pxScale, e.clientY * game.state.pxScale);
         }
     }
 }
