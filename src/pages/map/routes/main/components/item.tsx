@@ -17,13 +17,15 @@ export default defineComponent({
                 state.showDialog = true;
             }, 0)
         })
-
+        const rootRef = ref();
         return () => (
-            <div class={dialogStyle + (state.showDialog ? " active" : "")} onClick={() => {
-                state.showDialog = false;
-                setTimeout(() => {
-                    gameMap.state.showItem = false;
-                }, 200);
+            <div ref={rootRef} class={dialogStyle + (state.showDialog ? " active" : "")} onClick={(e) => {
+                if (e.target == rootRef.value) {
+                    state.showDialog = false;
+                    setTimeout(() => {
+                        gameMap.state.showItem = false;
+                    }, 200);
+                }
             }}>
                 <div class={rootStyle + (state.showDialog ? " show" : " hide")}>
                     <p class="title">{gameMap.actions.getCurSelTileName()}</p>
@@ -115,7 +117,7 @@ const rootStyle = css`
         font-size: 25px;
         margin: 0;
     }
-    
+
     .location{
         font-size: 16px;
         font-family: monospace;
