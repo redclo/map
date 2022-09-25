@@ -2,7 +2,6 @@ import GameMap from "..";
 import FileSaver from 'file-saver';
 import { UploadFileController } from "@/queenjs/framework/utils";
 import configTitles from "./config";
-import { number } from "vue-types";
 
 
 export default (game: GameMap) => {
@@ -19,13 +18,24 @@ export default (game: GameMap) => {
         "Passing Fancy Square"
     ]
 
+    const _contentBox = { w: 0, h: 0 };
 
     return {
+        getContentBox() {
+            return _contentBox;
+        },
+
+
         loadMainConfig() {
             _tiles = configTitles;
+            let maxNum = 0;
             _tiles.forEach(item => {
                 _titesMap[item.num] = item;
+                maxNum = Math.max(maxNum, item.num);
             })
+
+            _contentBox.h = (1 + Math.floor(maxNum / game.state.ColGridCount)) * game.state.itemSize;
+            _contentBox.w = (maxNum % game.state.ColGridCount + 1) * game.state.itemSize;
         },
         getItemNames() {
             return names
@@ -73,7 +83,7 @@ export default (game: GameMap) => {
 
             // //@ts-ignore
             // if (img) return img.image?.src;
-            
+
             return `svgscolor/${title?.index + 1}.svg`
         },
 
@@ -86,15 +96,15 @@ export default (game: GameMap) => {
         isCurSelOwned() {
             const num = game.actions.getSelected()[0]
 
-            return game.state.owned.find(item=>item.num == num);
+            return game.state.owned.find(item => item.num == num);
         },
 
         connWallet() {
             const num = game.actions.getSelected()[0]
-            const find = game.state.owned.find(item=>item.num == num);
+            const find = game.state.owned.find(item => item.num == num);
             if (find) return;
 
-            game.state.owned.push( {num , time: Date.now()});
+            game.state.owned.push({ num, time: Date.now() });
         },
         saveTiles() {
             const tiles = game.actions.save2Local();

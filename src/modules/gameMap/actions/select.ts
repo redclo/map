@@ -69,6 +69,16 @@ export default (game: GameMap) => {
             if (game.state.offsetX > 0) game.state.offsetX = 0;
             if (game.state.offsetY > 0) game.state.offsetY = 0;
 
+            const box = game.actions.getContentBox();
+
+            console.log((game.state.ContainerWidth - box.w), game.state.offsetX)
+            if (game.state.offsetX < (game.state.ContainerWidth - box.w)) {
+                game.state.offsetX = game.state.ContainerWidth - box.w;
+            }
+            if (game.state.offsetY < (game.state.ContainerHeight - box.h)) {
+                game.state.offsetY = game.state.ContainerHeight - box.h;
+            }
+
             game.actions.redraw();
         },
 

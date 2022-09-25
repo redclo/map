@@ -20,9 +20,9 @@ export default defineComponent({
         }
 
         onMounted(() => {
-            document.addEventListener('touchmove', function (e) {
-                e.preventDefault();
-            }, { passive: false });
+            // document.addEventListener('touchmove', function (e) {
+            //     e.preventDefault();
+            // }, { passive: false });
 
             document.title = "地图";
             gameMap.actions.MainLoad().then(() => {
