@@ -6,7 +6,7 @@ export default defineComponent({
     emits: ["close"],
     setup(props, { emit }) {
         return () => (
-            <Dialog onClose={() => { emit("close") }} centered={true}>
+            <Dialog showClose={true} onClose={() => { emit("close") }} centered={true}>
                 <div class={rootStyle}>
                     <div class="title">
                         HOW TO ADD TO THE MAP

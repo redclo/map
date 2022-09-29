@@ -6,6 +6,7 @@ import { bool } from "vue-types";
 export default defineComponent({
 
     props: {
+        showClose: bool().def(false),
         centered: bool().def(false)
     },
     emits: ["close"],
@@ -38,16 +39,16 @@ export default defineComponent({
             }}>
 
                 <div class={rootStyle + (state.showDialog ? " show" : " hide") + (props.centered ? " center" : " ")} >
-                    <div class={"stick-close"}>
-                        <img onClick={() => {
-                            close();
-                        }} src={require("@/assets/close.png")} alt="close" class={"close"} />
-                    </div>
-
+                    {
+                        props.showClose && <div class={"stick-close"}>
+                            <img onClick={() => {
+                                close();
+                            }} src={require("@/assets/close.png")} alt="close" class={"close"} />
+                        </div>
+                    }
                     {
                         slots.default?.()
                     }
-
                 </div>
             </div>
         );

@@ -54,7 +54,7 @@ const legendStyle = css`
 
 const rootStyle = css`
     background: #ED81B7;
-    width: 8rem;
+    width: 6.38rem;
     border-radius: 6px;
     margin-top: 1.6rem;
     padding-top: .27rem;
@@ -63,7 +63,6 @@ const rootStyle = css`
         position: sticky;
         text-align: right;
         top: 24px;
-
         .close {
             position: relative;
             right: 24px;
@@ -74,7 +73,7 @@ const rootStyle = css`
     }
 
     .legends {
-        padding: 0 1.2rem;
+        padding: 0 0.8rem;
         display:flex;
         flex-direction: column;
         position: relative;
@@ -83,7 +82,7 @@ const rootStyle = css`
     }
 
     .title {
-        font-size:.64rem;
+        font-size:.51rem;
         border-bottom: .01rem solid #FFD4EB;
         padding-bottom: .26rem;
         text-align: center;

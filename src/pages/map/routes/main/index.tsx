@@ -45,7 +45,13 @@ export default defineComponent({
             <>
                 <div class={rootStyle}>
                     <div class="canvasContainer">
-                        <canvas ref={canvasRef} />
+                        <div class="border-side"></div>
+                        <div class="center">
+                            <span class={"left"}></span>
+                            <canvas ref={canvasRef} />
+                            <span class={"right"}></span>
+                        </div>
+                        <div class="border-side"></div>
                     </div>
 
                     <div class="hud">
@@ -101,16 +107,23 @@ const rootStyle = css`
   .canvasContainer{
     width: 100%;
     height: 100%;
-    padding: 1.18vw;
     background: #ED81B7;
-    @media screen and (min-width: 1750px) {
-        padding: 20px;
+    .border-side {
+        width: 100%;
+        height: 14px;
     }
-  }
+    .center{
+        display:flex;
+        height: calc(100vh - 28px);
 
-  canvas {
-    width: 100%;
-    height: 100%;
+        .left, .right {
+            width: 14px;
+            height: 100%;
+        }
+        canvas {
+           flex-grow: 1;
+        }
+    }
   }
 
   .hud{
@@ -123,8 +136,8 @@ const rootStyle = css`
 
     .top-left{
         position: absolute;
-        top: 24px;
-        left: 24px;
+        top: 32px;
+        left: 34px;
     }
     @media screen and (min-width: 1750px) {
         border: 20px solid #ED81B7;

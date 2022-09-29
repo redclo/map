@@ -10,7 +10,7 @@ export default defineComponent({
     setup(props, { emit }) {
 
         return () => (
-            <Dialog onClose={() => { emit("close") }}>
+            <Dialog centered={true} onClose={() => { emit("close") }}>
                 <div class={rootStyle}>
                     <p class="row1">
                         The Emotional Autonomous Region is a community-generated mapping platform for digitally archiving private relationship experiences on the blockchain.
@@ -30,14 +30,16 @@ export default defineComponent({
 });
 
 const rootStyle = css`
-    padding: 0.58rem .65rem;
+    padding-left: .57rem;
+    padding-right: .61rem;
     position: relative;
     background: #ED81B7;
     border-radius: 6px;
-    font-family:'Inter';
-    padding-bottom: 3.07rem;
+    font-family:'Abel';
     font-size: .23rem;
-    
+    padding-bottom: 0.88rem;
+    padding-top: 1.42rem;
+
     .row2 {
         margin-top: 2em;
     }
@@ -54,14 +56,13 @@ const rootStyle = css`
     }
 
     .loverinfo {
-        position: absolute;
+        position: relative;
         left: 50%;
-        bottom: .4rem;
         width: 1.38rem;
         transform: translate(-50%, 0px);
-
         @media screen and (max-width: 756px) {
             display:none;
         }
+        
     }
 `;
