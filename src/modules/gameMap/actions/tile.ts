@@ -19,7 +19,7 @@ export default (game: GameMap) => {
     ]
 
     const _contentBox = { w: 0, h: 0 };
-
+    let _maxNum = 0;
     return {
         getContentBox() {
             return _contentBox;
@@ -28,14 +28,17 @@ export default (game: GameMap) => {
 
         loadMainConfig() {
             _tiles = configTitles;
-            let maxNum = 0;
+            _maxNum = 0;
             _tiles.forEach(item => {
                 _titesMap[item.num] = item;
-                maxNum = Math.max(maxNum, item.num);
+                _maxNum = Math.max(_maxNum, item.num);
             })
+            game.actions.computeContentBox();
+        },
 
-            _contentBox.h = (1 + Math.floor(maxNum / game.state.ColGridCount)) * game.state.itemSize;
-            _contentBox.w = (maxNum % game.state.ColGridCount + 1) * game.state.itemSize;
+        computeContentBox() {
+            _contentBox.h = (1 + Math.floor(_maxNum / game.state.ColGridCount)) * game.state.itemSize;
+            _contentBox.w = (_maxNum % game.state.ColGridCount + 1) * game.state.itemSize;
         },
         getItemNames() {
             return names

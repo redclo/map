@@ -22,6 +22,14 @@ export default (game: GameMap) => {
             game.actions.initMouseEvent(canvas);
             game.actions.initResizeEvents();
 
+            const box = game.actions.getContentBox();
+            if (box.w < game.state.ContainerWidth) {
+                console.log("box==>", box);
+                const scale = game.state.ContainerWidth / box.w;
+                game.state.scale = game.state.scale * scale;
+                alert(2)
+            }
+            game.actions.computeContentBox();
             game.actions.redraw();
         },
         getCanvas() {

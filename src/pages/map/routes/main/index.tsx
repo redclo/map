@@ -139,9 +139,6 @@ const rootStyle = css`
         top: 32px;
         left: 34px;
     }
-    @media screen and (min-width: 1750px) {
-        border: 20px solid #ED81B7;
-    }
   }
 
   .lover {
