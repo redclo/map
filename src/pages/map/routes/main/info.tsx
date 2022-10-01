@@ -21,8 +21,10 @@ export default defineComponent({
                     <p class="row3">
                         Free to mint, create your own memories.
                     </p>
-
-                    <img src={require("@/assets/love.png")} alt="love" class={"loverinfo"} />
+                    <div class="loveroot">
+                        <img src={require("@/assets/love.png")} alt="love" class={"loverinfo"} />
+                        <img src={require("@/assets/lovecounter.png")} alt="lovecounter" class={"loverinfo"} />
+                    </div>
                 </div>
             </Dialog>
         );
@@ -54,15 +56,19 @@ const rootStyle = css`
         font-size: 12px;
         
     }
-
-    .loverinfo {
-        position: relative;
-        left: 50%;
-        width: 1.38rem;
-        transform: translate(-50%, 0px);
+    .loveroot {
         @media screen and (max-width: 756px) {
             display:none;
         }
-        
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+    }
+    
+    .loverinfo {
+        width: 1.38rem;
+    }
+    .lovecounter {
+
     }
 `;
