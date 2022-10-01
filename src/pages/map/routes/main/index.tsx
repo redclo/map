@@ -121,7 +121,8 @@ const rootStyle = css`
             height: 100%;
         }
         canvas {
-           flex-grow: 1;
+            width: calc( 100% - 28px );
+            height: 100%;
         }
     }
   }
