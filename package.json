@@ -17,6 +17,7 @@
         "axios": "^0.27.2",
         "core-js": "^3.6.5",
         "css-loader": "^6.7.1",
+        "ethers": "^5.7.1",
         "fast-png": "^6.1.0",
         "file-loader": "^6.2.0",
         "file-saver": "^2.0.5",
@@ -33,7 +34,9 @@
         "three": "^0.143.0",
         "vue": "^3.2.36",
         "vue-router": "^4.0.15",
-        "vue-types": "^4.1.1"
+        "vue-types": "^4.1.1",
+        "web-vitals": "^3.0.3",
+        "web3": "^1.8.0"
     },
     "devDependencies": {
         "@babel/preset-typescript": "^7.17.12",

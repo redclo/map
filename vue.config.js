@@ -49,11 +49,11 @@ module.exports = {
       filename: 'anim3.html',
       chunks: ['chunk-vendors', 'chunk-common', 'anim3']
     },
-    map: {
+    index: {
       entry: 'src/pages/map/main.ts',
       template: 'public/index.html',
       filename: 'map.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'map']
+      chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
     chapterx: {
       entry: 'src/pages/chapterX/main.ts',
@@ -61,7 +61,7 @@ module.exports = {
       filename: 'chapterx.html',
       chunks: ['chunk-vendors', 'chunk-common', 'chapterxs']
     },
-    index: {
+    map: {
       entry: 'src/pages/three/main.ts',
       template: 'public/index.html',
       filename: 'index.html',
