@@ -5,6 +5,8 @@ import FileSaver from 'file-saver';
 export default (game: GameMap) => {
 
     const _Images: any = {};
+    const _ImageOwns: any = {};
+    const _ImageColors: any = {};
 
     const _imgTemp = { x: 0, y: 0, width: 200, height: 200, image: null, bg: "#444" };
     const _bgs: string[] = ["5D8D5F", "FEF8A5", "2A6495", "AA8229", "84AC52",
@@ -39,10 +41,13 @@ export default (game: GameMap) => {
 
         async MainLoad() {
             game.state.isEditor = false;
+            game.state.loading = true;
 
             await game.actions.loadImages();
 
             game.actions.loadMainConfig();
+
+            game.state.loading = false;
         },
 
         async loadImages() {
@@ -56,10 +61,38 @@ export default (game: GameMap) => {
             rets.forEach((item: any) => {
                 _Images[item.index] = item.img;
             })
+
+            //owned 
+            const loading2: any = [];
+            for (let i = 0; i < 26; i++) {
+                loading2.push(loadImage(`./svgs/${i + 1}.own.svg`, i));
+            }
+            const rets2 = await Promise.all(loading2);
+
+            rets2.forEach((item: any) => {
+                _ImageOwns[item.index] = item.img;
+            })
+
+            //_ImageColors
+            const loading3: any = [];
+            for (let i = 0; i < 26; i++) {
+                loading3.push(loadImage(`./svgscolor/${i + 1}.svg`, i));
+            }
+            const rets3 = await Promise.all(loading3);
+            rets3.forEach((item: any) => {
+                _ImageColors[item.index] = item.img;
+            })
         },
 
-        getImage(index: number) {
-            _imgTemp.image = _Images[index];
+        getImage(index: number, r: number, c: number) {
+
+            const ownedItem = game.ctx.ethers.state.occupiedLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
+            let imgs = _Images;
+            if (ownedItem) {
+                imgs = _ImageOwns;
+            }
+
+            _imgTemp.image = imgs[index];
             //@ts-ignore
             _imgTemp.width = _imgTemp.image.width;
             //@ts-ignore

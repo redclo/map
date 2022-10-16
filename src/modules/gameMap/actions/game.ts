@@ -46,6 +46,8 @@ export default (game: GameMap) => {
             game.actions.redraw();
         },
         redraw() {
+            if (game.state.loading) return;
+
             _ctx2d.clearRect(0, 0, _canvas.width, _canvas.height);
             if (game.state.isEditor) {
                 game.actions.drawGrid();

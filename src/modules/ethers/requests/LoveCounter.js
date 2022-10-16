@@ -1,11 +1,11 @@
 import Web3 from 'web3/dist/web3.min.js';
 
-const { BigNumber } = require("ethers");
+const {
+    BigNumber
+} = require("ethers");
 
-const abi = [
-    {
-        "inputs": [
-            {
+const abi = [{
+        "inputs": [{
                 "internalType": "uint64",
                 "name": "location",
                 "type": "uint64"
@@ -24,51 +24,42 @@ const abi = [
     {
         "inputs": [],
         "name": "getMyLocations",
-        "outputs": [
-            {
-                "internalType": "uint64[]",
-                "name": "",
-                "type": "uint64[]"
-            }
-        ],
+        "outputs": [{
+            "internalType": "uint64[]",
+            "name": "",
+            "type": "uint64[]"
+        }],
         "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [],
         "name": "getOccupiedLocations",
-        "outputs": [
-            {
-                "internalType": "uint64[]",
-                "name": "",
-                "type": "uint64[]"
-            }
-        ],
+        "outputs": [{
+            "internalType": "uint64[]",
+            "name": "",
+            "type": "uint64[]"
+        }],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint64",
-                "name": "location",
-                "type": "uint64"
-            }
-        ],
+        "inputs": [{
+            "internalType": "uint64",
+            "name": "location",
+            "type": "uint64"
+        }],
         "name": "getRomance",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
+        "outputs": [{
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+        }],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [
-            {
+        "inputs": [{
                 "internalType": "address",
                 "name": "",
                 "type": "address"
@@ -80,51 +71,41 @@ const abi = [
             }
         ],
         "name": "locationMap",
-        "outputs": [
-            {
-                "internalType": "uint64",
-                "name": "",
-                "type": "uint64"
-            }
-        ],
+        "outputs": [{
+            "internalType": "uint64",
+            "name": "",
+            "type": "uint64"
+        }],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
         "name": "occupiedLocations",
-        "outputs": [
-            {
-                "internalType": "uint64",
-                "name": "",
-                "type": "uint64"
-            }
-        ],
+        "outputs": [{
+            "internalType": "uint64",
+            "name": "",
+            "type": "uint64"
+        }],
         "stateMutability": "view",
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "uint64",
-                "name": "",
-                "type": "uint64"
-            }
-        ],
+        "inputs": [{
+            "internalType": "uint64",
+            "name": "",
+            "type": "uint64"
+        }],
         "name": "romanceMap",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
+        "outputs": [{
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+        }],
         "stateMutability": "view",
         "type": "function"
     }
@@ -148,9 +129,11 @@ function convertLocationToCoordinate(location) {
 }
 
 export async function addMoment(account, locationX, locationY, message) {
-    await contract.methods
+    return await contract.methods
         .addMoment(convertCoordinateToLocation(locationX, locationY), message)
-        .send({from: account}, function (err, res) {
+        .send({
+            from: account
+        }, function (err, res) {
             if (err) {
                 console.log("An error occurred", err)
                 return
@@ -162,7 +145,9 @@ export async function addMoment(account, locationX, locationY, message) {
 export async function getMyMoments(account) {
     let moments = [];
     let myLocations = await contract.methods.getMyLocations()
-        .call({from: account}, function (err, res) {
+        .call({
+            from: account
+        }, function (err, res) {
             if (err) {
                 console.log("An error occurred", err);
                 return;
@@ -173,14 +158,20 @@ export async function getMyMoments(account) {
 
     for (const value of myLocations) {
         let romance = await contract.methods.getRomance(value)
-            .call({from: account}, function (err, res) {
+            .call({
+                from: account
+            }, function (err, res) {
                 if (err) {
                     console.log("An error occurred", err);
                 }
                 console.log("Hash of the transaction: " + res);
             });
         let [x, y] = convertLocationToCoordinate(value);
-        moments.push({x, y, romance});
+        moments.push({
+            x,
+            y,
+            romance
+        });
     }
     console.log(moments);
     return moments;
@@ -188,7 +179,9 @@ export async function getMyMoments(account) {
 
 export async function getOccupiedLocations(account) {
     let occupiedLocations = await contract.methods.getOccupiedLocations()
-        .call({from: account}, function (err, res) {
+        .call({
+            from: account
+        }, function (err, res) {
             if (err) {
                 console.log("An error occurred", err);
                 return;
@@ -199,7 +192,10 @@ export async function getOccupiedLocations(account) {
     console.log(occupiedLocations)
     for (const value of occupiedLocations) {
         let [x, y] = convertLocationToCoordinate(value);
-        locations.push({x, y});
+        locations.push({
+            x,
+            y
+        });
     }
     return locations;
 }

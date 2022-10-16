@@ -20,11 +20,12 @@ export default class extends StateRoot {
     isEditor = false;
     showItem = false;
     curSelItemNum = -1;
+    loading = false;
 
-    owned: {num:number, time:number}[] = [];
+    owned: { num: number, time: number }[] = [];
 
     selItemX = this.computed(state => {
-        if (state.curSelItemNum < 0 ) return -1;
+        if (state.curSelItemNum < 0) return -1;
         return Math.floor(state.curSelItemNum / state.ColGridCount);
     });
 

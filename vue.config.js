@@ -25,48 +25,12 @@ module.exports = {
   //   : './',
 
   pages: {
-    three: {
-      entry: 'src/pages/website/main.ts',
-      template: 'public/index.html',
-      filename: 'three.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'three']
-    },
-    anim5: {
-      entry: 'src/pages/anim5/main.ts',
-      template: 'public/index.html',
-      filename: 'anim5.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'anim5']
-    },
-    anim2: {
-      entry: 'src/pages/anim2/main.ts',
-      template: 'public/index.html',
-      filename: 'anim2.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'anim2']
-    },
-    anim3: {
-      entry: 'src/pages/anim3/main.ts',
-      template: 'public/index.html',
-      filename: 'anim3.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'anim3']
-    },
     index: {
       entry: 'src/pages/map/main.ts',
       template: 'public/index.html',
-      filename: 'map.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
-    },
-    chapterx: {
-      entry: 'src/pages/chapterX/main.ts',
-      template: 'public/index.html',
-      filename: 'chapterx.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'chapterxs']
-    },
-    map: {
-      entry: 'src/pages/three/main.ts',
-      template: 'public/index.html',
       filename: 'index.html',
       chunks: ['chunk-vendors', 'chunk-common', 'index']
-    },
+    }
   },
   css: {
     extract: {

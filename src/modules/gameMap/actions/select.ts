@@ -201,7 +201,7 @@ export default (game: GameMap) => {
                 ctx.fillRect(x1, y1, state.itemSize, state.itemSize);
 
                 if (tile) {
-                    const icon = game.actions.getImage(tile.index);
+                    const icon = game.actions.getImage(tile.index, r, c);
                     ctx.drawImage(icon.image as any, icon.x, icon.y, icon.width, icon.height, x1, y1, state.itemSize, state.itemSize);
                 }
 

@@ -1,9 +1,10 @@
-import { gameMap, } from "@/modules";
+import { gameMap,ethers } from "@/modules";
 import { createCtxCreator } from "@/queenjs/framework";
 import { vue_adapter } from "@/queenjs/framework/adapter/vue";
 
 const modules = {
-    gameMap
+    gameMap,
+    ethers
 };
 export const websiteCtx = createCtxCreator(modules, {
     adapter: { vue_adapter },

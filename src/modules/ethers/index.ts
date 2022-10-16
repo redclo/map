@@ -7,5 +7,7 @@ export default class GameMapModule extends ModuleRoot {
     state = new State().reactive();
     onInit() {
         super.onInit();
+
+        this.actions.getOccupiedLocations();
     }
 }

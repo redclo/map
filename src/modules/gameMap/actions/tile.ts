@@ -56,7 +56,7 @@ export default (game: GameMap) => {
                 const c = i % ColGridCount;
                 const x1 = state.offsetX + c * state.itemSize;
                 const y1 = state.offsetY + r * state.itemSize;
-                const icon = actions.getImage(tile.index);
+                const icon = actions.getImage(tile.index, r, c);
 
                 ctx.fillStyle = icon.bg;
                 ctx.fillRect(x1, y1, state.itemSize, state.itemSize);
