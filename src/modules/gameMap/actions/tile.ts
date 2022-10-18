@@ -87,7 +87,7 @@ export default (game: GameMap) => {
             // //@ts-ignore
             // if (img) return img.image?.src;
 
-            return `svgscolor/${title?.index + 1}.svg`
+            return `svgscolor/${title?.index + 1}.svg?t=1`
         },
 
         getCurSelTileName() {
@@ -99,16 +99,40 @@ export default (game: GameMap) => {
         isCurSelOwned() {
             const num = game.actions.getSelected()[0]
 
-            return game.state.owned.find(item => item.num == num);
+            const ColGridCount = game.state.ColGridCount;
+            // return game.state.owned.find(item => item.num == num);
+            const r = Math.floor(num / ColGridCount);
+            const c = num % ColGridCount;
+
+            return !!game.ctx.ethers.state.occupiedLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
         },
 
-        connWallet() {
+        async connWallet() {
+            if (!game.ctx.ethers.state.ethereumAccount) {
+                game.ctx.ui.showLoading("login...");
+                const ret = await game.ctx.ethers.actions.connectMetamaskWallet();
+                console.log("connWallet==>", ret);
+                if (!ret) {
+                    game.ctx.ui.messageError("connect metamask failed!")
+                    game.ctx.ui.hideLoading();
+                    return;
+                }
+                await game.ctx.ethers.actions.getMyMoments();
+                game.ctx.ui.hideLoading();
+                game.actions.redraw();
+            }
+
+            //添加moment
+            game.ctx.ui.showLoading("connecting...");
             const num = game.actions.getSelected()[0]
-            const find = game.state.owned.find(item => item.num == num);
-            if (find) return;
+            const state = game.state;
+            const r = Math.floor(num / state.ColGridCount);
+            const c = num % state.ColGridCount;
+            await game.ctx.ethers.actions.addMoment(c, r);
 
-            game.state.owned.push({ num, time: Date.now() });
+            game.ctx.ui.hideLoading();
         },
+        
         saveTiles() {
             const tiles = game.actions.save2Local();
             FileSaver.saveAs(new Blob([tiles], {

@@ -33,6 +33,8 @@ export default class extends StateRoot {
         return state.curSelItemNum % state.ColGridCount;
     });
 
+    isCurSelOwned = false;
+
     itemSize = this.computed(state => {
         return state.scale * state.IconSize;
     });

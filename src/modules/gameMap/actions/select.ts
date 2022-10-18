@@ -58,6 +58,7 @@ export default (game: GameMap) => {
                 _selected = [currIndex];
                 game.state.curSelItemNum = currIndex;
                 game.state.showItem = true;
+                game.state.isCurSelOwned = game.actions.isCurSelOwned();
             }
             game.actions.redraw();
         },

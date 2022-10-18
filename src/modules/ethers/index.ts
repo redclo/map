@@ -8,6 +8,6 @@ export default class GameMapModule extends ModuleRoot {
     onInit() {
         super.onInit();
 
-        this.actions.getOccupiedLocations();
+        this.actions.updateState();
     }
 }

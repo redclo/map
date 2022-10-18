@@ -86,12 +86,18 @@ export default (game: GameMap) => {
 
         getImage(index: number, r: number, c: number) {
 
-            const ownedItem = game.ctx.ethers.state.occupiedLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
+            //判断自己是否购买
             let imgs = _Images;
-            if (ownedItem) {
-                imgs = _ImageOwns;
+            const self = game.ctx.ethers.state.selfLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
+            if (self && false) {
+                imgs = _ImageColors;
+                console.log("self=>owned")
+            } else {
+                const ownedItem = game.ctx.ethers.state.occupiedLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
+                if (ownedItem) {
+                    imgs = _ImageOwns;
+                }
             }
-
             _imgTemp.image = imgs[index];
             //@ts-ignore
             _imgTemp.width = _imgTemp.image.width;

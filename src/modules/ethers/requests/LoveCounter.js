@@ -128,18 +128,25 @@ function convertLocationToCoordinate(location) {
     return [bigNumberLocation.div(base.pow(32)).toNumber(), bigNumberLocation.mask(32).toNumber()]
 }
 
-export async function addMoment(account, locationX, locationY, message) {
-    return await contract.methods
-        .addMoment(convertCoordinateToLocation(locationX, locationY), message)
-        .send({
-            from: account
-        }, function (err, res) {
-            if (err) {
-                console.log("An error occurred", err)
-                return
-            }
-            console.log("Hash of the transaction: " + res)
-        });
+export function addMoment(account, locationX, locationY, message) {
+
+    return new Promise((resolve) => {
+        contract.methods
+            .addMoment(convertCoordinateToLocation(locationX, locationY), message)
+            .send({
+                from: account
+            }, function (err, res) {
+                if (err) {
+                    resolve({
+                        err,
+                        res
+                    })
+                }
+            }).then(r => {
+                resolve({});
+            })
+    })
+
 }
 
 export async function getMyMoments(account) {
@@ -177,6 +184,30 @@ export async function getMyMoments(account) {
     return moments;
 }
 
+export async function getMyLocations(account) {
+    let ret = [];
+    let myLocations = await contract.methods.getMyLocations()
+        .call({
+            from: account
+        }, function (err, res) {
+            if (err) {
+                console.log("An error occurred", err);
+                return;
+            }
+            console.log("Hash of the transaction: " + res);
+        });
+
+    for (const value of myLocations) {
+        let [x, y] = convertLocationToCoordinate(value);
+        ret.push({
+            x,
+            y
+        });
+    }
+    console.log(ret);
+    return ret;
+}
+
 export async function getOccupiedLocations(account) {
     let occupiedLocations = await contract.methods.getOccupiedLocations()
         .call({
@@ -198,4 +229,17 @@ export async function getOccupiedLocations(account) {
         });
     }
     return locations;
+}
+
+export async function getRomanceByLocation(account, locationX, locationY) {
+    return await contract.methods.getRomance(convertCoordinateToLocation(locationX, locationY))
+        .call({
+            from: account
+        }, function (err, res) {
+            if (err) {
+                console.log("An error occurred", err);
+                return;
+            }
+            console.log("Hash of the transaction: " + res);
+        });
 }

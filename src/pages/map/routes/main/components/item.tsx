@@ -7,7 +7,7 @@ export default defineComponent({
     emits: ["close"],
     setup(props, { slots, emit }) {
 
-        const { gameMap } = useCtx();
+        const { gameMap, ethers } = useCtx();
 
         const state = reactive({
             showDialog: false,
@@ -16,6 +16,8 @@ export default defineComponent({
             setTimeout(() => {
                 state.showDialog = true;
             }, 0)
+
+            ethers.actions.getMessage()
         })
         const rootRef = ref();
         return () => (
@@ -34,10 +36,10 @@ export default defineComponent({
 
                     <div class="location">
                         <img src="icons/svg/location.svg" class="loc-icon" />
-                        <span>({gameMap.state.selItemX + 1}, {gameMap.state.selItemY + 1})</span>
+                        <span>({gameMap.state.selItemY + 1}, {gameMap.state.selItemX + 1})</span>
                     </div>
 
-                    {!gameMap.actions.isCurSelOwned() ? <div class="btn-conn" onClick={(e: MouseEvent) => {
+                    {!gameMap.state.isCurSelOwned ? <div class="btn-conn" onClick={(e: MouseEvent) => {
                         e.stopPropagation && e.stopPropagation();
                         gameMap.actions.connWallet();
                     }}>
@@ -45,8 +47,8 @@ export default defineComponent({
                     </div> :
 
                         <div class="registed">
-                            <span>Registered on 2022/09/12</span>
-                            <span>23:15:20</span>
+                            <span>Registered on {ethers.state.currMomentDay ? ethers.state.currMomentDay : "..."}</span>
+                            <span>{ethers.state.currMomentHour}</span>
                         </div>
                     }
                 </div>
