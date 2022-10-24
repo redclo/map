@@ -7,8 +7,9 @@ export default (game: GameMap) => {
     const _Images: any = {};
     const _ImageOwns: any = {};
     const _ImageColors: any = {};
+    let _otherSvg: any;
 
-    const _imgTemp = { x: 0, y: 0, width: 200, height: 200, image: null, bg: "#444" };
+    const _imgTemp = { x: 0, y: 0, width: 200, height: 200, image: null, bg: "#444", isOther: false };
     const _bgs: string[] = ["5D8D5F", "FEF8A5", "2A6495", "AA8229", "84AC52",
         "EAF6A6", "B5B8BB", "EDE182", "FEF8A4",
         "2A6495", "AA812A", "95CC99", "B2B139", "43742E", "FFFFA6",
@@ -82,22 +83,32 @@ export default (game: GameMap) => {
             rets3.forEach((item: any) => {
                 _ImageColors[item.index] = item.img;
             })
+
+            const otherSvg: any = await loadImage(`./other.svg`, 0);
+            _otherSvg = otherSvg.img;
+            console.log(_otherSvg);
+        },
+
+        getOtherSvg() {
+            return _otherSvg;
         },
 
         getImage(index: number, r: number, c: number) {
 
             //判断自己是否购买
             let imgs = _Images;
-            const self = game.ctx.ethers.state.selfLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
-            if (self && false) {
-                imgs = _ImageColors;
-                console.log("self=>owned")
-            } else {
-                const ownedItem = game.ctx.ethers.state.occupiedLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
-                if (ownedItem) {
-                    imgs = _ImageOwns;
+            _imgTemp.isOther = false;
+
+            const ownedItem = game.ctx.ethers.state.occupiedLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
+            if (ownedItem) {
+                imgs = _ImageOwns;
+                _imgTemp.isOther = true;
+                const self = game.ctx.ethers.state.selfLocations.find(item => item.x == (c + 1) && item.y == (r + 1))
+                if (self) {
+                    _imgTemp.isOther = false;
                 }
             }
+
             _imgTemp.image = imgs[index];
             //@ts-ignore
             _imgTemp.width = _imgTemp.image.width;

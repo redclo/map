@@ -148,6 +148,7 @@ const rootStyle = css`
         margin-bottom: 43px;
         font-size: 16px;
         cursor: pointer;
+        line-height: 40px;
 
         &:active{
             background: #FFF6FB;

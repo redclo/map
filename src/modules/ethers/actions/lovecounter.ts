@@ -61,7 +61,7 @@ export default (eth: Ethers) => {
         },
 
         async updateState() {
-            // await eth.actions.getMyMoments();
+            await eth.actions.getMyMoments();
 
             await eth.actions.getOccupiedLocations();
 

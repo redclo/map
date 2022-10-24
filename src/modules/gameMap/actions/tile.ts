@@ -61,6 +61,11 @@ export default (game: GameMap) => {
                 ctx.fillStyle = icon.bg;
                 ctx.fillRect(x1, y1, state.itemSize, state.itemSize);
                 ctx.drawImage(icon.image as any, icon.x, icon.y, icon.width, icon.height, x1, y1, state.itemSize, state.itemSize);
+
+                if (icon.isOther) {
+                    const othersvg = actions.getOtherSvg();
+                    ctx.drawImage(othersvg, 0, 0, othersvg.width, othersvg.height, x1 + state.itemSize * 0.85, y1 + state.itemSize * 0.03, state.itemSize * 0.12, state.itemSize * 0.14);
+                }
             }
         },
         cleanIcons() {
@@ -132,7 +137,7 @@ export default (game: GameMap) => {
 
             game.ctx.ui.hideLoading();
         },
-        
+
         saveTiles() {
             const tiles = game.actions.save2Local();
             FileSaver.saveAs(new Blob([tiles], {
