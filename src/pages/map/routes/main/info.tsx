@@ -50,7 +50,7 @@ const rootStyle = css`
     }
     
     @media screen and (max-width: 756px) {
-        font-size: 18px;
+        font-size: 14px;
     }
     @media screen and (max-width: 360px) {
         font-size: 12px;

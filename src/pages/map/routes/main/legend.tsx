@@ -126,6 +126,14 @@ const rootStyle = css`
         span{
             margin-left: .82rem;
             font-size: .24rem;
+
+            @media screen and (max-width: 756px) {
+                font-size: 14px;
+            }
+
+            @media screen and (max-width: 360px) {
+                font-size: 12px;
+            }
         }
     }
     
