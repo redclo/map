@@ -166,7 +166,7 @@ const rootStyle = css`
         margin-bottom: 46px;
     }
 
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 475px) {
         width: 320px;
         padding-top: 20px;
         .title {

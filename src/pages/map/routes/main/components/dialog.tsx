@@ -112,7 +112,7 @@ const rootStyle = css`
         margin-top: 0;
     }
 
-    @media screen and (max-width: 360px) {
-        width: 100%;
+    @media screen and (max-width: 475px) {
+        width: 80%;
     }
 `;

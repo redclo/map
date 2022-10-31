@@ -149,4 +149,10 @@ const rootStyle = css`
     width: 138px;
     pointer-events:none;
   }
+   @media screen and (max-width: 475px) {
+       .lover {
+          width: 69px;
+          right: 10px;
+       }
+    }
 `;
