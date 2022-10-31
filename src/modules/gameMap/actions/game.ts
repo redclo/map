@@ -27,7 +27,7 @@ export default (game: GameMap) => {
                 console.log("box==>", box);
                 const scale = game.state.ContainerWidth / box.w;
                 game.state.scale = game.state.scale * scale;
-                alert(2)
+                // alert(2)
             }
             game.actions.computeContentBox();
             game.actions.redraw();
