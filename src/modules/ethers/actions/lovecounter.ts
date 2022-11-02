@@ -1,6 +1,7 @@
 import game from "@/modules/gameMap/actions/game";
 import Ethers from "..";
 import * as love from "../requests/LoveCounter";
+import { getQuery } from "@/queenjs/framework/utils";
 
 export default (eth: Ethers) => {
 
@@ -49,13 +50,21 @@ export default (eth: Ethers) => {
             } catch (error) {
             }
         },
+        isSuppertMetaMask() {
+            const query = getQuery();
+            return !!((window as any).ethereum) && (!query.tip)
+        },
+
         async connectMetamaskWallet() {
             try {
                 const accounts = await (window as any).ethereum.request({ method: "eth_requestAccounts" })
                 eth.state.ethereumAccount = accounts[0];
                 return true;
-            } catch (error) {
-                alert(`Something went wrong: ${error}`);
+            } catch (error: any) {
+                console.log(error);
+                if (error.message) {
+                    alert(`Something went wrong: ${error.message}`);
+                }
             }
             return false
         },

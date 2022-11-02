@@ -113,6 +113,11 @@ export default (game: GameMap) => {
         },
 
         async connWallet() {
+            if (!game.ctx.ethers.actions.isSuppertMetaMask()) {
+                game.ctx.ui.messageError("please use Metamask App or PC Browser with metamask plugins installed!");
+                return;
+            }
+
             if (!game.ctx.ethers.state.ethereumAccount) {
                 game.ctx.ui.showLoading("login...");
                 const ret = await game.ctx.ethers.actions.connectMetamaskWallet();

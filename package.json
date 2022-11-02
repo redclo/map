@@ -9,6 +9,7 @@
         "svg": "node scripts/svg-generator.js"
     },
     "dependencies": {
+        "@metamask/sdk": "^0.0.1-beta.5",
         "@types/file-saver": "^2.0.5",
         "@types/lodash": "^4.14.182",
         "@types/three": "^0.143.1",

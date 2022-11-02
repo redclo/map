@@ -9,5 +9,6 @@ export default class GameMapModule extends ModuleRoot {
         super.onInit();
 
         this.actions.updateState();
+        //alert(window.navigator.userAgent);
     }
 }
