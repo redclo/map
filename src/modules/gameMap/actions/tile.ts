@@ -54,8 +54,8 @@ export default (game: GameMap) => {
                 const i = tile.num
                 const r = Math.floor(i / ColGridCount);
                 const c = i % ColGridCount;
-                const x1 = state.offsetX + c * state.itemSize;
-                const y1 = state.offsetY + r * state.itemSize;
+                const x1 = Math.floor(state.offsetX + c * state.itemSize);
+                const y1 = Math.floor(state.offsetY + r * state.itemSize);
                 const icon = actions.getImage(tile.index, r, c);
 
                 ctx.fillStyle = icon.bg;

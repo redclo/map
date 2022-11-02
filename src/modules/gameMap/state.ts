@@ -36,7 +36,7 @@ export default class extends StateRoot {
     isCurSelOwned = false;
 
     itemSize = this.computed(state => {
-        return state.scale * state.IconSize;
+        return Math.floor(state.scale * state.IconSize);
     });
 
     TotalWidth = this.computed(state => {
