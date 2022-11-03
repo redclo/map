@@ -111,7 +111,7 @@ const abi = [{
     }
 ];
 
-const address = '0xCB6DD0c2eA49A46db7791C46BA682193De332a41';
+const address = '0x3617a64ad6A0E5d73fe08dc7aC2d48b68e1Cc8E3';
 const web3 = new Web3(window.ethereum);
 const contract = new web3.eth.Contract(abi, address);
 
