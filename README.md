@@ -19,10 +19,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-# 渲染器参考
-https://github.com/KhronosGroup/glTF-Sample-Viewer/tree/master/app_web
