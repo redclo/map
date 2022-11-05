@@ -24,7 +24,7 @@ export default defineComponent({
             //     e.preventDefault();
             // }, { passive: false });
 
-            document.title = "地图";
+            document.title = "地图(测试版本)";
             gameMap.actions.MainLoad().then(() => {
                 gameMap.actions.initWidthCanvas(canvasRef.value);
             })
