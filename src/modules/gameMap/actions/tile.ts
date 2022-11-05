@@ -114,7 +114,11 @@ export default (game: GameMap) => {
 
         async connWallet() {
             if (!game.ctx.ethers.actions.isSuppertMetaMask()) {
-                game.ctx.ui.messageError("please use Metamask App or PC Browser with metamask plugins installed!");
+
+
+                game.ctx.ui.messageError(`Current enviornment is for exhibition version only.
+Please use Metamask APP or PC Broswer with Metamask plugins
+to register the evidence of your love.`);
                 return;
             }
 

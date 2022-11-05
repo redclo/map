@@ -86,7 +86,7 @@ export default defineComponent({
                         }} />
                     }
 
-                    <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
+                    <img src={require("@/assets/mapsmall.gif")} alt="love" class={"lover"} />
                 </div>
                 {
                     state.showLegend && <Legend onClose={() => {
