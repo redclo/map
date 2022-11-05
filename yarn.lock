@@ -10426,8 +10426,8 @@ schema-utils@^4.0.0:
 
 scp2@^0.5.0:
   version "0.5.0"
-  resolved "http://124.70.149.18:4873/scp2/-/scp2-0.5.0.tgz#64ee74bc3685f3a4c6290f2da8c1e3b4eef92e8d"
-  integrity sha1-ZO50vDaF86TGKQ8tqMHjtO75Lo0=
+  resolved "https://registry.npmmirror.com/scp2/-/scp2-0.5.0.tgz#64ee74bc3685f3a4c6290f2da8c1e3b4eef92e8d"
+  integrity sha512-HzPWuOHM/qVjVYhjmgfBKyUXQsI+9+SdI5l+5E0S98bUHirf1NoTynfrAPb0kr0oJKg/JFdFSlZwq7FnqLttvw==
   dependencies:
     async "~0.9.0"
     glob "~7.0.3"
