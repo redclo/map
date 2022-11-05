@@ -9,6 +9,7 @@ import Info from "./info";
 import Legend from "./legend";
 import Item from "./components/item";
 import Register from "./register";
+import { getQuery } from "@/queenjs/framework/utils";
 
 
 export default defineComponent({
@@ -28,6 +29,10 @@ export default defineComponent({
             gameMap.actions.MainLoad().then(() => {
                 gameMap.actions.initWidthCanvas(canvasRef.value);
             })
+            const query = getQuery();
+            if (query.tip) {
+                document.title = "地图(展览版本)";
+            }
         })
 
         function showInfo() {
