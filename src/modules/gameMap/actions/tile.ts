@@ -91,6 +91,7 @@ export default (game: GameMap) => {
 
             // //@ts-ignore
             // if (img) return img.image?.src;
+            console.log("num==>", num);
 
             return `svgscolor/${title?.index + 1}.svg?t=1`
         },
