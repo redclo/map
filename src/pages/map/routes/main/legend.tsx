@@ -60,7 +60,10 @@ const rootStyle = css`
     width: 6.38rem;
     border-radius: 6px;
     padding-top: .27rem;
-    height: calc(100vh - 3.2rem);
+    height: calc(100vh - 2.45rem);
+    @media screen and (max-width: 720px) {
+        height: calc(100vh - 5.35rem);
+    }
 
     .stick-close {
         position: sticky;
@@ -115,10 +118,10 @@ const rootStyle = css`
         width: 100%;
         display:flex;
         align-items: center;
-        margin-bottom: .4rem;
+        margin-bottom: 0.3rem;
 
         &.first {
-            margin-top: 0.89rem;
+            margin-top: 0.69rem;
         }
         img {
             width: 0.8rem;

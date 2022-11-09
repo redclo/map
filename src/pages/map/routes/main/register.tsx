@@ -13,16 +13,13 @@ export default defineComponent({
                     </div>
                     <div class="texts">
                         <p class="row1">
-                            1. Choose the location of your love
+                            1. Choose a preferred location you want to mint with partner(s)
                         </p>
                         <p class="row2">
-                            2. Connect to your crypto wallet
+                            2. Connect to your Metamask and confirm the transcation.
                         </p>
                         <p class="row3">
-                            3. Mint your new relationship record
-                        </p>
-                        <p class="row4">
-                            4. Time of registration will be tied to the location
+                            3. Minted success! The proof of your love will be recorded permenently.
                         </p>
                     </div>
                 </div>
@@ -32,11 +29,15 @@ export default defineComponent({
 });
 
 const rootStyle = css`
-    padding: 0.09rem 1.81rem;
+    padding: 0.09rem 0rem;
     position: relative;
     background: #ED81B7;
     border-radius: 6px;
     padding-bottom: 1.14rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .title {
         font-family: 'Abel';
@@ -61,12 +62,11 @@ const rootStyle = css`
     }
     @media screen and (max-width: 756px) {
         font-size: 14px;
-        padding: 0.09rem 1.8rem;
         padding-bottom: 1.14rem;
     }
+
     @media screen and (max-width: 475px) {
         font-size: 12px;
-        padding: 0.09rem 0.9rem;
         padding-bottom: 1.14rem;
     }
 `;

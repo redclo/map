@@ -88,7 +88,7 @@ export default defineComponent({
                         }} />
                     }
 
-                    <img style={{left: gameMap.state.floatX + "px", top: gameMap.state.floatY + "px"}} src={require("@/assets/mapsmall.gif")} alt="love" class={"lover"} />
+                    <img style={{ left: gameMap.state.floatX + "px", top: gameMap.state.floatY + "px" }} src={require("@/assets/mapsmall.gif")} alt="love" class={"lover"} />
 
                 </div>
                 {
@@ -102,7 +102,7 @@ export default defineComponent({
                     }} />
                 }
                 {
-                    gameMap.state.showTip && <Tip  />
+                    gameMap.state.showTip && <Tip />
                 }
             </>
         );
@@ -159,13 +159,13 @@ const rootStyle = css`
   .lover {
     position: absolute;
     right: 0px;
-    width: 138px;
+    width: 276px;
     pointer-events:none;
+    transform-origin: center;
   }
    @media screen and (max-width: 475px) {
        .lover {
-          width: 69px;
-          right: 10px;
+          width: 140px;
        }
     }
 `;
