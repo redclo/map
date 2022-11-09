@@ -50,4 +50,7 @@ export default class extends StateRoot {
     TotalCounts = this.computed(state => {
         return state.ColGridCount * state.RowGridCount;
     })
+
+    floatX = 0;
+    floatY = 0;
 }

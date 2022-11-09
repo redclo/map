@@ -34,6 +34,7 @@ export default defineComponent({
             if (query.tip) {
                 document.title = "地图(展览版本)";
             }
+            gameMap.actions.startFloat();
         })
 
         function showInfo() {
@@ -87,7 +88,8 @@ export default defineComponent({
                         }} />
                     }
 
-                    <img src={require("@/assets/mapsmall.gif")} alt="love" class={"lover"} />
+                    <img style={{left: gameMap.state.floatX + "px", top: gameMap.state.floatY + "px"}} src={require("@/assets/mapsmall.gif")} alt="love" class={"lover"} />
+
                 </div>
                 {
                     state.showLegend && <Legend onClose={() => {
@@ -108,11 +110,14 @@ export default defineComponent({
 });
 
 const rootStyle = css`
+
   background-color: black;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   user-select: none;
+  position: relative;
+
   .canvasContainer{
     width: 100%;
     height: 100%;
@@ -154,7 +159,6 @@ const rootStyle = css`
   .lover {
     position: absolute;
     right: 0px;
-    bottom: 27px;
     width: 138px;
     pointer-events:none;
   }
