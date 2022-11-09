@@ -10,6 +10,7 @@ import Legend from "./legend";
 import Item from "./components/item";
 import Register from "./register";
 import { getQuery } from "@/queenjs/framework/utils";
+import Tip from "./components/tip";
 
 
 export default defineComponent({
@@ -97,6 +98,9 @@ export default defineComponent({
                     gameMap.state.showItem && <Item onClose={() => {
                         gameMap.state.showItem = false;
                     }} />
+                }
+                {
+                    gameMap.state.showTip && <Tip  />
                 }
             </>
         );

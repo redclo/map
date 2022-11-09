@@ -115,11 +115,12 @@ export default (game: GameMap) => {
 
         async connWallet() {
             if (!game.ctx.ethers.actions.isSuppertMetaMask()) {
+                game.state.showItem = false;
+                game.state.showTip = true;
 
-
-                game.ctx.ui.messageError(`Current enviornment is for exhibition version only.
-Please use Metamask APP or PC Broswer with Metamask plugins
-to register the evidence of your love.`);
+//                 game.ctx.ui.messageError(`Current enviornment is for exhibition version only.
+// Please use Metamask APP or PC Broswer with Metamask plugins
+// to register the evidence of your love.`);
                 return;
             }
 

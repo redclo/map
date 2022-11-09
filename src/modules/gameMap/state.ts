@@ -21,6 +21,7 @@ export default class extends StateRoot {
     showItem = false;
     curSelItemNum = -1;
     loading = false;
+    showTip = false;
 
     owned: { num: number, time: number }[] = [];
 
