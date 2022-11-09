@@ -67,6 +67,7 @@ const rootStyle = css`
 
     @media screen and (max-width: 475px) {
         font-size: 12px;
+        padding: 0.09rem 0.4rem;
         padding-bottom: 1.14rem;
     }
 `;
