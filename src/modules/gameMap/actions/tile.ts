@@ -18,6 +18,13 @@ export default (game: GameMap) => {
         "Passing Fancy Square"
     ]
 
+    const legendIndexed = [0, 5, 8, 9, 16,
+        23,2,3,17, 1,
+        6,20, 19,13,10,
+        22,24,7, 14, 21,
+        11,15,12,4,18,25
+       ]
+
     const _contentBox = { w: 0, h: 0 };
     let _maxNum = 0;
     return {
@@ -41,7 +48,10 @@ export default (game: GameMap) => {
             _contentBox.w = (_maxNum % game.state.ColGridCount + 1) * game.state.itemSize;
         },
         getItemNames() {
-            return names
+            return legendIndexed.map(index=>names[index]);
+        },
+        getLegendIndexed() {
+            return legendIndexed
         },
 
         drawTiles(ctx: CanvasRenderingContext2D) {
