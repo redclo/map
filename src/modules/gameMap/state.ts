@@ -21,6 +21,7 @@ export default class extends StateRoot {
     showItem = false;
     curSelItemNum = -1;
     loading = false;
+    showTip = false;
 
     owned: { num: number, time: number }[] = [];
 
@@ -49,4 +50,7 @@ export default class extends StateRoot {
     TotalCounts = this.computed(state => {
         return state.ColGridCount * state.RowGridCount;
     })
+
+    floatX = 0;
+    floatY = 0;
 }

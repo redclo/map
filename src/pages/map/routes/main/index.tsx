@@ -9,6 +9,8 @@ import Info from "./info";
 import Legend from "./legend";
 import Item from "./components/item";
 import Register from "./register";
+import { getQuery } from "@/queenjs/framework/utils";
+import Tip from "./components/tip";
 
 
 export default defineComponent({
@@ -28,6 +30,11 @@ export default defineComponent({
             gameMap.actions.MainLoad().then(() => {
                 gameMap.actions.initWidthCanvas(canvasRef.value);
             })
+            const query = getQuery();
+            if (query.tip) {
+                document.title = "地图(展览版本)";
+            }
+            gameMap.actions.startFloat();
         })
 
         function showInfo() {
@@ -81,7 +88,8 @@ export default defineComponent({
                         }} />
                     }
 
-                    <img src={require("@/assets/love.png")} alt="love" class={"lover"} />
+                    <img style={{ left: gameMap.state.floatX + "px", top: gameMap.state.floatY + "px" }} src={require("@/assets/mapsmall.gif")} alt="love" class={"lover"} />
+
                 </div>
                 {
                     state.showLegend && <Legend onClose={() => {
@@ -93,17 +101,23 @@ export default defineComponent({
                         gameMap.state.showItem = false;
                     }} />
                 }
+                {
+                    gameMap.state.showTip && <Tip />
+                }
             </>
         );
     },
 });
 
 const rootStyle = css`
+
   background-color: black;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   user-select: none;
+  position: relative;
+
   .canvasContainer{
     width: 100%;
     height: 100%;
@@ -145,14 +159,13 @@ const rootStyle = css`
   .lover {
     position: absolute;
     right: 0px;
-    bottom: 27px;
-    width: 138px;
+    width: 276px;
     pointer-events:none;
+    transform-origin: center;
   }
    @media screen and (max-width: 475px) {
        .lover {
-          width: 69px;
-          right: 10px;
+          width: 140px;
        }
     }
 `;

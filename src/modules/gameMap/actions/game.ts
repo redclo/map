@@ -15,6 +15,10 @@ export default (game: GameMap) => {
             _ctx2d = canvas.getContext("2d") as CanvasRenderingContext2D;
             game.state.ContainerHeight = window.innerHeight * game.state.pxScale;
             game.state.ContainerWidth = window.innerWidth * game.state.pxScale;
+
+            // game.state.ContainerWidth = 10000 * game.state.pxScale;
+            // game.state.ContainerHeight = 7200 * game.state.pxScale;
+
             canvas.width = game.state.ContainerWidth;
             canvas.height = game.state.ContainerHeight;
             // _ctx2d.scale(0, 2);
@@ -31,6 +35,11 @@ export default (game: GameMap) => {
             }
             game.actions.computeContentBox();
             game.actions.redraw();
+
+            // setTimeout(() => {
+            //     const baseUrl = canvas.toDataURL("image/png")
+            //     FileSaver.saveAs(baseUrl, "a.png");
+            // }, 3000);
         },
         getCanvas() {
             return _canvas;

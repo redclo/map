@@ -8,6 +8,8 @@ export default defineComponent({
         const { gameMap } = useCtx();
         const rootRef = ref();
 
+        const indexed = gameMap.actions.getLegendIndexed();
+
         return () => (
             <div class={legendStyle} ref={rootRef} onClick={(e) => {
                 if (e.target == rootRef.value) {
@@ -28,7 +30,7 @@ export default defineComponent({
                         <div class="scroll icons-root">
                             {
                                 gameMap.actions.getItemNames().map((name, index) => <div class={"legend-row " + (index == 0 ? "first" : "")} key={name}>
-                                    <img src={`svgscolor/${index + 1}.svg`} />
+                                    <img src={`svgscolor/${indexed[index] + 1}.svg`} />
                                     <span >{name}</span>
                                 </div>)
                             }
@@ -60,7 +62,10 @@ const rootStyle = css`
     width: 6.38rem;
     border-radius: 6px;
     padding-top: .27rem;
-    height: calc(100vh - 3.2rem);
+    height: calc(100vh - 2.45rem);
+    @media screen and (max-width: 720px) {
+        height: calc(100vh - 5.35rem);
+    }
 
     .stick-close {
         position: sticky;
@@ -115,10 +120,10 @@ const rootStyle = css`
         width: 100%;
         display:flex;
         align-items: center;
-        margin-bottom: .4rem;
+        margin-bottom: 0.3rem;
 
         &.first {
-            margin-top: 0.89rem;
+            margin-top: 0.69rem;
         }
         img {
             width: 0.8rem;

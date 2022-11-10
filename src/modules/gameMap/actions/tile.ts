@@ -18,6 +18,13 @@ export default (game: GameMap) => {
         "Passing Fancy Square"
     ]
 
+    const legendIndexed = [0, 5, 8, 9, 16,
+        23,2,3,17, 1,
+        6,20, 19,13,10,
+        22,24,7, 14, 21,
+        11,15,12,4,18,25
+       ]
+
     const _contentBox = { w: 0, h: 0 };
     let _maxNum = 0;
     return {
@@ -41,7 +48,10 @@ export default (game: GameMap) => {
             _contentBox.w = (_maxNum % game.state.ColGridCount + 1) * game.state.itemSize;
         },
         getItemNames() {
-            return names
+            return legendIndexed.map(index=>names[index]);
+        },
+        getLegendIndexed() {
+            return legendIndexed
         },
 
         drawTiles(ctx: CanvasRenderingContext2D) {
@@ -91,6 +101,7 @@ export default (game: GameMap) => {
 
             // //@ts-ignore
             // if (img) return img.image?.src;
+            console.log("num==>", num);
 
             return `svgscolor/${title?.index + 1}.svg?t=1`
         },
@@ -114,7 +125,12 @@ export default (game: GameMap) => {
 
         async connWallet() {
             if (!game.ctx.ethers.actions.isSuppertMetaMask()) {
-                game.ctx.ui.messageError("please use Metamask App or PC Browser with metamask plugins installed!");
+                game.state.showItem = false;
+                game.state.showTip = true;
+
+//                 game.ctx.ui.messageError(`Current enviornment is for exhibition version only.
+// Please use Metamask APP or PC Broswer with Metamask plugins
+// to register the evidence of your love.`);
                 return;
             }
 
