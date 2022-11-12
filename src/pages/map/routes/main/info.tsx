@@ -40,7 +40,13 @@ const rootStyle = css`
     font-family:'Abel';
     font-size: .23rem;
     padding-bottom: 0.88rem;
-    padding-top: 1.42rem;
+    padding-top: 0.3rem;
+
+    @media screen and (max-width: 756px) {
+        padding-top: 0.3rem;
+        font-size: 0.24rem;
+        line-height: 150%;
+    }
 
     .row2 {
         margin-top: 2em;
@@ -49,26 +55,15 @@ const rootStyle = css`
         margin-top: 2em;
     }
     
-    @media screen and (max-width: 756px) {
-        font-size: 14px;
-    }
-    @media screen and (max-width: 360px) {
-        font-size: 12px;
-        
-    }
     .loveroot {
-        @media screen and (max-width: 756px) {
-            display:none;
-        }
         display:flex;
         flex-direction:column;
         align-items: center;
+        margin-top: 0.45rem;
     }
-    
+
     .loverinfo {
         width: 1.38rem;
     }
-    .lovecounter {
-
-    }
+    
 `;

@@ -21,7 +21,10 @@ export default (game: GameMap) => {
 
             canvas.width = game.state.ContainerWidth;
             canvas.height = game.state.ContainerHeight;
-            // _ctx2d.scale(0, 2);
+           
+            if (window.innerWidth < 640) {
+                game.state.scale = 1.4;
+            }
 
             game.actions.initMouseEvent(canvas);
             game.actions.initResizeEvents();

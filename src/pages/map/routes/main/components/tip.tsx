@@ -30,6 +30,7 @@ export default defineComponent({
             }}>
                 <div class={rootStyle + (state.showDialog ? " show" : " hide")}>
                     <img src={require("@/assets/tip.png")} class="tip-image" />
+                    <img src={require("@/assets/tip2.png")} class="tip2-image" />
                     <div class="btn-mask" onClick={()=>{
                         close();
                     }}></div>
@@ -66,8 +67,11 @@ const rootStyle = css`
     display: flex;
     align-items: center;
     flex-direction: column;
-    .tip-image{
+    .tip-image, .tip2-image {
         width: 100%;
+    }
+    .tip2-image{
+        display:none;
     }
     .btn-mask{
         position: absolute;
@@ -77,7 +81,18 @@ const rootStyle = css`
         cursor: pointer;
     }
 
-    @media screen and (max-width: 475px) {
-        width: 80%;
+    @media screen and (max-width: 640px) {
+        width: 5.8rem;
+        .tip2-image {
+            display:block;
+        }
+        .tip-image {
+            display:none;
+        }
+        .btn-mask {
+            bottom: 14%;
+            height: 10%;
+            width: 65%;
+        }
     }
 `;

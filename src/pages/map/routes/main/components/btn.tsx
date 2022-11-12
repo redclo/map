@@ -36,4 +36,9 @@ const rootStyle = css`
   &:active{
     transform: scale(0.9);
   }
+  @media screen and (max-width: 750px) {
+    width: 1.5rem;
+    height: 0.65rem;
+    border-radius: 0.04rem;
+  }
 `;

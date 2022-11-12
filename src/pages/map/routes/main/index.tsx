@@ -139,8 +139,24 @@ const rootStyle = css`
             height: 100%;
         }
     }
+    @media screen and (max-width: 768px) {
+        .border-side {
+           display:none;
+        }
+        .center {
+            height: 100vh;
+            .left, .right {
+                display:none;
+            }
+            canvas {
+                width: 100%;
+            }
+        }
+    }
+
   }
 
+ 
   .hud{
     position: absolute;
     width: 100%;
@@ -153,6 +169,11 @@ const rootStyle = css`
         position: absolute;
         top: 32px;
         left: 34px;
+        
+        @media screen and (max-width: 640px) {
+            top: 0.63rem;
+            left: 0.3rem;
+        }
     }
   }
 

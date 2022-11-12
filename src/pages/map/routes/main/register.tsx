@@ -8,8 +8,10 @@ export default defineComponent({
         return () => (
             <Dialog showClose={true} onClose={() => { emit("close") }} centered={true}>
                 <div class={rootStyle}>
-                    <div class="title">
-                        HOW TO ADD TO THE MAP
+                    <div class="wap-title">
+                        <div class="title">
+                            HOW TO ADD TO THE MAP
+                        </div>
                     </div>
                     <div class="texts">
                         <p class="row1">
@@ -38,6 +40,7 @@ const rootStyle = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-left: 0.5rem;
 
     .title {
         font-family: 'Abel';
@@ -51,23 +54,34 @@ const rootStyle = css`
     }
 
     .texts{
-        font-family: 'Abel';
+        font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
-        
+        font-size:.24rem;
         p {
           margin-bottom: 0;
-          line-height: 200%;
+          line-height: 150%;
+        }
+        .row2, .row3{
+            margin-top: 2em;
         }
     }
-    @media screen and (max-width: 756px) {
-        font-size: 14px;
-        padding-bottom: 1.14rem;
-    }
-
-    @media screen and (max-width: 475px) {
-        font-size: 12px;
-        padding: 0.09rem 0.4rem;
-        padding-bottom: 1.14rem;
+    
+    @media screen and (max-width: 640px) {
+        .wap-title{
+            width: 100%;
+        }
+        .title {
+            font-size:.4rem;
+            text-align: left;
+            line-height: 150%;
+            padding-bottom: 0;
+            margin-bottom: .74rem;
+            display: inline-block;
+        }
+        padding-bottom: 3rem;
+        .texts{
+            padding-right: 0.5rem;
+        }
     }
 `;

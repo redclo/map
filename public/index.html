@@ -6,6 +6,38 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>
+
+      (function setRootFont() {
+        var _self = window;
+        _self.selfFontSize  = undefined;
+        var _fontSize = 100;  //默认字体大小
+        var clientWidth = (document.body && document.body.clientWidth) || document.getElementsByTagName('html')[0].offsetWidth;
+        var clientHeight = (document.body && document.body.clientHeight) || document.getElementsByTagName('html')[0].offsetHeight;
+
+        _self.widthProportion = function () {
+            var DesignWidth  = window.innerWidth < 750 ? 640 : 1920;
+            var p = clientWidth / DesignWidth;
+            return p > 1 ? 1 : p < 0.2 ? 0.2 : p; 
+        };
+      
+        _self.changePage = function () {
+
+            var w = _self.widthProportion();
+            _self.selfFontSize =  w * _fontSize;
+
+            console.log("changing", w, window.innerWidth);
+
+            document.getElementsByTagName("html")[0].setAttribute("style",
+                "font-size:" + _self.selfFontSize + "px");
+        };
+
+        _self.changePage();
+        window.addEventListener('resize', function () {
+            _self.changePage();
+        }, false);
+     })();
+    </script>
     <!--
     <script src="https://www.gstatic.com/draco/v1/decoders/draco_decoder_gltf.js"></script> */}}
     <script src="libs/libktx.js"></script>

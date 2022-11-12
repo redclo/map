@@ -166,11 +166,42 @@ const rootStyle = css`
         margin-bottom: 46px;
     }
 
-    @media screen and (max-width: 475px) {
-        width: 320px;
-        padding-top: 20px;
+    @media screen and (max-width: 640px) {
+        width: 3.88rem;
+        padding-top: .39rem;
         .title {
-            font-size: 18px;
+            font-size: .25rem;
+            line-height: 150%;
+        }
+        .item-image {
+            width: 1rem;
+            height: 1rem;
+            margin-top: .34rem;
+        }
+
+        .location{
+            width: 1.3rem;
+
+            .loc-icon {
+                width: .16rem;
+                height: .16rem;
+            }
+            font-size: .16rem;
+            margin-top: .3rem;
+        }
+        .btn-conn {
+            width: 2.57rem;
+            height: .4rem;
+            font-size: .2rem;
+            line-height: .4rem;
+            margin-bottom: .32rem;
+        }
+        .registed {
+            margin-top: .18rem;
+            font-size: .16rem;
+            text-align: center;
+            line-height: 150%;
+            margin-bottom: .32rem;
         }
     }
 `;

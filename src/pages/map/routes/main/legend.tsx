@@ -17,11 +17,11 @@ export default defineComponent({
                 }
             }}>
                 <div class={rootStyle}>
-                    {/* <div class={"stick-close"}>
+                    <div class={"stick-close"}>
                         <img onClick={() => {
                             emit("close")
                         }} src={require("@/assets/close.png")} alt="close" class={"close"} />
-                    </div> */}
+                    </div>
 
                     <div class="legends">
                         <div class="title">
@@ -61,9 +61,14 @@ const rootStyle = css`
     background: #ED81B7;
     width: 6.38rem;
     border-radius: 6px;
-    padding-top: .27rem;
+    padding-top: .3rem;
     height: calc(100vh - 2.45rem);
+
     @media screen and (max-width: 720px) {
+        height: calc(100vh - 5.35rem);
+    }
+    @media screen and (max-width: 640px) {
+        width:  5.8rem;
         height: calc(100vh - 5.35rem);
     }
 
@@ -73,9 +78,9 @@ const rootStyle = css`
         top: 24px;
         .close {
             position: relative;
-            right: 24px;
+            right: .3rem;
             cursor: pointer;
-            width: .6rem;
+            width: .5rem;
             
         }
     }
@@ -84,22 +89,34 @@ const rootStyle = css`
         display:flex;
         flex-direction: column;
         position: relative;
-        top: -0.3rem;
         height: 100%;
+
+        @media screen and (max-width: 640px) {
+            top: 0;
+        }
     }
 
     .title {
         margin: 0 0.8rem;
         font-size:.51rem;
-        border-bottom: .01rem solid #FFD4EB;
+        border-bottom: 1px solid #FFD4EB;
         padding-bottom: .26rem;
         text-align: center;
-        margin-top: .29rem;
         height: .89rem;
+        @media screen and (max-width: 640px) {
+            margin: 0 0.5rem;
+            font-size: .4rem;
+            text-align: left;
+            margin-right: 1.41rem;
+            line-height: 150%;
+            padding-bottom: 0;
+            height: unset;
+            margin-bottom: 0.1rem;
+        }
     }
 
     .icons-root {
-        height: calc(100% - 0.51rem);
+        height: calc(100% - 1.41rem);
         padding: 0 0.8rem;
 
        &::-webkit-scrollbar {
@@ -114,6 +131,10 @@ const rootStyle = css`
             background: #ed81b74a;
         }
         overflow: auto;
+        @media screen and (max-width: 640px) {
+            padding: 0 0.5rem;
+            height: calc(100% - 1.31rem);
+        }
     }
 
     .legend-row {
@@ -123,21 +144,19 @@ const rootStyle = css`
         margin-bottom: 0.3rem;
 
         &.first {
-            margin-top: 0.69rem;
+            margin-top: 0.28rem;
         }
         img {
             width: 0.8rem;
+            @media screen and (max-width: 640px) {
+                width: 0.9rem;
+            }
         }
         span{
             margin-left: .82rem;
             font-size: .24rem;
-
-            @media screen and (max-width: 756px) {
-                font-size: 14px;
-            }
-
-            @media screen and (max-width: 360px) {
-                font-size: 12px;
+            @media screen and (max-width: 640px) {
+                margin-left: .5rem;
             }
         }
     }

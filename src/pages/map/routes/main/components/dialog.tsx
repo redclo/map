@@ -1,12 +1,12 @@
 import { css } from "@linaria/core";
 import { defineComponent, ref, onMounted, reactive, nextTick } from "vue";
 import { Button, Slider } from "ant-design-vue";
-import { bool } from "vue-types";
+import { bool, string } from "vue-types";
 
 export default defineComponent({
 
     props: {
-        showClose: bool().def(false),
+        showClose: bool().def(true),
         centered: bool().def(false)
     },
     emits: ["close"],
@@ -31,6 +31,8 @@ export default defineComponent({
                 emit("close")
             }, 300);
         }
+
+
         return () => (
             <div ref={dialogRootRef} class={dialogStyle + (state.showDialog ? " active" : "") + (props.centered ? " center" : " ")} onClick={(e) => {
                 if (e.target == dialogRootRef.value) {
@@ -81,7 +83,7 @@ const dialogStyle = css`
             position: relative;
             right: 24px;
             cursor: pointer;
-            width: .6rem;
+            width: 0.5rem;
         }
     }
 
@@ -112,7 +114,7 @@ const rootStyle = css`
         margin-top: 0;
     }
 
-    @media screen and (max-width: 475px) {
-        width: 80%;
+    @media screen and (max-width: 640px) {
+        width: 5.8rem;
     }
 `;
