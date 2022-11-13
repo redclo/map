@@ -40,7 +40,6 @@ const rootStyle = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 0.5rem;
 
     .title {
         font-family: 'Abel';
@@ -54,7 +53,7 @@ const rootStyle = css`
     }
 
     .texts{
-        font-family: 'Inter';
+       font-family: 'Abel';
         font-style: normal;
         font-weight: 400;
         font-size:.24rem;

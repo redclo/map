@@ -15,11 +15,11 @@ export default defineComponent({
                 state.showDialog = true;
             }, 0)
         })
-        function close(e?:any) {
-            if ( (e && e.target == rootRef.value) || !e ) {
+        function close(e?: any) {
+            if ((e && e.target == rootRef.value) || !e) {
                 state.showDialog = false;
                 setTimeout(() => {
-                    gameMap.state.showTip= false;
+                    gameMap.state.showTip = false;
                 }, 200);
             }
         }
@@ -31,7 +31,7 @@ export default defineComponent({
                 <div class={rootStyle + (state.showDialog ? " show" : " hide")}>
                     <img src={require("@/assets/tip.png")} class="tip-image" />
                     <img src={require("@/assets/tip2.png")} class="tip2-image" />
-                    <div class="btn-mask" onClick={()=>{
+                    <div class="btn-mask" onClick={() => {
                         close();
                     }}></div>
                 </div>
@@ -61,7 +61,7 @@ const dialogStyle = css`
 `
 
 const rootStyle = css`
-    width: 569px;
+    width: 5.8rem;
     position relative;
     transition: all .2s;
     display: flex;

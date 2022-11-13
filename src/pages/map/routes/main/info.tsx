@@ -16,7 +16,7 @@ export default defineComponent({
                         The Emotional Autonomous Region is a community-generated mapping platform for digitally archiving private relationship experiences on the blockchain.
                     </p>
                     <p class="row2">
-                        Instead of leaving a readable message, you and your partner will mint a location on the map and register a specific time at which you believe love exists between yourselves; this timestamp will be your permanent proof of love.
+                        Instead of leaving a readable message, you and your partner(s) will mint a location on the map and register a specific time at which you believe love exists between yourselves; this timestamp will be your permanent proof of love.
                     </p>
                     <p class="row3">
                         Free to mint, create your own memories.
@@ -40,7 +40,7 @@ const rootStyle = css`
     font-family:'Abel';
     font-size: .23rem;
     padding-bottom: 0.88rem;
-    padding-top: 0.3rem;
+    padding-top: 0.6rem;
 
     @media screen and (max-width: 756px) {
         padding-top: 0.3rem;
