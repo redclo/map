@@ -61,7 +61,7 @@ const dialogStyle = css`
 `
 
 const rootStyle = css`
-    width: 5.8rem;
+    width: 8.5rem;
     position relative;
     transition: all .2s;
     display: flex;
@@ -79,6 +79,9 @@ const rootStyle = css`
         height: 7%;
         width: 65%;
         cursor: pointer;
+    }
+    @media screen and (max-width: 1920px) {
+        width: 5.8rem;
     }
 
     @media screen and (max-width: 640px) {
