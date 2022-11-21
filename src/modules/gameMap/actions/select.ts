@@ -157,7 +157,6 @@ export default (game: GameMap) => {
             }
         },
 
-
         drawSelectedGrid(ctx: CanvasRenderingContext2D) {
             let index = -1;
             let r = -1;

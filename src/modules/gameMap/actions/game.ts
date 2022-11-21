@@ -8,8 +8,12 @@ export default (game: GameMap) => {
     const _icons: IconItem[] = [];
     let _ctx2d: CanvasRenderingContext2D;
 
-
     return {
+        initHoverCanvas(canvas: HTMLCanvasElement) {
+            canvas.width = game.state.ContainerWidth;
+            canvas.height = game.state.ContainerHeight;
+        },
+        
         initWidthCanvas(canvas: HTMLCanvasElement) {
             _canvas = canvas;
             _ctx2d = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -57,6 +61,11 @@ export default (game: GameMap) => {
             game.state.offsetY += offsetY;
             game.actions.redraw();
         },
+
+        drawHoverGrid(x:number, y:number) {
+            
+        },
+
         redraw() {
             if (game.state.loading) return;
 
