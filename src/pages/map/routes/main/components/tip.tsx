@@ -61,7 +61,7 @@ const dialogStyle = css`
 `
 
 const rootStyle = css`
-    width: 8.5rem;
+    width: 6.5rem;
     position relative;
     transition: all .2s;
     display: flex;

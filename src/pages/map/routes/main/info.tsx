@@ -21,7 +21,9 @@ export default defineComponent({
                     <p class="row3">
                         Free to mint, create your own memories.
                     </p>
-                    <div class="loveroot">
+                    <div class="loveroot" onClick={()=>{
+                        window.open("http://www.lovecounter.help")
+                    }}>
                         <img src={require("@/assets/love.png")} alt="love" class={"loverinfo"} />
                         <img src={require("@/assets/lovecounter.png")} alt="lovecounter" class={"loverinfo"} />
                     </div>
