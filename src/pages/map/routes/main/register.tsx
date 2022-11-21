@@ -67,6 +67,7 @@ const rootStyle = css`
     }
     
     @media screen and (max-width: 640px) {
+        padding-left: 0.5rem;
         .wap-title{
             width: 100%;
         }

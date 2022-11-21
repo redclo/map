@@ -167,8 +167,8 @@ export default (game: GameMap) => {
             const state = game.state;
 
             ctx.strokeStyle = '#DC7BAB' //'#ED81B7';
-            ctx.lineWidth = 5 * game.state.pxScale;
-            const padding = 2.5 * game.state.pxScale;
+            ctx.lineWidth = 3 * game.state.pxScale;
+            const padding = 1.5 * game.state.pxScale;
 
             const selects = _selected.slice(0);
             if (_tempSelected.length > 0) {
