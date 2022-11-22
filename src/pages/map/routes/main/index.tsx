@@ -151,6 +151,7 @@ const rootStyle = css`
             canvas {
                 width:100%;
                 height: 100%;
+                aspect-ratio: unset;
             }
             
             .hoverCanvas {
