@@ -15,7 +15,7 @@ export default defineComponent({
         }
 
         onMounted(() => {
-            document.title = "地图";
+            document.title = "Emotional Autonomous Region";
             gameMap.actions.editorLoad().then(() => {
                 gameMap.actions.initWidthCanvas(canvasRef.value);
             })

@@ -19,8 +19,8 @@ const getAlias = (alias, path) => {
 const aliases = getAlias('@', path.resolve(__dirname, './src'));
 
 module.exports = {
-  publicPath: "./",
-  // publicPath: process.env.NODE_ENV === 'production' ? '//funeralhk.oss-cn-hongkong.aliyuncs.com/map/' : './',
+  // publicPath: "./",
+  publicPath: process.env.NODE_ENV === 'production' ? '//funeralhk.oss-cn-hongkong.aliyuncs.com/map/' : './',
 
   pages: {
     index: {

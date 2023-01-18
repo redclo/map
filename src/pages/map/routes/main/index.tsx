@@ -26,7 +26,7 @@ export default defineComponent({
             //     e.preventDefault();
             // }, { passive: false });
 
-            document.title = "地图";
+            document.title = "Emotional Autonomous Region";
             gameMap.actions.MainLoad().then(() => {
                 gameMap.actions.initWidthCanvas(canvasRef.value);
             })
