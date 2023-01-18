@@ -7,9 +7,16 @@ export default (game: GameMap) => {
     let _canvas: HTMLCanvasElement;
     const _icons: IconItem[] = [];
     let _ctx2d: CanvasRenderingContext2D;
-
+    let _ctx2dHover: CanvasRenderingContext2D;
 
     return {
+        initHoverCanvas(canvas: HTMLCanvasElement) {
+            canvas.width = game.state.ContainerWidth;
+            canvas.height = game.state.ContainerHeight;
+
+            _ctx2dHover = canvas.getContext("2d") as CanvasRenderingContext2D;
+        },
+        
         initWidthCanvas(canvas: HTMLCanvasElement) {
             _canvas = canvas;
             _ctx2d = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -35,7 +42,13 @@ export default (game: GameMap) => {
                 const scale = game.state.ContainerWidth / box.w;
                 game.state.scale = game.state.scale * scale;
                 // alert(2)
+            } else if (box.h < game.state.ContainerHeight) {
+                console.log("box==>scale-y=>", box);
+                const scale = (game.state.ContainerHeight + game.state.IconSize) / box.h;
+                game.state.scale = game.state.scale * scale;
+                console.log(game.state.scale);
             }
+
             game.actions.computeContentBox();
             game.actions.redraw();
 
@@ -57,6 +70,46 @@ export default (game: GameMap) => {
             game.state.offsetY += offsetY;
             game.actions.redraw();
         },
+        clearDrawHoverGrid(){
+            _ctx2dHover.clearRect(0, 0, _canvas.width, _canvas.height);
+        },
+
+        drawHoverGrid(x:number, y:number) {
+
+            const state = game.state;
+            const xOff = x - state.offsetX;
+            const yOff = y - state.offsetY;
+            if (xOff < 0 || yOff < 0 || xOff > game.state.TotalWidth || yOff > game.state.TotalHeight) {
+                return;
+            }
+            const c = Math.floor(xOff / state.itemSize);
+            const r = Math.floor(yOff / state.itemSize);
+         
+            _ctx2dHover.clearRect(0, 0, _canvas.width, _canvas.height);
+            _ctx2dHover.strokeStyle = '#DC7BAB' //'#ED81B7';
+            _ctx2dHover.lineWidth = 3 * state.pxScale;
+            const padding = 1.5 * state.pxScale;
+
+                let y1 = state.offsetY + r * state.itemSize
+                let y2 = y1 + state.itemSize;
+                let x1 = state.offsetX + c * state.itemSize
+                let x2 = x1 + state.itemSize;
+
+                x1 += padding;
+                y1 += padding;
+                x2 -= padding;
+                y2 -= padding;
+
+                _ctx2dHover.beginPath();
+                _ctx2dHover.moveTo(x1, y1);
+                _ctx2dHover.lineTo(x2, y1);
+                _ctx2dHover.lineTo(x2, y2);
+                _ctx2dHover.lineTo(x1, y2);
+                _ctx2dHover.lineTo(x1, y1);
+                _ctx2dHover.closePath();
+                _ctx2dHover.stroke();
+        },
+
         redraw() {
             if (game.state.loading) return;
 

@@ -83,9 +83,13 @@ export default (game: GameMap) => {
             game.actions.moveDragEvent(e.touches[0].clientX * game.state.pxScale,
                 e.touches[0].clientY * game.state.pxScale);
         },
-        onMouseMoveDrag(e: MouseEvent) {
-            if (!_isDown) return;
-
+        onMouseMoveDrag(e: MouseEvent) { 
+            if (!_isDown) {
+                console.log("moving");
+                game.actions.drawHoverGrid(e.clientX * game.state.pxScale, e.clientY * game.state.pxScale)
+                return;
+            }
+            game.actions.clearDrawHoverGrid()
             game.actions.moveDragEvent(e.clientX * game.state.pxScale, e.clientY * game.state.pxScale);
         }
     }

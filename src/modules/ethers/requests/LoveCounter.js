@@ -112,10 +112,33 @@ const abi = [{
 ];
 
 const address = '0x3617a64ad6A0E5d73fe08dc7aC2d48b68e1Cc8E3';
-const web3 = new Web3(window.ethereum);
-const contract = new web3.eth.Contract(abi, address);
 
 const base = BigNumber.from(2);
+
+let _ethereum = null;
+
+export function getMmSdk() {
+    if (_ethereum) return _ethereum;
+
+    const MMSDK = new window.MetaMaskSDK()
+
+    _ethereum = MMSDK.getProvider() // You can also access via window.ethereum
+    
+    console.log("ethereum=>", _ethereum);
+
+    return _ethereum;
+}
+
+let _contract = null;
+
+export function getContract() {
+    if ( _contract ) return _contract;
+    const web3 = new Web3(getMmSdk());
+
+    _contract = new web3.eth.Contract(abi, address);
+
+    return _contract;
+}
 
 function convertCoordinateToLocation(x, y) {
     let bigNumberX = BigNumber.from(x);
@@ -131,7 +154,7 @@ function convertLocationToCoordinate(location) {
 export function addMoment(account, locationX, locationY, message) {
 
     return new Promise((resolve) => {
-        contract.methods
+        getContract().methods
             .addMoment(convertCoordinateToLocation(locationX, locationY), message)
             .send({
                 from: account
@@ -151,7 +174,7 @@ export function addMoment(account, locationX, locationY, message) {
 
 export async function getMyMoments(account) {
     let moments = [];
-    let myLocations = await contract.methods.getMyLocations()
+    let myLocations = await  getContract().methods.getMyLocations()
         .call({
             from: account
         }, function (err, res) {
@@ -164,7 +187,7 @@ export async function getMyMoments(account) {
     console.log(myLocations);
 
     for (const value of myLocations) {
-        let romance = await contract.methods.getRomance(value)
+        let romance = await  getContract().methods.getRomance(value)
             .call({
                 from: account
             }, function (err, res) {
@@ -186,7 +209,7 @@ export async function getMyMoments(account) {
 
 export async function getMyLocations(account) {
     let ret = [];
-    let myLocations = await contract.methods.getMyLocations()
+    let myLocations = await  getContract().methods.getMyLocations()
         .call({
             from: account
         }, function (err, res) {
@@ -209,7 +232,7 @@ export async function getMyLocations(account) {
 }
 
 export async function getOccupiedLocations(account) {
-    let occupiedLocations = await contract.methods.getOccupiedLocations()
+    let occupiedLocations = await  getContract().methods.getOccupiedLocations()
         .call({
             from: account
         }, function (err, res) {
@@ -232,7 +255,7 @@ export async function getOccupiedLocations(account) {
 }
 
 export async function getRomanceByLocation(account, locationX, locationY) {
-    return await contract.methods.getRomance(convertCoordinateToLocation(locationX, locationY))
+    return await  getContract().methods.getRomance(convertCoordinateToLocation(locationX, locationY))
         .call({
             from: account
         }, function (err, res) {

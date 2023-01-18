@@ -52,12 +52,12 @@ export default (eth: Ethers) => {
         },
         isSuppertMetaMask() {
             const query = getQuery();
-            return !!((window as any).ethereum) && (!query.tip)
+            return !!( love.getMmSdk() && (!query.tip))
         },
 
         async connectMetamaskWallet() {
             try {
-                const accounts = await (window as any).ethereum.request({ method: "eth_requestAccounts" })
+                const accounts = await love.getMmSdk().request({ method: "eth_requestAccounts" })
                 eth.state.ethereumAccount = accounts[0];
                 return true;
             } catch (error: any) {

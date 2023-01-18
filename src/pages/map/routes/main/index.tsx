@@ -17,6 +17,8 @@ export default defineComponent({
     setup() {
         const { gameMap } = useCtx();
         const canvasRef = ref();
+        const hoverRef  = ref();
+
         document.oncontextmenu = function () {
             return false;
         }
@@ -29,6 +31,8 @@ export default defineComponent({
             document.title = "Emotional Autonomous Region";
             gameMap.actions.MainLoad().then(() => {
                 gameMap.actions.initWidthCanvas(canvasRef.value);
+
+                gameMap.actions.initHoverCanvas(hoverRef.value);
             })
             const query = getQuery();
             if (query.tip) {
@@ -55,7 +59,11 @@ export default defineComponent({
                         <div class="border-side"></div>
                         <div class="center">
                             <span class={"left"}></span>
-                            <canvas ref={canvasRef} />
+                            <div class="canvas-root">
+                                <canvas ref={canvasRef} />
+                                <canvas class="hoverCanvas" ref={hoverRef}></canvas>
+                            </div>
+
                             <span class={"right"}></span>
                         </div>
                         <div class="border-side"></div>
@@ -134,10 +142,27 @@ const rootStyle = css`
             width: 14px;
             height: 100%;
         }
-        canvas {
+        .canvas-root {
             width: calc( 100% - 28px );
             height: 100%;
+            position: relative;
+            overflow: hidden;
+
+            canvas {
+                width:100%;
+                height: 100%;
+                aspect-ratio: unset;
+            }
+            
+            .hoverCanvas {
+                position: absolute;
+                left:0;
+                top: 0;
+                pointer-events: none;
+                user-select: none;
+            }
         }
+       
     }
     @media screen and (max-width: 768px) {
         .border-side {
@@ -148,7 +173,7 @@ const rootStyle = css`
             .left, .right {
                 display:none;
             }
-            canvas {
+            .canvas-root {
                 width: 100%;
             }
         }
