@@ -19,11 +19,11 @@ export default (game: GameMap) => {
     ]
 
     const legendIndexed = [0, 5, 8, 9, 16,
-        23,2,3,17, 1,
-        6,20, 19,13,10,
-        22,24,7, 14, 21,
-        11,15,12,4,18,25
-       ]
+        23, 2, 3, 17, 1,
+        6, 20, 19, 13, 10,
+        22, 24, 7, 14, 21,
+        11, 15, 12, 4, 18, 25
+    ]
 
     const _contentBox = { w: 0, h: 0 };
     let _maxNum = 0;
@@ -48,7 +48,7 @@ export default (game: GameMap) => {
             _contentBox.w = (_maxNum % game.state.ColGridCount + 1) * game.state.itemSize;
         },
         getItemNames() {
-            return legendIndexed.map(index=>names[index]);
+            return legendIndexed.map(index => names[index]);
         },
         getLegendIndexed() {
             return legendIndexed
@@ -128,21 +128,32 @@ export default (game: GameMap) => {
                 game.state.showItem = false;
                 game.state.showTip = true;
 
-//                 game.ctx.ui.messageError(`Current enviornment is for exhibition version only.
-// Please use Metamask APP or PC Broswer with Metamask plugins
-// to register the evidence of your love.`);
+                //                 game.ctx.ui.messageError(`Current enviornment is for exhibition version only.
+                // Please use Metamask APP or PC Broswer with Metamask plugins
+                // to register the evidence of your love.`);
                 return;
             }
 
             if (!game.ctx.ethers.state.ethereumAccount) {
                 game.ctx.ui.showLoading("login...");
-                const ret = await game.ctx.ethers.actions.connectMetamaskWallet();
-                console.log("connWallet==>", ret);
-                if (!ret) {
+                setTimeout(() => {
+                    game.ctx.ui.hideLoading();
+                }, 4000);
+
+                try {
+                    const ret = await game.ctx.ethers.actions.connectMetamaskWallet();
+                    console.log("connWallet==>", ret);
+                    if (!ret) {
+                        game.ctx.ui.messageError("connect metamask failed!")
+                        game.ctx.ui.hideLoading();
+                        return;
+                    }
+                } catch (error) {
                     game.ctx.ui.messageError("connect metamask failed!")
                     game.ctx.ui.hideLoading();
-                    return;
+                    return
                 }
+
                 await game.ctx.ethers.actions.getMyMoments();
                 game.ctx.ui.hideLoading();
                 game.actions.redraw();
