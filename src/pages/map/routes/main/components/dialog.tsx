@@ -7,7 +7,8 @@ export default defineComponent({
 
     props: {
         showClose: bool().def(true),
-        centered: bool().def(false)
+        centered: bool().def(false),
+        sticker: bool().def(true),
     },
     emits: ["close"],
 
@@ -42,7 +43,7 @@ export default defineComponent({
 
                 <div class={rootStyle + (state.showDialog ? " show" : " hide") + (props.centered ? " center" : " ")} >
                     {
-                        props.showClose && <div class={"stick-close"}>
+                        props.showClose && <div class={"stick-close" + (props.sticker ? " sticker" : "")}>
                             <img onClick={() => {
                                 close();
                             }} src={require("@/assets/close.png")} alt="close" class={"close"} />
@@ -74,17 +75,27 @@ const dialogStyle = css`
     }
 
     .stick-close {
-        position: sticky;
+        position: absolute;
         text-align: right;
-        top: 24px;
-        margin-top: 0.24rem;
+        z-index: 3;
+        right: 14px;
+        top: 10px;
 
         .close {
-            position: relative;
-            right: 24px;
-            cursor: pointer;
-            width: 0.5rem;
+                position: relative;
+                cursor: pointer;
+                width: 0.5rem;
         }
+
+        &.sticker{
+            margin-top: 0.24rem;
+            position: sticky;
+            right: 24px;
+            .close {
+                right: 24px;
+            }
+        }
+        
     }
 
     .show {
