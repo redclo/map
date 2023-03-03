@@ -1,12 +1,16 @@
 import { css } from "@linaria/core";
-import { defineComponent } from "vue";
+import { defineComponent, ref, onMounted, reactive, nextTick } from "vue";
+import { Button, Slider } from "ant-design-vue";
 import Dialog from "./components/dialog";
 
 export default defineComponent({
+
     emits: ["close"],
+
     setup(props, { emit }) {
+
         return () => (
-            <Dialog showClose={true} onClose={() => { emit("close") }} centered={true}>
+            <Dialog sticker={false} onClose={() => { emit("close") }}>
                 <div class={rootStyle}>
                     <div class="wap-title">
                         <div class="title">
@@ -27,6 +31,7 @@ export default defineComponent({
                             Minted success! The proof of your love will be recorded permanently.
                         </p>
                     </div>
+
                 </div>
             </Dialog>
         );
@@ -34,15 +39,22 @@ export default defineComponent({
 });
 
 const rootStyle = css`
-    padding: 0.09rem 0rem;
+    padding-left: 1.80rem;
+    padding-right: 1.80rem;
     position: relative;
     background: #ED81B7;
     border-radius: 6px;
-    padding-bottom: 1.14rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    font-family:'Abel';
+    font-size: .23rem;
+    padding-bottom: 0.88rem;
+    padding-top: 0.6rem;
+    top: 0rem;
+
+    @media screen and (max-width: 756px) {
+        padding-top: 0.3rem;
+        font-size: 0.23rem;
+        line-height: 150%;
+    }
 
     .title {
         font-family: 'Abel';
@@ -52,42 +64,42 @@ const rootStyle = css`
         border-bottom: .01rem solid #FFD4EB;
         padding-bottom: .26rem;
         text-align: center;
-        margin-bottom: .89rem;
+        margin-bottom: .73rem;
     }
 
     .texts{
        font-family: 'Abel';
         font-style: normal;
         font-weight: 400;
-        font-size:.24rem;
+        font-size:.23rem;
         p {
           margin-bottom: 0;
           line-height: 150%;
+          text-align: center;
         }
-        .row2, .row3{
-            margin-top: 2em;
+        .row1, .row2 , .row3 {
+            margin: .3rem 0;
         }
+        
         img{
             width: 100%;
         }
     }
     
     @media screen and (max-width: 640px) {
-        padding-left: 0.5rem;
+        padding-left: 0.55rem;
+        padding-right: 0.55rem;
+        top: 20px;
         .wap-title{
             width: 100%;
         }
         .title {
-            font-size:.4rem;
             text-align: left;
             line-height: 150%;
             padding-bottom: 0;
             margin-bottom: .74rem;
             display: inline-block;
         }
-        padding-bottom: 3rem;
-        .texts{
-            padding-right: 0.5rem;
-        }
+        padding-bottom: 0.5rem;
     }
 `;

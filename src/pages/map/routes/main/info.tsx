@@ -13,10 +13,10 @@ export default defineComponent({
             <Dialog centered={true} onClose={() => { emit("close") }}>
                 <div class={rootStyle}>
                     <p class="row1">
-                        Emotional Autonomous Region is an online platform where lover(s) can claim land for free to store permanent proof of their love.
+                        Emotional Autonomous Region is an online platform where lover(s) can claim land for free to store permanent proof of their love. 
                     </p>
                     <p class="row2">
-                        Unlike Web 2.0 social networking services, which rely on centralised platforms that can be shut down, erasing a lover’s digital history, this platform uses blockchain technology to create an immutable and traceable timestamp of the moment of love. Users can select a location in the Region that fits their status and register the specific time they believe love exists, creating a concrete love memory that won't disappear with the shutdown of a server.
+                        Unlike Web 2.0 social networking services, which rely on centralised platforms that can be shut down, erasing a lover’s digital history, this platform is powered by blockchain technology for the user to create an immutable and traceable timestamp of the moment of love. Users can select a location in the Region that fits their status and register the specific time they believe love exists, creating a concrete love memory that won't disappear with the shutdown of a server.
                     </p>
                     <p class="row3">
                         Free to mint, create your own memories.
