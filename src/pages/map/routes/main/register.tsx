@@ -48,7 +48,7 @@ const rootStyle = css`
     font-size: .23rem;
     padding-bottom: 0.88rem;
     padding-top: 0.6rem;
-    top: -0.97rem;
+    top: 0rem;
 
     @media screen and (max-width: 756px) {
         padding-top: 0.3rem;
