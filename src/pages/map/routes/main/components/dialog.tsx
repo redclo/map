@@ -122,12 +122,13 @@ const rootStyle = css`
     color: #FFFFFF;
     margin-top: 1.5rem;
     height: calc(100vh - 2.45rem);
-    
+
     &.center{
         margin-top: 0;
     }
 
     @media screen and (max-width: 640px) {
         width: 5.8rem;
+        height: calc(100vh - 4.35rem);
     }
 `;
