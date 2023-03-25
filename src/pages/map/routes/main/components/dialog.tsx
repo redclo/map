@@ -121,6 +121,8 @@ const rootStyle = css`
     line-height: 40px;
     color: #FFFFFF;
     margin-top: 1.5rem;
+    height: calc(100vh - 2.45rem);
+    
     &.center{
         margin-top: 0;
     }
